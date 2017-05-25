@@ -11,6 +11,6 @@ class Board():
 
     def __str__(self):
         s = [[str(i) for i in row] for row in self.board]
-        lens = [max(map(len, col)) for col in zip(*s)]
+        lens = [max(map(len, col)) for col in zip(s)]
         table = [' '.join(row) for row in s]
         return '\n'.join(table)

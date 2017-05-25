@@ -13,7 +13,7 @@ class Game():
             board_size = input("Enter board size (5-20): ")
             try:
                 board_size = int(board_size)
-                if board_size not in range(5, 20):
+                if board_size not in range(5, 21):
                     board_size = int(input("Enter correct size of board (5-20): "))
                     continue
                 board_set = True
