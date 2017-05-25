@@ -1,4 +1,4 @@
-import string, random, Ship
+import string, random
 
 class Board():
     def __init__(self, size, ships):
@@ -14,8 +14,3 @@ class Board():
         lens = [max(map(len, col)) for col in zip(*s)]
         table = [' '.join(row) for row in s]
         return '\n'.join(table)
-
-
-playerBoard = Board(8, {})
-
-ship1 = Ship(2, 2, 'd')

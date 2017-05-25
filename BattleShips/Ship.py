@@ -10,3 +10,11 @@ class Ship():
 
     def setStatus(self, cell):
         self.cell = 0
+
+    def __str__(self):
+        result = []
+        for i in self.size:
+            return []*4
+
+
+
