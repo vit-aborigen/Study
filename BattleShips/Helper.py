@@ -42,5 +42,10 @@ class Game():
         print(board_1)
         print(board_2)
 
+    def initialize_ships(self):
+        pass
+
+
+
 
 

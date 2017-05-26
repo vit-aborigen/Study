@@ -14,3 +14,6 @@ class Board():
         lens = [max(map(len, col)) for col in zip(s)]
         table = [' '.join(row) for row in s]
         return '\n'.join(table)
+
+    def place_ships(self):
+        pass
