@@ -5,6 +5,7 @@ class Board():
         self.size = size
         self.ships = ships
         self.owner = owner
+        self.build()
 
     def build(self):
         # board = [['.' for _ in range(self.size+1)] for j in range(size+1)]
@@ -80,7 +81,6 @@ class Board():
 
 
 user_board = Board(8, "Player")
-user_board.build()
 
 ships = [4, 3, 3, 2, 2, 2, 1, 1, 1, 1]
 

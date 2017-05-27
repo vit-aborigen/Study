@@ -3,6 +3,9 @@ class Ship():
         self.size = size
         self.status = ['0']*size
 
+    def get_size(self):
+        return self.size
+
     def getStatus(self):
         return self.status
 
@@ -18,8 +21,6 @@ class Ship():
             result = "x Injured "
         return "Size: " + str(self.size) + result + ''.join(self.status)
 
-test_ship = Ship(3)
-test_ship.hit(2)
-print(test_ship)
+
 
 
