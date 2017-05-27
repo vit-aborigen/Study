@@ -15,5 +15,8 @@ class Board():
         table = [' '.join(row) for row in s]
         return '\n'.join(table)
 
+    def reset(self, size, ships):
+        self.__init__(size, ships)
+
     def place_ships(self):
         pass
