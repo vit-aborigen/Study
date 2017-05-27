@@ -1,6 +1,6 @@
 import random
 
-SIZE = 8
+self_size = 8
 
 def place_sheep(ship_size, board):
 
@@ -16,16 +16,16 @@ def place_sheep(ship_size, board):
         x,y = coord
 
         #checking cells around ship's square considering borders
-        check_range_x = [x - 1 if (x-1) >= 0 else x, x + 1 if (x+1) < SIZE else x]
-        check_range_y = [y - 1 if (y-1) >= 0 else y, y + 1 if (y+1) < SIZE else y]
+        check_range_x = [x - 1 if (x-1) >= 0 else x, x + 1 if (x+1) < self_size else x]
+        check_range_y = [y - 1 if (y-1) >= 0 else y, y + 1 if (y+1) < self_size else y]
         if orientation == 'vertical':
             check_range_x[1] += ship_size
-            if check_range_x[1] > SIZE-1:
-                check_range_x[1] = SIZE-1
+            if check_range_x[1] > self_size-1:
+                check_range_x[1] = self_size - 1
         else:
             check_range_y[1] += ship_size
-            if check_range_y[1] > SIZE - 1:
-                check_range_y[1] = SIZE - 1
+            if check_range_y[1] > self_size - 1:
+                check_range_y[1] = self_size - 1
 
         #check all squares around whole ship
         for x in range(check_range_x[0], check_range_x[1]+1):
@@ -42,11 +42,11 @@ def place_sheep(ship_size, board):
     while not isFit:
         orientation = 'horizontal' if random.randint(0, 1) else 'vertical'
         if orientation == 'horizontal':
-            x_random = random.randint(0, SIZE - 1)
-            y_random = random.randint(0, SIZE - ship_size)
+            x_random = random.randint(0, self_size - 1)
+            y_random = random.randint(0, self_size - ship_size)
         else:
-            x_random = random.randint(0, SIZE - ship_size)
-            y_random = random.randint(0, SIZE - 1)
+            x_random = random.randint(0, self_size - ship_size)
+            y_random = random.randint(0, self_size - 1)
         isFit = is_fit(ship_size, board, (x_random,y_random), orientation)
         if tries > 1000:
             return False
@@ -63,11 +63,11 @@ def place_sheep(ship_size, board):
     return True
 
 
-def board_reset():
-    board = [['.'] * SIZE for _ in range(SIZE)]
+def build():
+    board = [['.'] * self_size for _ in range(self_size)]
     return board
 
-board = board_reset()
+board = build()
 ships = [4, 3, 3, 2, 2, 2, 1, 1, 1, 1]
 
 are_ships_placed = False
@@ -76,12 +76,10 @@ while not are_ships_placed:
     for ship in ships:
         placing_result = place_sheep(ship, board)
         if placing_result == False:
-            board = board_reset()
+            board = build()
             break
     if placing_result == True:
         break
-
-
 
 
 for row in board:

@@ -34,9 +34,7 @@ class Game():
         return (board_size, max_ship_size)
 
     def initialize_boards(self):
-        self.user_board = Board(self.board_size, [])
-        self.pc_board = Board(self.board_size, [])
-        return [self.user_board, self.pc_board]
+
 
     def print_boards(self, board_1, board_2):
         print(board_1)
