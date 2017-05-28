@@ -45,11 +45,16 @@ class Game():
         print('\n'+fmt.format(board_1.owner) + ' '*8 + fmt.format(board_2.owner))
         headers = ' '.join([string.ascii_letters[i].upper() for i in range(board_1.size)])
         print(headers + ' '*8 + headers)
-        if show_opponent_board:
-            for idx, (row1, row2) in enumerate(zip(board_1.board, board_2.board)):
+        # if show_opponent_board:
+        #     for idx, (row1, row2) in enumerate(zip(board_1.board, board_2.board)):
+        #         print(' '.join(row1) + '   %2d   ' %(idx+1) + ' '.join(row2))
+        # else:
+        #     board = [['.'] * board_2.size for _ in range(board_2.size)]
+        #     for idx, (row1, row2) in enumerate(zip(board_1.board, board)):
+        #         print(' '.join(row1) + '   %2d   ' %(idx+1) + ' '.join(row2))
+        board_pc = board_2.board if show_opponent_board else [['.'] * board_2.size for _ in range(board_2.size)]
+        for idx, (row1, row2) in enumerate(zip(board_1.board, board_pc)):
                 print(' '.join(row1) + '   %2d   ' %(idx+1) + ' '.join(row2))
-        else:
-            board_2 = return [['.'] * self.size for _ in range(self.size)]
 
     def initialize_navy(self):
         navy = []
