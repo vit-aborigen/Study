@@ -1,5 +1,6 @@
 from Ship import Ship
 from Board import Board
+import string
 
 class Game():
     def __init__(self):
@@ -22,7 +23,7 @@ class Game():
                 print("Value should be integer")
 
         while not ships_set:
-            max_ship_size = input("Enter largest ship size (1-%s): " % (str(board_size//2)))
+            max_ship_size = input("Enter largest ship size (1-%s): " % (str(min(board_size//2, 8))))
             try:
                 max_ship_size = int(max_ship_size)
                 if max_ship_size not in range(1, 10) or max_ship_size > board_size//2:
@@ -39,9 +40,13 @@ class Game():
         pc_board = Board(self.board_size, "Computer")
         return user_board, pc_board
 
-
     def print_boards(self, board_1, board_2):
-        raise NotImplemented
+        fmt = '{:^' + str(board_1.size*2 - 1) + '}'
+        print('\n'+fmt.format(board_1.owner) + ' '*8 + fmt.format(board_2.owner))
+        headers = ' '.join([string.ascii_letters[i].upper() for i in range(board_1.size)])
+        print(headers + ' '*8 + headers)
+        for idx, (row1, row2) in enumerate(zip(board_1.board, board_2.board)):
+            print(' '.join(row1) + '   %2d   ' %(idx+1) + ' '.join(row2))
 
     def initialize_navy(self):
         navy = []
@@ -56,12 +61,9 @@ class Game():
             placing_result = True
             for ship in ships:
                 placing_result = board.add_ship(ship)
-                if placing_result == False:
+                if not placing_result:
                     board.board = board.build()
                     break
-            if placing_result == True:
-                break
-
-
-
-
+            if placing_result:
+                return True
+        return False

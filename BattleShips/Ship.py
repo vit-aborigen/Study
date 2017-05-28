@@ -6,7 +6,7 @@ class Ship():
     def get_size(self):
         return self.size
 
-    def getStatus(self):
+    def get_status(self):
         return self.status
 
     def hit(self, cell):
@@ -20,7 +20,3 @@ class Ship():
         else:
             result = "x Injured "
         return "Size: " + str(self.size) + result + ''.join(self.status)
-
-
-
-

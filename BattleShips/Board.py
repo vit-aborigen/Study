@@ -5,18 +5,13 @@ class Board():
         self.size = size
         self.ships = ships
         self.owner = owner
-        self.build()
+        self.board = self.build()
 
     def build(self):
-        # board = [['.' for _ in range(self.size+1)] for j in range(size+1)]
-        # for i in range(self.size+1):
-        #     self.board[0][i] = string.ascii_letters[i-1].upper()
-        #     self.board[i][0] = i
-        self.board = [['.'] * self.size for _ in range(self.size)]
+        return [['.'] * self.size for _ in range(self.size)]
 
     def __str__(self):
         s = [[str(i) for i in row] for row in self.board]
-        lens = [max(map(len, col)) for col in zip(s)]
         table = [' '.join(row) for row in s]
         return '\n'.join(table)
 
@@ -78,21 +73,4 @@ class Board():
                 self.board[x_random][y] = str(ship_size)
 
         return True
-
-
-user_board = Board(8, "Player")
-
-ships = [4, 3, 3, 2, 2, 2, 1, 1, 1, 1]
-
-are_ships_placed = False
-while not are_ships_placed:
-    placing_result = True
-    for ship in ships:
-        placing_result = user_board.add_ship(ship)
-        if placing_result == False:
-            board = user_board.build()
-            break
-    if placing_result == True:
-        break
-
 
