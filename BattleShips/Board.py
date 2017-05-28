@@ -46,11 +46,10 @@ class Board():
             return True
 
         # Generate random position (left top corner)
+        # Due the restrictions of placing algorithm, sometimes there is no solution. In this case
+        # reinitialization of board is performed
         isFit = False
         tries = 0
-
-        # Due the restrictions of placing algorithm, sometimes there is no solution. In this case
-        # reinitialization of board is required
         while not isFit:
             orientation = 'horizontal' if random.randint(0, 1) else 'vertical'
             if orientation == 'horizontal':

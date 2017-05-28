@@ -40,13 +40,16 @@ class Game():
         pc_board = Board(self.board_size, "Computer")
         return user_board, pc_board
 
-    def print_boards(self, board_1, board_2):
+    def print_boards(self, board_1, board_2, show_opponent_board = False):
         fmt = '{:^' + str(board_1.size*2 - 1) + '}'
         print('\n'+fmt.format(board_1.owner) + ' '*8 + fmt.format(board_2.owner))
         headers = ' '.join([string.ascii_letters[i].upper() for i in range(board_1.size)])
         print(headers + ' '*8 + headers)
-        for idx, (row1, row2) in enumerate(zip(board_1.board, board_2.board)):
-            print(' '.join(row1) + '   %2d   ' %(idx+1) + ' '.join(row2))
+        if show_opponent_board:
+            for idx, (row1, row2) in enumerate(zip(board_1.board, board_2.board)):
+                print(' '.join(row1) + '   %2d   ' %(idx+1) + ' '.join(row2))
+        else:
+            board_2 = return [['.'] * self.size for _ in range(self.size)]
 
     def initialize_navy(self):
         navy = []
