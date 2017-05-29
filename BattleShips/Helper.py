@@ -68,4 +68,16 @@ class Game():
             if placing_result:
                 return True
         return False
- test
+
+    def ask_user(self, board):
+        size = board.size
+        is_cell_correct = False
+        while not is_cell_correct:
+            try:
+                user_input = input("Enter cell in LetterNumber format (i.e. A8")
+                x = user_input[0]
+                y = int(user_input[1:])
+                # if 'check range'
+                is_cell_correct = True
+            except ValueError:
+                print("Cast error")
