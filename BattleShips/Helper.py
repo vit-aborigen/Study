@@ -16,7 +16,7 @@ class Game():
             try:
                 board_size = int(board_size)
                 if board_size not in range(5, 21):
-                    board_size = int(input("Enter correct size of board (5-20): "))
+                    board_size = int(input("Enter correct size of the board (5-20): "))
                     continue
                 board_set = True
             except ValueError:
@@ -26,8 +26,8 @@ class Game():
             max_ship_size = input("Enter largest ship size (1-%s): " % (str(min(board_size//2, 8))))
             try:
                 max_ship_size = int(max_ship_size)
-                if max_ship_size not in range(1, 10) or max_ship_size > board_size//2:
-                    max_ship_size = int(input("Enter correct size of largest ship: "))
+                if max_ship_size not in range(1, 9) or max_ship_size > board_size//2:
+                    max_ship_size = int(input("Enter correct size of the largest ship: "))
                     continue
                 ships_set = True
             except ValueError:

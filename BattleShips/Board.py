@@ -20,10 +20,9 @@ class Board():
             """
             Check if the all cells around the ship are empty
             :param ship_size: 
-            :param board: 
             :param coord: 
             :param orientation: 
-            :return: True if empty, False otherwise
+            :return: True if ship can be placed on board, False otherwise
             """
             x, y = coord
 
@@ -31,17 +30,9 @@ class Board():
             check_range_x = [x - 1 if (x - 1) >= 0 else x, x + 1 if (x + 1) < self.size else x]
             check_range_y = [y - 1 if (y - 1) >= 0 else y, y + 1 if (y + 1) < self.size else y]
             if orientation == 'vertical':
-            #     check_range_x[1] += ship_size
-            #     if check_range_x[1] > self.size - 1:
-            #         check_range_x[1] = self.size - 1
-            # else:
-            #     check_range_y[1] += ship_size
-            #     if check_range_y[1] > self.size - 1:
-            #         check_range_y[1] = self.size - 1
                 check_range_x[1] = min(check_range_x[1] + ship_size, self.size - 1)
             else:
                 check_range_y[1] = min(check_range_y[1] + ship_size, self.size - 1)
-
 
             # check all squares around whole ship
             for x in range(check_range_x[0], check_range_x[1] + 1):
