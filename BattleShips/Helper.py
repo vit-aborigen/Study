@@ -68,3 +68,4 @@ class Game():
             if placing_result:
                 return True
         return False
+ test
