@@ -48,6 +48,7 @@ class Game():
         board_pc = board_2.board if show_opponent_board else [['.'] * board_2.size for _ in range(board_2.size)]
         for idx, (row1, row2) in enumerate(zip(board_1.board, board_pc)):
                 print(' '.join(row1) + '   %2d   ' %(idx+1) + ' '.join(row2))
+        print()
 
     def initialize_navy(self):
         navy = []
@@ -69,15 +70,23 @@ class Game():
                 return True
         return False
 
-    def ask_user(self, board):
-        size = board.size
-        is_cell_correct = False
-        while not is_cell_correct:
-            try:
-                user_input = input("Enter cell in LetterNumber format (i.e. A8")
-                x = user_input[0]
-                y = int(user_input[1:])
-                # if 'check range'
-                is_cell_correct = True
-            except ValueError:
-                print("Cast error")
+    def user_turn(self, board):
+
+        def ask_user(self):
+            """
+            Function returns cell in format {Letter: 1s} + {Digit: 2d}
+            """
+            size = board.size
+            is_cell_correct = False
+            while not is_cell_correct:
+                try:
+                    user_input = input("Enter cell in LetterNumber format (i.e. A8")
+                    x = user_input[0]
+                    y = int(user_input[1:])
+                    # if 'check range'
+                    is_cell_correct = True
+                except ValueError:
+                    print("Cast error")
+
+    def pc_turn(self, board):
+        raise NotImplemented

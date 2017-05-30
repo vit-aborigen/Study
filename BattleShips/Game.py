@@ -10,4 +10,3 @@ new_game.place_navy(pc_board, pc_navy)
 
 # game
 new_game.print_boards(user_board, pc_board)
-user_cell = new_game.ask_user(pc_board)
