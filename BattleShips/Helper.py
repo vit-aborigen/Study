@@ -70,23 +70,36 @@ class Game():
                 return True
         return False
 
-    def user_turn(self, board):
+    def initialize(self, debug_info = False):
+        user_board, pc_board = self.initialize_boards()
+        user_navy, pc_navy = self.navy
+        if not (self.place_navy(user_board, user_navy) and self.place_navy(pc_board, pc_navy)):
+            raise EnvironmentError("Error occurred during navy placing")
+        self.print_boards(user_board, pc_board, debug_info)
 
-        def ask_user(self):
+    def start(self):
+
+        def ask_user():
             """
             Function returns cell in format {Letter: 1s} + {Digit: 2d}
             """
-            size = board.size
+            size = self.board_size
             is_cell_correct = False
             while not is_cell_correct:
                 try:
-                    user_input = input("Enter cell in LetterNumber format (i.e. A8")
-                    x = user_input[0]
+                    user_input = input("Enter cell in LetterNumber format (i.e. A8) ")
+                    x = user_input[0].upper()
                     y = int(user_input[1:])
-                    # if 'check range'
-                    is_cell_correct = True
+                    if not (x in string.ascii_uppercase[:size] and y in range(1,size+1)):
+                        print("Incorrect cell specified. Please, try again")
+                        continue
+                    else:
+                        is_cell_correct = True
                 except ValueError:
-                    print("Cast error")
+                    print("Incorrect cell specified. Please, try again")
+            return (string.ascii_uppercase.index(x), y-1)
 
-    def pc_turn(self, board):
-        raise NotImplemented
+
+        ask_user()
+
+
