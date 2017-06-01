@@ -69,5 +69,8 @@ class Board():
         return True
 
     def check_cell(self, cell):
-        raise NotImplemented
+        x,y = cell
+        if self.board[x][y] == '.': return 'mishit'
+        elif self.board[x][y] == 'X': return 'checked'
+        elif isinstance(self.board[x][y], int): return 'hit'
 

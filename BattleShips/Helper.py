@@ -1,11 +1,15 @@
 from Ship import Ship
 from Board import Board
-import string
+import string, random
 
 class Game():
     def __init__(self):
         self.board_size, self.max_ship_size = self.get_data_from_user()
-        self.navy = self.initialize_navy()
+        self.user_navy, self.pc_navy = self.initialize_navy()
+        self.user_board, self.pc_board = self.initialize_boards()
+        if not (self.place_navy(self.user_board, self.user_navy) and self.place_navy(self.pc_board, self.pc_navy)):
+            raise EnvironmentError("Error occurred during navy placing")
+        self.print_boards(self.user_board, self.pc_board)
 
     def get_data_from_user(self):
         board_set, ships_set = False, False
@@ -40,14 +44,27 @@ class Game():
         pc_board = Board(self.board_size, "Computer")
         return user_board, pc_board
 
+    # def print_boards(self, board_1, board_2, show_opponent_board = False):
+    #     fmt = '{:^' + str(board_1.size*2 - 1) + '}'
+    #     print('\n'+fmt.format(board_1.owner) + ' '*8 + fmt.format(board_2.owner))
+    #     headers = ' '.join([string.ascii_letters[i].upper() for i in range(board_1.size)])
+    #     print(headers + ' '*8 + headers)
+    #     board_pc = board_2.board if show_opponent_board else [['.'] * board_2.size for _ in range(board_2.size)]
+    #     for idx, (row1, row2) in enumerate(zip(board_1.board, board_pc)):
+    #             print(' '.join(row1) + '   %2d   ' %(idx+1) + ' '.join(row2))
+    #     print()
+
     def print_boards(self, board_1, board_2, show_opponent_board = False):
+        def hide_char(char):
+            return '.'
+
         fmt = '{:^' + str(board_1.size*2 - 1) + '}'
         print('\n'+fmt.format(board_1.owner) + ' '*8 + fmt.format(board_2.owner))
         headers = ' '.join([string.ascii_letters[i].upper() for i in range(board_1.size)])
         print(headers + ' '*8 + headers)
-        board_pc = board_2.board if show_opponent_board else [['.'] * board_2.size for _ in range(board_2.size)]
-        for idx, (row1, row2) in enumerate(zip(board_1.board, board_pc)):
-                print(' '.join(row1) + '   %2d   ' %(idx+1) + ' '.join(row2))
+        board_pc = [[hide_char(i) for i in row] for row in board_2.board]
+        for idx, (row1, row2, row3) in enumerate(zip(board_1.board, board_2.board, board_pc)):
+                print(' '.join(row1) + '   %2d   ' %(idx+1) + ' '.join(row2)+ '   %2d   ' %(idx+1) + ' '.join(row3))
         print()
 
     def initialize_navy(self):
@@ -77,29 +94,38 @@ class Game():
             raise EnvironmentError("Error occurred during navy placing")
         self.print_boards(user_board, pc_board, debug_info)
 
-    def start(self):
-
-        def ask_user():
-            """
-            Function returns cell in format {Letter: 1s} + {Digit: 2d}
-            """
-            size = self.board_size
-            is_cell_correct = False
-            while not is_cell_correct:
-                try:
-                    user_input = input("Enter cell in LetterNumber format (i.e. A8) ")
-                    x = user_input[0].upper()
-                    y = int(user_input[1:])
-                    if not (x in string.ascii_uppercase[:size] and y in range(1,size+1)):
-                        print("Incorrect cell specified. Please, try again")
-                        continue
-                    else:
-                        is_cell_correct = True
-                except ValueError:
+    def ask_user(self):
+        """
+        Function returns cell in format {Letter: 1s} + {Digit: 2d}
+        """
+        size = self.board_size
+        is_cell_correct = False
+        while not is_cell_correct:
+            try:
+                user_input = input("Enter cell in LetterNumber format (i.e. A8) ")
+                x = user_input[0].upper()
+                y = int(user_input[1:])
+                if not (x in string.ascii_uppercase[:size] and y in range(1, size + 1)):
                     print("Incorrect cell specified. Please, try again")
-            return (string.ascii_uppercase.index(x), y-1)
+                    continue
+                else:
+                    is_cell_correct = True
+            except ValueError:
+                print("Incorrect cell specified. Please, try again")
+        return (string.ascii_uppercase.index(x), y - 1)
+
+    def ask_pc(self):
+        x = random.randint(0,self.user_board.size)
+        y = random.randint(0,self.user_board.size)
+        return (x,y)
 
 
-        ask_user()
+    def start(self):
+        pass
+
+
+
+
+
 
 
