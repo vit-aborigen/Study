@@ -9,7 +9,6 @@ class Game():
         self.user_board, self.pc_board = self.initialize_boards()
         if not (self.place_navy(self.user_board, self.user_navy) and self.place_navy(self.pc_board, self.pc_navy)):
             raise EnvironmentError("Error occurred during navy placing")
-        self.print_boards(self.user_board, self.pc_board)
 
     def get_data_from_user(self):
         board_set, ships_set = False, False
@@ -44,19 +43,11 @@ class Game():
         pc_board = Board(self.board_size, "Computer")
         return user_board, pc_board
 
-    # def print_boards(self, board_1, board_2, show_opponent_board = False):
-    #     fmt = '{:^' + str(board_1.size*2 - 1) + '}'
-    #     print('\n'+fmt.format(board_1.owner) + ' '*8 + fmt.format(board_2.owner))
-    #     headers = ' '.join([string.ascii_letters[i].upper() for i in range(board_1.size)])
-    #     print(headers + ' '*8 + headers)
-    #     board_pc = board_2.board if show_opponent_board else [['.'] * board_2.size for _ in range(board_2.size)]
-    #     for idx, (row1, row2) in enumerate(zip(board_1.board, board_pc)):
-    #             print(' '.join(row1) + '   %2d   ' %(idx+1) + ' '.join(row2))
-    #     print()
 
     def print_boards(self, board_1, board_2, show_opponent_board = False):
         def hide_char(char):
-            return '.'
+            if char in '1234567890': return '.'
+            return char
 
         fmt = '{:^' + str(board_1.size*2 - 1) + '}'
         print('\n'+fmt.format(board_1.owner) + ' '*8 + fmt.format(board_2.owner))
@@ -121,7 +112,16 @@ class Game():
 
 
     def start(self):
-        pass
+        turn = 0
+        while turn < 10:
+            print("\nTurn: ", turn)
+            self.print_boards(self.user_board, self.pc_board)
+            cell = self.ask_user()
+            if self.pc_board.check_cell(cell):
+                continue
+            turn += 1
+
+
 
 
 

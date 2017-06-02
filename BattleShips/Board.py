@@ -69,8 +69,15 @@ class Board():
         return True
 
     def check_cell(self, cell):
-        x,y = cell
-        if self.board[x][y] == '.': return 'mishit'
-        elif self.board[x][y] == 'X': return 'checked'
-        elif isinstance(self.board[x][y], int): return 'hit'
+        '''
+        Returns 1 if hit, 0 for miss
+
+        '''
+        y,x = cell
+        if self.board[x][y] in '1234567890':
+            self.board[x][y] = 'X'
+            return 1
+        else:
+            self.board[x][y] = 'o'
+            return 0
 
