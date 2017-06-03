@@ -101,25 +101,36 @@ class Game():
                     continue
                 else:
                     is_cell_correct = True
-            except ValueError:
+            except (ValueError, IndexError):
                 print("Incorrect cell specified. Please, try again")
         return (string.ascii_uppercase.index(x), y - 1)
 
     def ask_pc(self):
-        x = random.randint(0,self.user_board.size)
-        y = random.randint(0,self.user_board.size)
+        x = random.randint(0,self.user_board.size-1)
+        y = random.randint(0,self.user_board.size-1)
         return (x,y)
 
 
     def start(self):
         turn = 0
-        while turn < 10:
+        while self.user_board.count_ship_cells() and self.pc_board.count_ship_cells():
             print("\nTurn: ", turn)
             self.print_boards(self.user_board, self.pc_board)
             cell = self.ask_user()
             if self.pc_board.check_cell(cell):
+                print("Hit!")
                 continue
+            else:
+                print("Mis!")
+            cell = self.ask_pc()
+            if self.user_board.check_cell(cell):
+                print('PC: Hit')
+            else:
+                print('PC: Mis')
             turn += 1
+        if not self.user_board.count_ship_cells():
+            return 1
+        return 0
 
 
 

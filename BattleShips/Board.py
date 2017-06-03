@@ -77,7 +77,15 @@ class Board():
         if self.board[x][y] in '1234567890':
             self.board[x][y] = 'X'
             return 1
+        elif self.board[x][y] in 'Xo':
+            return 0
         else:
             self.board[x][y] = 'o'
             return 0
 
+    def count_ship_cells(self):
+        counter = 0
+        for row in self.board:
+            for char in row:
+                if char in '1234567890': counter += 1
+        return counter

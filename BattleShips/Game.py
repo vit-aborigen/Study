@@ -1,4 +1,6 @@
 from Helper import Game
 
 new_game = Game()
-new_game.start()
+res = new_game.start()
+if res: print("PC won")
+else: print("User won")
