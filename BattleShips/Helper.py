@@ -19,7 +19,7 @@ class Game():
             try:
                 board_size = int(board_size)
                 if board_size not in range(5, 21):
-                    board_size = int(input("Enter correct size of the board (5-20): "))
+                    print("Board size is incorrect. Please, try again. ", end='')
                     continue
                 board_set = True
             except ValueError:
@@ -30,7 +30,7 @@ class Game():
             try:
                 max_ship_size = int(max_ship_size)
                 if max_ship_size not in range(1, 9) or max_ship_size > board_size//2:
-                    max_ship_size = int(input("Enter correct size of the largest ship: "))
+                    print("Ship size is incorrect. Please, try again. ", end='')
                     continue
                 ships_set = True
             except ValueError:
@@ -85,30 +85,43 @@ class Game():
             raise EnvironmentError("Error occurred during navy placing")
         self.print_boards(user_board, pc_board, debug_info)
 
-    def ask_user(self):
-        """
-        Function returns cell in format {Letter: 1s} + {Digit: 2d}
-        """
-        size = self.board_size
-        is_cell_correct = False
-        while not is_cell_correct:
-            try:
-                user_input = input("Enter cell in LetterNumber format (i.e. A8) ")
-                x = user_input[0].upper()
-                y = int(user_input[1:])
-                if not (x in string.ascii_uppercase[:size] and y in range(1, size + 1)):
-                    print("Incorrect cell specified. Please, try again")
-                    continue
-                else:
-                    is_cell_correct = True
-            except (ValueError, IndexError):
-                print("Incorrect cell specified. Please, try again")
-        return (string.ascii_uppercase.index(x), y - 1)
 
-    def ask_pc(self):
-        x = random.randint(0,self.user_board.size-1)
-        y = random.randint(0,self.user_board.size-1)
-        return (x,y)
+    def interact_with_player(self, board):
+
+        def ask_user(size):
+            """
+            Function returns cell in format {Letter: 1s} + {Digit: 2d}
+            """
+            is_cell_correct = False
+            while not is_cell_correct:
+                try:
+                    user_input = input("Enter cell in LetterNumber format (i.e. A8) ")
+                    x = user_input[0].upper()
+                    y = int(user_input[1:])
+                    if not (x in string.ascii_uppercase[:size] and y in range(1, size + 1)):
+                        print("Incorrect cell specified. Please, try again")
+                        continue
+                    else:
+                        is_cell_correct = True
+                except (ValueError, IndexError):
+                    print("Incorrect cell specified. Please, try again")
+            return (string.ascii_uppercase.index(x), y - 1)
+
+        def ask_pc(size):
+            x = random.randint(0,size-1)
+            y = random.randint(0,size-1)
+            return (x,y)
+
+        cell = ask_user(self.board_size) if board.owner == "Computer" else ask_pc(self.board_size)
+        owner = "Computer" if board.owner == "Player" else "Player"
+
+        if board.check_cell(cell):
+            print(owner + ": hit! " + str(cell))
+            return 1
+        else:
+            print(owner + ": mis " + str(cell))
+            return 0
+
 
 
     def start(self):
@@ -116,18 +129,10 @@ class Game():
         while self.user_board.count_ship_cells() and self.pc_board.count_ship_cells():
             print("\nTurn: ", turn)
             self.print_boards(self.user_board, self.pc_board)
-            cell = self.ask_user()
-            if self.pc_board.check_cell(cell):
-                print("Hit!")
-                continue
-            else:
-                print("Mis!")
-            cell = self.ask_pc()
-            if self.user_board.check_cell(cell):
-                print('PC: Hit')
-            else:
-                print('PC: Mis')
+            if self.interact_with_player(self.pc_board): continue
+            if self.interact_with_player(self.user_board): continue
             turn += 1
+
         if not self.user_board.count_ship_cells():
             return 1
         return 0
