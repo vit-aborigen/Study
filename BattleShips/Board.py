@@ -1,9 +1,9 @@
-import string, random
+import string, random, itertools
 
 class Board():
-    def __init__(self, size, owner, ships = []):
+    def __init__(self, size, owner):
         self.size = size
-        self.ships = ships
+        self.ships = []
         self.owner = owner
         self.board = self.build()
 
@@ -69,13 +69,34 @@ class Board():
         return True
 
     def check_cell(self, cell):
+
+        def mark_hit(cell):
+            y, x = cell
+
+            x_range = []
+            if x-1 >= 0:
+                x_range.append(x-1)
+            if x+1 <= self.size-1:
+                x_range.append(x+1)
+
+            y_range = []
+            if y-1 >= 0:
+                y_range.append(y-1)
+            if y+1 <= self.size-1:
+                y_range.append(y+1)
+
+            for x,y in itertools.product(x_range,y_range):
+                print(x,y)
+                self.board[x][y] = 'o'
+
         '''
-        Returns 1 if hit, 0 for miss
+        Returns 1 if hit, 0 for miss, 2 - kill
 
         '''
         y,x = cell
         if self.board[x][y] in '1234567890':
             self.board[x][y] = 'X'
+            mark_hit(cell)
             return 1
         elif self.board[x][y] in 'Xo':
             return 0
