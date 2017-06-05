@@ -15,7 +15,9 @@ class Board():
         table = [' '.join(row) for row in s]
         return '\n'.join(table)
 
-    def add_ship(self, ship_size):
+    def add_ship(self, ship):
+        ship_size = ship.get_size()
+
         def is_fit(ship_size, coord, orientation):
             """
             Check if the all cells around the ship are empty
@@ -53,7 +55,8 @@ class Board():
             else:
                 x_random = random.randint(0, self.size - ship_size)
                 y_random = random.randint(0, self.size - 1)
-            isFit = is_fit(ship_size, (x_random, y_random), orientation)
+            if is_fit(ship_size, (x_random, y_random), orientation):
+                isFit = True
             if tries > 1000:
                 return False
             tries += 1
@@ -61,9 +64,11 @@ class Board():
         # Check position
         if orientation == 'vertical':
             for x in range(x_random, x_random + ship_size):
+                ship.add_cell((x, y_random))
                 self.board[x][y_random] = str(ship_size)
         else:
             for y in range(y_random, y_random + ship_size):
+                ship.add_cell((x_random, y))
                 self.board[x_random][y] = str(ship_size)
 
         return True

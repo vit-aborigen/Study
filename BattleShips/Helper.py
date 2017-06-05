@@ -7,8 +7,12 @@ class Game():
         self.board_size, self.max_ship_size = self.get_data_from_user()
         self.user_navy, self.pc_navy = self.initialize_navy()
         self.user_board, self.pc_board = self.initialize_boards()
-        if not (self.place_navy(self.user_board, self.user_navy) and self.place_navy(self.pc_board, self.pc_navy)):
+        is_user_placed = self.place_navy(self.user_board, self.user_navy)
+        is_pc_placed = self.place_navy(self.pc_board, self.pc_navy)
+        if not (is_user_placed and is_pc_placed):
             raise EnvironmentError("Error occurred during navy placing")
+        for ship1, ship2 in zip(self.user_navy, self.pc_navy):
+            print("User", ship1.get_cells(), "PC", ship2.get_cells())
 
     def get_data_from_user(self):
         board_set, ships_set = False, False
@@ -65,25 +69,19 @@ class Game():
         return navy, navy[::1]
 
     def place_navy(self, board: Board, navy):
-        ships = [ship.get_size() for ship in navy]
         are_ships_placed = False
         while not are_ships_placed:
             placing_result = True
-            for ship in ships:
+            for ship in navy:
                 placing_result = board.add_ship(ship)
                 if not placing_result:
                     board.board = board.build()
+                    for ship in navy:
+                        ship.reset_cells()
                     break
             if placing_result:
                 return True
         return False
-
-    def initialize(self, debug_info = False):
-        user_board, pc_board = self.initialize_boards()
-        user_navy, pc_navy = self.navy
-        if not (self.place_navy(user_board, user_navy) and self.place_navy(pc_board, pc_navy)):
-            raise EnvironmentError("Error occurred during navy placing")
-        self.print_boards(user_board, pc_board, debug_info)
 
 
     def interact_with_player(self, board):
@@ -121,7 +119,6 @@ class Game():
         else:
             print(owner + ": mis " + str(cell))
             return 0
-
 
 
     def start(self):
