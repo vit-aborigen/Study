@@ -80,8 +80,11 @@ class Game():
                 return True
         return False
 
-
     def interact_with_player(self, board):
+        """
+        :param board:
+        :return: 0 - mis, 1 - hit, 2 - kill
+        """
 
         def ask_user(size):
             """
@@ -111,11 +114,23 @@ class Game():
         owner = "Computer" if board.owner == "Player" else "Player"
 
         if board.check_cell(cell):
-            print(owner + ": hit! " + str(cell))
-            return 1
+            if self.find_ship(cell, owner) == 1 or 2:
+                print(owner + ": hit! " + str(cell))
+                return 1
         else:
             print(owner + ": mis " + str(cell))
             return 0
+
+    def find_ship(self, cell, owner):
+        navy = self.pc_navy if owner == "Computer" else self.user_navy
+        for ship in navy:
+            if cell in ship.get_cells():
+                ship.hit(cell)
+                print("Ship " + str(ship.get_cells()))
+                return 1
+        return 2
+
+
 
     def start(self):
         turn = 0
@@ -129,12 +144,3 @@ class Game():
         if not self.user_board.count_ship_cells():
             return 1
         return 0
-
-
-
-
-
-
-
-
-

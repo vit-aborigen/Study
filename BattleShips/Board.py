@@ -95,7 +95,7 @@ class Board():
                 self.board[x][y] = 'o'
 
         '''
-        Returns 1 if hit, 0 for miss, 2 - kill
+        Returns 1 if hit, 0 for miss
 
         '''
         y,x = cell
