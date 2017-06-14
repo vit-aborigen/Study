@@ -91,7 +91,6 @@ class Board():
                 y_range.append(y+1)
 
             for x,y in itertools.product(x_range,y_range):
-                print(x,y)
                 self.board[x][y] = 'o'
 
         '''

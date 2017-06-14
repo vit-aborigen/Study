@@ -121,16 +121,16 @@ class Game():
             print(owner + ": mis " + str(cell))
             return 0
 
-    def find_ship(self, cell, owner):
-        navy = self.pc_navy if owner == "Computer" else self.user_navy
+    def find_ship(self, cell_rev, owner):
+        navy = self.user_navy if owner == "Computer" else self.pc_navy
+        cell = (cell_rev[1], cell_rev[0])
         for ship in navy:
             if cell in ship.get_cells():
-                ship.hit(cell)
+                # if result == 1 - ship is alive, if 2 - dead
+                result = ship.hit(cell)
                 print("Ship " + str(ship.get_cells()))
                 return 1
         return 2
-
-
 
     def start(self):
         turn = 0

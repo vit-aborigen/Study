@@ -1,7 +1,10 @@
 class Ship():
+    '''''''''
+    status: 0 - Full, 1 - injured, 2 - sunk
+    '''''''''
     def __init__(self, size):
         self.size = size
-        self.status = ['0']*size
+        self.status = 0
         self.cells = []
 
     def get_size(self):
@@ -17,13 +20,19 @@ class Ship():
         self.cells = []
 
     def hit(self, cell):
-        ['X' if i == cell else i for i in self.cells]
+        self.cells = ['X' if i == cell else i for i in self.cells]
+        if all(part == 'X' for part in self.cells):
+            self.status = 2
+        else:
+            self.status = 1
+        return self.status
+
 
     def __str__(self):
-        if all(ch == '0' for ch in self.status):
-            result = "x Full "
-        elif all(ch == 'X' for ch in self.status):
-            result = "x Dead "
+        if self.status == 1:
+            status = "Injured"
+        elif self.status == 2:
+            status = "Dead"
         else:
-            result = "x Injured "
-        return "Size: " + str(self.size) + result + ''.join(self.status)
+            status = "Full"
+        return "Ship size: %d is %s" % (self.size, status)
