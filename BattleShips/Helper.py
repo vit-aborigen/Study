@@ -114,9 +114,12 @@ class Game():
         owner = "Computer" if board.owner == "Player" else "Player"
 
         if board.check_cell(cell):
-            if self.find_ship(cell, owner) == 1 or 2:
+            if self.find_ship(cell, owner) == 1:
                 print(owner + ": hit! " + str(cell))
                 return 1
+            else:
+                print(owner + ": kill at! " + str(cell))
+                return 2
         else:
             print(owner + ": mis " + str(cell))
             return 0
@@ -127,10 +130,8 @@ class Game():
         for ship in navy:
             if cell in ship.get_cells():
                 # if result == 1 - ship is alive, if 2 - dead
-                result = ship.hit(cell)
-                print("Ship " + str(ship.get_cells()))
-                return 1
-        return 2
+                return ship.hit(cell)
+        return -1
 
     def start(self):
         turn = 0
