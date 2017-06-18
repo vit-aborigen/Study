@@ -116,9 +116,11 @@ class Game():
         if board.check_cell(cell):
             if self.find_ship(cell, owner) == 1:
                 print(owner + ": hit! " + str(cell))
+                board.mark_cell(cell)
                 return 1
             else:
                 print(owner + ": kill at! " + str(cell))
+                board.mark_cell(cell)
                 return 2
         else:
             print(owner + ": mis " + str(cell))

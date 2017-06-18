@@ -74,25 +74,6 @@ class Board():
         return True
 
     def check_cell(self, cell):
-
-        def mark_cell(cell):
-            y, x = cell
-
-            x_range = []
-            if x-1 >= 0:
-                x_range.append(x-1)
-            if x+1 <= self.size-1:
-                x_range.append(x+1)
-
-            y_range = []
-            if y-1 >= 0:
-                y_range.append(y-1)
-            if y+1 <= self.size-1:
-                y_range.append(y+1)
-
-            for x,y in itertools.product(x_range,y_range):
-                self.board[x][y] = 'o'
-
         '''
         Returns 1 if hit, 0 for miss
 
@@ -100,7 +81,6 @@ class Board():
         y,x = cell
         if self.board[x][y] in '1234567890':
             self.board[x][y] = 'X'
-            mark_cell(cell)
             return 1
         elif self.board[x][y] in 'Xo':
             return 0
@@ -114,3 +94,22 @@ class Board():
             for char in row:
                 if char in '1234567890': counter += 1
         return counter
+
+    def mark_cell(self, cell):
+        y, x = cell
+
+        x_range = []
+        if x - 1 >= 0:
+            x_range.append(x - 1)
+        if x + 1 <= self.size - 1:
+            x_range.append(x + 1)
+
+        y_range = []
+        if y - 1 >= 0:
+            y_range.append(y - 1)
+        if y + 1 <= self.size - 1:
+            y_range.append(y + 1)
+
+        for x, y in itertools.product(x_range, y_range):
+            self.board[x][y] = 'o'
+
