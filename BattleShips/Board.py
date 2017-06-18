@@ -75,7 +75,7 @@ class Board():
 
     def check_cell(self, cell):
 
-        def mark_hit(cell):
+        def mark_cell(cell):
             y, x = cell
 
             x_range = []
@@ -100,7 +100,7 @@ class Board():
         y,x = cell
         if self.board[x][y] in '1234567890':
             self.board[x][y] = 'X'
-            mark_hit(cell)
+            mark_cell(cell)
             return 1
         elif self.board[x][y] in 'Xo':
             return 0
