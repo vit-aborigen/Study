@@ -95,7 +95,25 @@ class Board():
                 if char in '1234567890': counter += 1
         return counter
 
-    def mark_cell(self, cell):
+    def mark_hit(self, cell):
+        y, x = cell
+
+        x_range = []
+        if x - 1 >= 0:
+            x_range.append(x - 1)
+        if x + 1 <= self.size - 1:
+            x_range.append(x + 1)
+
+        y_range = []
+        if y - 1 >= 0:
+            y_range.append(y - 1)
+        if y + 1 <= self.size - 1:
+            y_range.append(y + 1)
+
+        for x, y in itertools.product(x_range, y_range):
+            self.board[x][y] = 'o'
+
+    def mark_kill(self, cell):
         y, x = cell
 
         x_range = []

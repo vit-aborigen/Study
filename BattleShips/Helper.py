@@ -114,25 +114,32 @@ class Game():
         owner = "Computer" if board.owner == "Player" else "Player"
 
         if board.check_cell(cell):
-            if self.find_ship(cell, owner) == 1:
-                print(owner + ": hit! " + str(cell))
-                board.mark_cell(cell)
-                return 1
-            else:
-                print(owner + ": kill at! " + str(cell))
-                board.mark_cell(cell)
-                return 2
+            self.find_ship(cell, board)
         else:
             print(owner + ": mis " + str(cell))
             return 0
 
-    def find_ship(self, cell_rev, owner):
+    def find_ship(self, cell_rev, board):
+        """
+        :param cell_rev: sought-for cell - the cells of all ships will be checked
+        :param owner: get the board owner for checking corresponding navy
+        :return:
+        """
+        owner = "Computer" if board.owner == "Player" else "Player"
         navy = self.user_navy if owner == "Computer" else self.pc_navy
         cell = (cell_rev[1], cell_rev[0])
         for ship in navy:
             if cell in ship.get_cells():
                 # if result == 1 - ship is alive, if 2 - dead
-                return ship.hit(cell)
+                if ship.hit(cell) == 1:
+                    print(owner + ": hit! " + str(cell))
+                    board.mark_hit(cell_rev)
+                    return 1
+                elif ship.hit(cell) == 2:
+                    print(owner + ": kill at! " + str(cell))
+                    board.mark_hit(cell_rev)
+                    return 2
+                ship_cells = ship.get_cells()
         return -1
 
     def start(self):

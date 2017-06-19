@@ -16,7 +16,7 @@ class Ship():
         self.live.append(cell),
 
     def get_cells(self):
-        return self.cells
+        return self.cells[::1]
 
     def reset_cells(self):
         self.cells = []
