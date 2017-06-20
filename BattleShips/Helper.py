@@ -137,7 +137,7 @@ class Game():
                     return 1
                 elif ship.hit(cell) == 2:
                     print(owner + ": kill at! " + str(cell))
-                    board.mark_hit(cell_rev)
+                    board.mark_hit(cell_rev, kill=True)
                     return 2
                 ship_cells = ship.get_cells()
         return -1
