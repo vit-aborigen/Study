@@ -95,8 +95,9 @@ class Board():
                 if char in '1234567890': counter += 1
         return counter
 
-    def mark_hit(self, cell, kill = False):
+    def mark_hit(self, cell):
         y, x = cell
+        result = []
 
         x_range = []
         if x - 1 >= 0:
@@ -110,31 +111,19 @@ class Board():
         if y + 1 <= self.size - 1:
             y_range.append(y + 1)
 
-        if kill: pass
-
-
         for x, y in itertools.product(x_range, y_range):
             self.board[x][y] = 'o'
-
-    # def mark_kill(self, cells):
-    #     start = cells[0]
-    #     end = cells[-1]
-    #     orientation = 'v' if start[0] - end[0] else 'h'
-    #
-    #     x = start[1]
-    #     x_range = []
-    #     if x - 1 >= 0:
-    #         x_range.append(x - 1)
-    #     if x + 1 <= self.size - 1:
-    #         x_range.append(x + 1)
+            result.append([x,y])
+        return result
 
 
-
-
-
-
-
-
-
-        # self.board[x][y] = 'o'
-
+    def mark_kill(self, ship):
+        for cell in ship.get_cells():
+            y,x = cell
+            check_range_x = [x - 1 if (x - 1) >= 0 else x, x + 2 if (x + 1) < self.size else x+1]
+            check_range_y = [y - 1 if (y - 1) >= 0 else y, y + 2 if (y + 1) < self.size else y+1]
+            print(check_range_x, check_range_y)
+            for i in range(*check_range_x):
+                for j in range(*check_range_y):
+                    if self.board[j][i] == '.':
+                        self.board[j][i] = 'o'

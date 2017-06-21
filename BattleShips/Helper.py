@@ -55,8 +55,8 @@ class Game():
         headers = ' '.join([string.ascii_letters[i].upper() for i in range(board_1.size)])
         print(headers + ' '*8 + headers)
         board_pc = [[hide_char(i) for i in row] for row in board_2.board]
-        for idx, (row1, row2, row3) in enumerate(zip(board_1.board, board_2.board, board_pc)):
-                print(' '.join(row1) + '   %2d   ' %(idx+1) + ' '.join(row2)+ '   %2d   ' %(idx+1) + ' '.join(row3))
+        for idx, (row1, row2) in enumerate(zip(board_1.board, board_pc)):
+                print(' '.join(row1) + '   %2d   ' %(idx+1) + ' '.join(row2))
         print()
 
     def initialize_navy(self):
@@ -137,7 +137,7 @@ class Game():
                     return 1
                 elif ship.hit(cell) == 2:
                     print(owner + ": kill at! " + str(cell))
-                    board.mark_hit(cell_rev, kill=True)
+                    board.mark_kill(ship)
                     return 2
                 ship_cells = ship.get_cells()
         return -1
