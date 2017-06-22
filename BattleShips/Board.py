@@ -116,13 +116,11 @@ class Board():
             result.append([x,y])
         return result
 
-
     def mark_kill(self, ship):
         for cell in ship.get_cells():
             y,x = cell
             check_range_x = [x - 1 if (x - 1) >= 0 else x, x + 2 if (x + 1) < self.size else x+1]
             check_range_y = [y - 1 if (y - 1) >= 0 else y, y + 2 if (y + 1) < self.size else y+1]
-            print(check_range_x, check_range_y)
             for i in range(*check_range_x):
                 for j in range(*check_range_y):
                     if self.board[j][i] == '.':
