@@ -115,6 +115,7 @@ class Game():
 
         if board.check_cell(cell):
             self.find_ship(cell, board)
+            return 1
         else:
             print(owner + ": mis " + str(cell))
             return 0
@@ -147,8 +148,8 @@ class Game():
         while self.user_board.count_ship_cells() and self.pc_board.count_ship_cells():
             print("\nTurn: ", turn)
             self.print_boards(self.user_board, self.pc_board)
-            if self.interact_with_player(self.pc_board): continue
-            if self.interact_with_player(self.user_board): continue
+            while self.interact_with_player(self.pc_board): self.print_boards(self.user_board, self.pc_board)
+            while self.interact_with_player(self.user_board): self.print_boards(self.user_board, self.pc_board)
             turn += 1
 
         if not self.user_board.count_ship_cells():
