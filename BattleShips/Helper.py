@@ -105,12 +105,17 @@ class Game():
                     print("Incorrect cell specified. Please, try again")
             return (string.ascii_uppercase.index(x), y - 1)
 
-        def ask_pc(size):
-            x = random.randint(0,size-1)
-            y = random.randint(0,size-1)
+        def ask_pc(board):
+            not_checked = True
+            while not_checked:
+                x = random.randint(0,board.size-1)
+                y = random.randint(0,board.size-1)
+                if board.board[y][x] in '.123456789X':
+                    not_checked = False
             return (x,y)
 
-        cell = ask_user(self.board_size) if board.owner == "Computer" else ask_pc(self.board_size)
+
+        cell = ask_user(self.board_size) if board.owner == "Computer" else ask_pc(self.user_board)
         owner = "Computer" if board.owner == "Player" else "Player"
 
         if board.check_cell(cell):
