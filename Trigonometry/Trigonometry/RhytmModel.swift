@@ -29,9 +29,28 @@ struct Rhytm: Shape {
         }
         
         let normilizedX = { (mathX: Double) -> (Double) in
-            rect.width * ( Double(endDate - startDate - distanceInDays) + mathX)
+            (mathX - Double(startDate)) / Double(distanceInDays) * rect.width
         }
         
+        let path = UIBezierPath()
+        
+        let startPointY = sin(2 * Double.pi * Double((startDate)) / type.rawValue)
+        let normalizedStartY = normilizedY(startPointY)
+        
+        path.move(to: CGPoint(x: 0, y: normalizedStartY))
+        for day in stride(from: Double(startDate), to: Double(endDate), by: 0.1) {
+            let mathY = sin(2 * Double.pi * Double(day) / type.rawValue)
+            let x = normilizedX(day)
+            let y = normilizedY(mathY)
+            path.addLine(to: CGPoint(x: x, y: y))
+        }
+        
+        return Path(path.cgPath)
+    }
+}
+
+struct Axis: Shape {
+    func path(in rect: CGRect) -> Path {
         let path = UIBezierPath()
         let width = Double(rect.width)
         let height = Double(rect.height)
@@ -44,22 +63,6 @@ struct Rhytm: Shape {
         path.move(to: CGPoint(x: width / 2, y: 0))
         path.addLine(to: CGPoint(x: width / 2, y: height))
         
-        // Draw rhythm
-        let startPointY = sin(2 * Double.pi * Double((startDate)) / type.rawValue)
-        let normalizedStartY = normilizedY(startPointY)
-        print("init 0 \(normalizedStartY)")
-        
-        path.move(to: CGPoint(x: 0, y: startPointY))
-        for day in stride(from: Double(startDate), to: Double(endDate), by: 0.1) {
-            let mathY = sin(2 * Double.pi * Double(day) / type.rawValue)
-            let x = (day - Double(startDate)) / Double(distanceInDays) * width
-            let y = normilizedY(mathY)
-            path.addLine(to: CGPoint(x: x, y: y))
-        }
-        
-
         return Path(path.cgPath)
     }
-    
-    
 }

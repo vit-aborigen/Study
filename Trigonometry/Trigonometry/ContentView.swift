@@ -12,6 +12,9 @@ struct ContentView: View {
     
     var body: some View {
         ZStack {
+            Axis()
+                .stroke(.black, lineWidth: 3)
+            
             Rhytm(type: .physical)
                 .stroke(.red, lineWidth: 5)
             
@@ -21,10 +24,6 @@ struct ContentView: View {
             Rhytm(type: .intellectual)
                 .stroke(.green, lineWidth: 5)
         }
-    }
-    
-    func calculateData() -> [Date] {
-        [Date()]
     }
 }
 
