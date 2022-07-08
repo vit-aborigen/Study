@@ -8,9 +8,17 @@
 import SwiftUI
 
 struct ContentView: View {
+    let dateInterval = 14
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        ZStack {
+            Rhytm(type: .physical)
+                .stroke(.red)
+        }
+    }
+    
+    func calculateData() -> [Date] {
+        [Date()]
     }
 }
 
