@@ -13,7 +13,13 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             Rhytm(type: .physical)
-                .stroke(.red)
+                .stroke(.red, lineWidth: 5)
+            
+            Rhytm(type: .emotional)
+                .stroke(.blue, lineWidth: 5)
+            
+            Rhytm(type: .intellectual)
+                .stroke(.green, lineWidth: 5)
         }
     }
     

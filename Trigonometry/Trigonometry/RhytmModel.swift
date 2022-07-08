@@ -15,16 +15,23 @@ enum Biorythms: Double {
 }
 
 struct Rhytm: Shape {
-    //var amplitude: Double = 70
-    let distanceInDays = 24
+    let distanceInDays = 30
     var type: Biorythms = .physical
     
     // some func to calculate dates
-    let daysFromBirthDate = 13459
-    let startDate = 13459 - 12
-    let endDate = 13459 + 12
+    let daysFromBirthDate = 13460
+    let startDate = 13445
+    let endDate = 13475
     
     func path(in rect: CGRect) -> Path {
+        let normilizedY = { (mathY: Double) -> (Double) in
+            -rect.height / 2 * mathY + rect.height / 2
+        }
+        
+        let normilizedX = { (mathX: Double) -> (Double) in
+            rect.width * ( Double(endDate - startDate - distanceInDays) + mathX)
+        }
+        
         let path = UIBezierPath()
         let width = Double(rect.width)
         let height = Double(rect.height)
@@ -33,12 +40,22 @@ struct Rhytm: Shape {
         path.move(to: CGPoint(x: 0, y: height / 2))
         path.addLine(to: CGPoint(x: width, y: height / 2))
         
+        // Draw y-today
+        path.move(to: CGPoint(x: width / 2, y: 0))
+        path.addLine(to: CGPoint(x: width / 2, y: height))
+        
         // Draw rhythm
-        let startPointY = sin(2 * Double.pi * Double((daysFromBirthDate - distanceInDays)/2) / type.rawValue)
-        let normalizedStartY = -height / 2 * startPointY + height / 2
+        let startPointY = sin(2 * Double.pi * Double((startDate)) / type.rawValue)
+        let normalizedStartY = normilizedY(startPointY)
+        print("init 0 \(normalizedStartY)")
         
-        path.move(to: CGPoint(x: 0, y: normalizedStartY))
-        
+        path.move(to: CGPoint(x: 0, y: startPointY))
+        for day in stride(from: Double(startDate), to: Double(endDate), by: 0.1) {
+            let mathY = sin(2 * Double.pi * Double(day) / type.rawValue)
+            let x = (day - Double(startDate)) / Double(distanceInDays) * width
+            let y = normilizedY(mathY)
+            path.addLine(to: CGPoint(x: x, y: y))
+        }
         
 
         return Path(path.cgPath)
