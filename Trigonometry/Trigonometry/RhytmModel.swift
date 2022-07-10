@@ -16,53 +16,38 @@ enum Biorythms: Double {
 
 struct Rhytm: Shape {
     let distanceInDays = 30
-    var type: Biorythms = .physical
+    var type: Biorythms
+    let padding = 0.0 // 2DO: it would be nice to implement some padding so we can have some additional space for other stuff on edges
     
-    // some func to calculate dates
+    // 2DO: some func to calculate dates
     let daysFromBirthDate = 13460
     let startDate = 13445
     let endDate = 13475
     
     func path(in rect: CGRect) -> Path {
-        let normilizedY = { (mathY: Double) -> (Double) in
-            -rect.height / 2 * mathY + rect.height / 2
+        let canvasWidth = rect.width * (1 - padding)
+        let canvasHeight = rect.height * (1 - padding)
+        
+        let normalizedY = { (mathY: Double) -> (Double) in
+            -rect.height / 2 * mathY + canvasHeight / 2
         }
         
-        let normilizedX = { (mathX: Double) -> (Double) in
-            (mathX - Double(startDate)) / Double(distanceInDays) * rect.width
+        let normalizedX = { (mathX: Double) -> (Double) in
+            (mathX - Double(startDate)) / Double(distanceInDays) * canvasWidth
         }
         
         let path = UIBezierPath()
         
         let startPointY = sin(2 * Double.pi * Double((startDate)) / type.rawValue)
-        let normalizedStartY = normilizedY(startPointY)
+        let normalizedStartY = normalizedY(startPointY)
         
         path.move(to: CGPoint(x: 0, y: normalizedStartY))
         for day in stride(from: Double(startDate), to: Double(endDate), by: 0.1) {
             let mathY = sin(2 * Double.pi * Double(day) / type.rawValue)
-            let x = normilizedX(day)
-            let y = normilizedY(mathY)
+            let x = normalizedX(day)
+            let y = normalizedY(mathY)
             path.addLine(to: CGPoint(x: x, y: y))
         }
-        
-        return Path(path.cgPath)
-    }
-}
-
-struct Axis: Shape {
-    func path(in rect: CGRect) -> Path {
-        let path = UIBezierPath()
-        let width = Double(rect.width)
-        let height = Double(rect.height)
-        
-        // Draw x-axis
-        path.move(to: CGPoint(x: 0, y: height / 2))
-        path.addLine(to: CGPoint(x: width, y: height / 2))
-        
-        // Draw y-today
-        path.move(to: CGPoint(x: width / 2, y: 0))
-        path.addLine(to: CGPoint(x: width / 2, y: height))
-        
         return Path(path.cgPath)
     }
 }

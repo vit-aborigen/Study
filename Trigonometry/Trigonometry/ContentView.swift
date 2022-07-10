@@ -11,19 +11,31 @@ struct ContentView: View {
     let dateInterval = 14
     
     var body: some View {
-        ZStack {
-            Axis()
-                .stroke(.black, lineWidth: 3)
+        VStack {
+            ZStack {
+                AxisView()
+                
+                Rhytm(type: .physical)
+                    .fill(
+                        LinearGradient(colors: [.purple, .red], startPoint: .top, endPoint: .bottom)
+                    )
+                    .opacity(0.3)
+                
+                Rhytm(type: .physical)
+                    .stroke(.red, lineWidth: 3)
+            }
             
-            Rhytm(type: .physical)
-                .stroke(.red, lineWidth: 5)
             
-            Rhytm(type: .emotional)
-                .stroke(.blue, lineWidth: 5)
+            Text("""
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            """)
+            Spacer ()
             
-            Rhytm(type: .intellectual)
-                .stroke(.green, lineWidth: 5)
+            Text("""
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            """)
         }
+        .padding(30)
     }
 }
 

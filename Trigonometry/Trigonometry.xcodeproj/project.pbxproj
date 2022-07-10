@@ -12,6 +12,9 @@
 		9FDEF7EA2878811B008B9C19 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9FDEF7E92878811B008B9C19 /* Assets.xcassets */; };
 		9FDEF7ED2878811B008B9C19 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9FDEF7EC2878811B008B9C19 /* Preview Assets.xcassets */; };
 		9FDEF7F4287882C3008B9C19 /* RhytmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDEF7F3287882C3008B9C19 /* RhytmModel.swift */; };
+		9FDEF7F62879C76A008B9C19 /* AxisView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDEF7F52879C76A008B9C19 /* AxisView.swift */; };
+		9FDEF7FA2879CDC2008B9C19 /* AxisModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDEF7F92879CDC2008B9C19 /* AxisModel.swift */; };
+		9FDEF7FC287ADE6A008B9C19 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDEF7FB287ADE6A008B9C19 /* DateHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +24,9 @@
 		9FDEF7E92878811B008B9C19 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9FDEF7EC2878811B008B9C19 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		9FDEF7F3287882C3008B9C19 /* RhytmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RhytmModel.swift; sourceTree = "<group>"; };
+		9FDEF7F52879C76A008B9C19 /* AxisView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AxisView.swift; sourceTree = "<group>"; };
+		9FDEF7F92879CDC2008B9C19 /* AxisModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AxisModel.swift; sourceTree = "<group>"; };
+		9FDEF7FB287ADE6A008B9C19 /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,9 +59,12 @@
 		9FDEF7E42878811A008B9C19 /* Trigonometry */ = {
 			isa = PBXGroup;
 			children = (
+				9FDEF7FB287ADE6A008B9C19 /* DateHelper.swift */,
 				9FDEF7E52878811A008B9C19 /* TrigonometryApp.swift */,
 				9FDEF7E72878811A008B9C19 /* ContentView.swift */,
 				9FDEF7F3287882C3008B9C19 /* RhytmModel.swift */,
+				9FDEF7F52879C76A008B9C19 /* AxisView.swift */,
+				9FDEF7F92879CDC2008B9C19 /* AxisModel.swift */,
 				9FDEF7E92878811B008B9C19 /* Assets.xcassets */,
 				9FDEF7EB2878811B008B9C19 /* Preview Content */,
 			);
@@ -141,6 +150,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				9FDEF7F4287882C3008B9C19 /* RhytmModel.swift in Sources */,
+				9FDEF7F62879C76A008B9C19 /* AxisView.swift in Sources */,
+				9FDEF7FA2879CDC2008B9C19 /* AxisModel.swift in Sources */,
+				9FDEF7FC287ADE6A008B9C19 /* DateHelper.swift in Sources */,
 				9FDEF7E82878811A008B9C19 /* ContentView.swift in Sources */,
 				9FDEF7E62878811A008B9C19 /* TrigonometryApp.swift in Sources */,
 			);
