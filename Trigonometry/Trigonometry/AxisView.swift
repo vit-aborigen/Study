@@ -8,13 +8,42 @@
 import SwiftUI
 
 struct AxisView: View {
-    var values = [1, 2, 3, 4, 5, 6]
+    let today = Date()
+    var values = { (range: Int) -> [String] in
+        var result = Array<String> ()
+        let postfix = " July"
+        for day in 1...range {
+            result.append("\(day)" + postfix)
+        }
+        return result
+    }
     
     var body: some View {
-        ZStack {
-            Axis()
-                .stroke(.black, lineWidth: 1)
-                .opacity(0.5)
+        VStack {
+            ZStack {
+                Axis()
+                    .stroke(.black, lineWidth: 1)
+                    .opacity(0.5)
+                
+                VStack {
+                    Text("100 %")
+                    
+                    Spacer()
+                    
+                    Text("-100 %")
+                }
+                .font(.caption2)
+                .frame(maxWidth: .infinity, alignment: .leading)
+            }
+            .padding(0)
+            
+            HStack {
+                ForEach(values(30), id: \.self) {
+                    Text("\($0)")
+                        .font(.caption2)
+                        .frame(maxWidth: .infinity)
+                }
+            }
         }
     }
 }

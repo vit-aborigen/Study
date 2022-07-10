@@ -8,20 +8,20 @@
 import SwiftUI
 
 struct ContentView: View {
-    let dateInterval = 14
+    let dateInterval = 10
     
     var body: some View {
         VStack {
             ZStack {
                 AxisView()
                 
-                Rhytm(type: .physical)
+                Rhytm(distanceInDays: dateInterval, type: .physical)
                     .fill(
                         LinearGradient(colors: [.purple, .red], startPoint: .top, endPoint: .bottom)
                     )
                     .opacity(0.3)
                 
-                Rhytm(type: .physical)
+                Rhytm(distanceInDays: dateInterval, type: .physical)
                     .stroke(.red, lineWidth: 3)
             }
             

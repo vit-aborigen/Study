@@ -15,14 +15,14 @@ enum Biorythms: Double {
 }
 
 struct Rhytm: Shape {
-    let distanceInDays = 30
+    let distanceInDays: Int
     var type: Biorythms
     let padding = 0.0 // 2DO: it would be nice to implement some padding so we can have some additional space for other stuff on edges
     
     // 2DO: some func to calculate dates
-    let daysFromBirthDate = 13460
-    let startDate = 13445
-    let endDate = 13475
+    let daysFromBirthDate = DateHelper().daysFromBirthDay
+    var startDate: Int { daysFromBirthDate - distanceInDays / 2 }
+    var endDate: Int { daysFromBirthDate + distanceInDays / 2 }
     
     func path(in rect: CGRect) -> Path {
         let canvasWidth = rect.width * (1 - padding)
