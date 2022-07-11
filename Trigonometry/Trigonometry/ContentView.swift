@@ -8,34 +8,43 @@
 import SwiftUI
 
 struct ContentView: View {
-    let dateInterval = 10
+    @ObservedObject var rhytmBuilder = GraphBuilder()
     
     var body: some View {
         VStack {
             ZStack {
                 AxisView()
                 
-                Rhytm(distanceInDays: dateInterval, type: .physical)
-                    .fill(
-                        LinearGradient(colors: [.purple, .red], startPoint: .top, endPoint: .bottom)
-                    )
-                    .opacity(0.3)
+                rhytmBuilder.drawRhytm(type: .emotional)
+                    .stroke(.red, lineWidth: 2)
                 
-                Rhytm(distanceInDays: dateInterval, type: .physical)
-                    .stroke(.red, lineWidth: 3)
+                rhytmBuilder.drawRhytm(type: .physical)
+                    .stroke(.green, lineWidth: 2)
+                
+                rhytmBuilder.drawRhytm(type: .intellectual)
+                    .stroke(.yellow, lineWidth: 2)
             }
+            .padding(10)
             
-            
-            Text("""
+            ScrollView {
+                Text("""
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
             """)
-            Spacer ()
-            
-            Text("""
+                
+                Text("""
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
             """)
+                
+                Text("""
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            """)
+                
+                Text("""
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            """)
+            }
         }
-        .padding(30)
+        .padding(.horizontal, 10)
     }
 }
 

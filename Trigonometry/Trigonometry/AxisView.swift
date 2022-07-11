@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct AxisView: View {
+    let distance = 33 // According to the HoR-24 33 days is a fixed value
     let today = Date()
     var values = { (range: Int) -> [String] in
         var result = Array<String> ()
@@ -34,14 +35,22 @@ struct AxisView: View {
                 }
                 .font(.caption2)
                 .frame(maxWidth: .infinity, alignment: .leading)
-            }
-            .padding(0)
-            
-            HStack {
-                ForEach(values(30), id: \.self) {
-                    Text("\($0)")
+                
+                VStack {
+                    Spacer()
+                    
+                    Text("Today")
                         .font(.caption2)
-                        .frame(maxWidth: .infinity)
+                        .frame(maxWidth: .infinity, alignment: .bottom)
+                    }
+                
+                HStack {
+                    ForEach(values(33), id: \.self) {
+                        Text("\($0)")
+                            .font(.caption2)
+                            .frame(maxWidth: .infinity)
+                            .rotationEffect(Angle(degrees: 320))
+                    }
                 }
             }
         }

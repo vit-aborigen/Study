@@ -18,7 +18,7 @@ final class DateHelper: ObservableObject {
     let bday = Calendar.current.date(from: DateComponents(year: 1985, month: 9, day: 1))! // 2DO: replace with Environment's date
     var daysFromBirthDay: Int { today.distanceFromTodayInDays(dayBefore: bday) }
     
-    static func getAxisNamesFromDay(for day: Date) -> String {
+    static func getAxisNamesForDay(for day: Date) -> String {
         let formatter = DateFormatter()
         formatter.timeStyle = .none
         formatter.dateFormat = "MMM dd"

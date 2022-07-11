@@ -10,7 +10,7 @@ import SwiftUI
 
 struct Axis: Shape {
     // 2DO: pass dates later
-    let dates = 1...4
+    let dates = 1...33
     
     func path(in rect: CGRect) -> Path {
         let path = UIBezierPath()
