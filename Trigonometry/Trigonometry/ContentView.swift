@@ -8,43 +8,37 @@
 import SwiftUI
 
 struct ContentView: View {
-    @ObservedObject var rhytmBuilder = GraphBuilder()
+    @ObservedObject var rhythmBuilder = GraphBuilder()
+    @State private var showOverallRhytm = false
     
     var body: some View {
         VStack {
-            ZStack {
-                AxisView()
-                
-                rhytmBuilder.drawRhytm(type: .emotional)
-                    .stroke(.red, lineWidth: 2)
-                
-                rhytmBuilder.drawRhytm(type: .physical)
-                    .stroke(.green, lineWidth: 2)
-                
-                rhytmBuilder.drawRhytm(type: .intellectual)
-                    .stroke(.yellow, lineWidth: 2)
-            }
-            .padding(10)
-            
-            ScrollView {
-                Text("""
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            """)
-                
-                Text("""
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            """)
-                
-                Text("""
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            """)
-                
-                Text("""
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            """)
+            GeometryReader { geo in
+                VStack {
+                    ZStack {
+                        AxisView()
+                        
+                        ForEach(rhythmBuilder.biorhytms, id: \.type) { biorhythm in
+                            rhythmBuilder.drawRhythm(type: biorhythm)
+                                .stroke()
+                            
+                            if showOverallRhytm {
+                                rhythmBuilder.drawRhythm(type: Biorhythm(type: .intellectual))
+                                    .stroke(.red, lineWidth: 5)
+                            }
+                        }
+
+                    }
+                    
+                    Toggle("Show Overall", isOn: $showOverallRhytm)
+                        .frame(height: geo.size.height * 0.1)
+                        .padding(.horizontal, 10)
+
+                    
+                    BiorhythmsLegendView()
+                }
             }
         }
-        .padding(.horizontal, 10)
     }
 }
 

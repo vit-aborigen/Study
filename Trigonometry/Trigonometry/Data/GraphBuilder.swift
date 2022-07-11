@@ -8,26 +8,22 @@
 import Foundation
 import SwiftUI
 
-enum Biorythms: Double {
-    case physical = 23.68
-    case emotional = 28.43
-    case intellectual = 33.16
-}
-
 class GraphBuilder: ObservableObject {
-    var emotionalState = -1.0
-    var physicalState = -1.0
-    var intellectualState = -1.0
+    var biorhytms: [Biorhythm] = Array<Biorhythm> ()
     
+    init() {
+        for bioType in BiorhythmType.allCases {
+            biorhytms.append(Biorhythm(type: bioType))
+        }
+    }
     
-    struct Rhytm: Shape {
+    struct Rhythm: Shape {
         let distanceInDays = 33 // According to the HoR-24 33 days is a fixed value
-        var type: Biorythms
+        let biorhytm: Biorhythm
         
-        // 2DO: some func to calculate dates
         let daysFromBirthDate = DateHelper().daysFromBirthDay
-        var startDate: Int { daysFromBirthDate - distanceInDays / 2 }
-        var endDate: Int { daysFromBirthDate + distanceInDays / 2 }
+        var startDate: Int { daysFromBirthDate - 3 } // Sergei's requirement. Retrospective must include 3 days only
+        var endDate: Int { daysFromBirthDate + distanceInDays - 3 }
         
         func path(in rect: CGRect) -> Path {
             let canvasWidth = rect.width
@@ -43,12 +39,12 @@ class GraphBuilder: ObservableObject {
             
             let path = UIBezierPath()
             
-            let startPointY = sin(2 * Double.pi * Double((startDate)) / type.rawValue)
+            let startPointY = sin(2 * Double.pi * Double((startDate)) / biorhytm.type.rawValue)
             let normalizedStartY = normalizedY(startPointY)
             
             path.move(to: CGPoint(x: 0, y: normalizedStartY))
             for day in stride(from: Double(startDate), to: Double(endDate), by: 0.1) {
-                let mathY = sin(2 * Double.pi * Double(day) / type.rawValue)
+                let mathY = sin(2 * Double.pi * Double(day) / biorhytm.type.rawValue)
                 let x = normalizedX(day)
                 let y = normalizedY(mathY)
                 path.addLine(to: CGPoint(x: x, y: y))
@@ -58,7 +54,7 @@ class GraphBuilder: ObservableObject {
     }
     
     
-    func drawRhytm(type: Biorythms) -> Rhytm {
-        Rhytm(type: type)
+    func drawRhythm(type: Biorhythm) -> Rhythm {
+        return Rhythm(biorhytm: type)
     }
 }
