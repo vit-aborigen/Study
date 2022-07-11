@@ -13,29 +13,31 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            GeometryReader { geo in
-                VStack {
-                    ZStack {
-                        AxisView()
-                        
-                        ForEach(rhythmBuilder.biorhytms, id: \.type) { biorhythm in
+            VStack {
+                ZStack {
+                    AxisView()
+                    
+                    ForEach(rhythmBuilder.biorhytms, id: \.type) { biorhythm in
+                        if biorhythm.type != .overall {
                             rhythmBuilder.drawRhythm(type: biorhythm)
                                 .stroke()
-                            
-                            if showOverallRhytm {
-                                rhythmBuilder.drawRhythm(type: Biorhythm(type: .intellectual))
-                                    .stroke(.red, lineWidth: 5)
-                            }
                         }
-
                     }
                     
-                    Toggle("Show Overall", isOn: $showOverallRhytm)
-                        .frame(height: geo.size.height * 0.1)
-                        .padding(.horizontal, 10)
-
-                    
-                    BiorhythmsLegendView()
+                    if showOverallRhytm {
+                        rhythmBuilder.drawRhythm(type: Biorhythm.init(type: .overall))
+                            .stroke(.red, lineWidth: 3)
+                    }
+                }
+                .padding(10)
+                
+                Toggle("Show Overall", isOn: $showOverallRhytm)
+                    .padding(.horizontal, 10)
+                
+                BiorhythmsLegendView(biorhythms: rhythmBuilder.biorhytms)
+                
+                ForEach(rhythmBuilder.biorhytms, id: \.type) { biorhythm in
+                    Text("\(biorhythm.returnPercent())")
                 }
             }
         }
