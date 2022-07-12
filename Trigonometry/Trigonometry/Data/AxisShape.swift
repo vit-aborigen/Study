@@ -10,12 +10,13 @@ import SwiftUI
 
 struct Axis: Shape {
     let delimetersAmount = 33
+    let today = 3.0 // 3-days retrospective
     
     func path(in rect: CGRect) -> Path {
         let path = UIBezierPath()
         let width = rect.width
         let height = rect.height
-        let delimeterHeight = height / 42                                           // everything looks better when 42
+        let delimeterHeight = height / 42   // everything looks better when 42
         let xValuesOffset = width / Double(delimetersAmount)
         
         // Draw x-axis
@@ -24,10 +25,6 @@ struct Axis: Shape {
         
         // Draw delimeters
         for x in stride(from: 0, to: width, by: xValuesOffset) {
-            if x == 3 * xValuesOffset {                                             // Today's line
-                path.move(to: CGPoint(x: x, y: 0))
-                path.addLine(to: CGPoint(x: x, y: height))
-            }
             path.move(to: CGPoint(x: x, y: height / 2 - delimeterHeight / 2))
             path.addLine(to: CGPoint(x: x, y: height / 2 + delimeterHeight / 2))
         }
@@ -38,6 +35,10 @@ struct Axis: Shape {
         
         path.move(to: CGPoint(x: 0, y: height))
         path.addLine(to: CGPoint(x: width, y: height))
+        
+        // Draw Today's line
+        path.move(to: CGPoint(x: today * xValuesOffset, y: 0))
+        path.addLine(to: CGPoint(x: today * xValuesOffset, y: height))
 
         
         return Path(path.cgPath)

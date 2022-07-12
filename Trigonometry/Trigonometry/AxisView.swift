@@ -12,7 +12,7 @@ struct AxisView: View {
         VStack {
             ZStack {
                 Axis()
-                    .stroke(.black, lineWidth: 1)
+                    .stroke(lineWidth: 1)
                     .opacity(0.5)
                 
                 VStack {

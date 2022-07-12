@@ -9,13 +9,13 @@ import Foundation
 
 extension Date {
     func distanceFromTodayInDays(dayBefore: Date) -> Int {
-        Calendar.current.dateComponents([.day], from: dayBefore, to: Date()).day ?? -1
+        Calendar.current.dateComponents([.day], from: dayBefore, to: Date()).day ?? 0
     }
 }
 
 final class DateHelper: ObservableObject {
     let today = Date()
-    let bday = Calendar.current.date(from: DateComponents(year: 1985, month: 9, day: 1))! // 2DO: replace with Environment's date
+    let bday = Calendar.current.date(from: DateComponents(year: 2017, month: 9, day: 17))! // 2DO: replace with Environment's date
     var daysFromBirthDay: Int { today.distanceFromTodayInDays(dayBefore: bday) }
     
     static func getAxisNamesForDay(for day: Date) -> String {

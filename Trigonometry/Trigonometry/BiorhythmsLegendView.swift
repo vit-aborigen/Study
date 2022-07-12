@@ -8,34 +8,77 @@
 import SwiftUI
 
 struct BiorhythmsLegendView: View {
-    // 2DO https://stackoverflow.com/questions/63397067/fill-circle-with-wave-animation-in-swiftui
+    // took from https://stackoverflow.com/questions/63397067/fill-circle-with-wave-animation-in-swiftui
     
-    var biorhythms: [Biorhythm]
+    let physicalRhythm: Biorhythm
+    let emotionalRhythm: Biorhythm
+    let intellectualRhythm: Biorhythm
+    let overallRhythm: Biorhythm
+    
+    var showOverallRhythm: Bool
     
     var body: some View {
-        VStack {
-            HStack {
-                VStack {
-                    Text(biorhythms[0].returnPercent())
-                    Text(biorhythms[2].returnPercent())
+        HStack(spacing: 20) {
+            VStack {
+                VStack(spacing: 5) {
+                    CircleWaveView(rhythmPercent: physicalRhythm.getStateInPercent(), color: .green)
+                    Text(physicalRhythm.name)
+                        .font(.headline.bold())
                 }
                 
-                Spacer()
-                
-                Circle()
-                    .stroke(.red, lineWidth: 3)
+                VStack(spacing: 5) {
+                    CircleWaveView(rhythmPercent: intellectualRhythm.getStateInPercent(), color: .blue)
+                    Text(intellectualRhythm.name)
+                        .font(.headline.bold())
+                }
             }
             
-            Spacer()
-            
-            HStack {
-                Circle()
-                    .stroke(.green, lineWidth: 3)
+            VStack {
+                VStack(spacing: 5) {
+                    CircleWaveView(rhythmPercent: emotionalRhythm.getStateInPercent(), color: .pink)
+                    Text(emotionalRhythm.name)
+                        .font(.headline.bold())
+                }
                 
-                Spacer()
-                
+                VStack(spacing: 5) {
+                    CircleWaveView(rhythmPercent: overallRhythm.getStateInPercent(), color: .purple)
+                    Text(overallRhythm.name)
+                        .font(.headline.bold())
+                }
+                .opacity(showOverallRhythm ? 1.0 : 0.0)
+            }
+        }
+        .padding(10)
+    }
+}
+
+struct CircleWaveView: View {
+    @State private var waveOffset = Angle(degrees: 0)
+    let rhythmPercent: Int
+    var color: Color = .black
+    
+    var fudgePercent: Int {
+        (rhythmPercent + 100) / 2
+    }
+    
+    var body: some View {
+        GeometryReader { geo in
+            ZStack {
+                Text("\(self.rhythmPercent)%")
+                    .font(Font.system(size: 0.25 * min(geo.size.width, geo.size.height) ))
                 Circle()
-                    .stroke(.blue, lineWidth: 3)
+                    .stroke(color, lineWidth: 0.025 * min(geo.size.width, geo.size.height))
+                    .overlay(
+                        Wave(offset: Angle(degrees: self.waveOffset.degrees), percent: Double(fudgePercent)/100)
+                            .fill(color.opacity(0.5))
+                            .clipShape(Circle().scale(0.92))
+                    )
+            }
+        }
+        .aspectRatio(1, contentMode: .fit)
+        .onAppear {
+            withAnimation(Animation.linear(duration: 2).repeatForever(autoreverses: false)) {
+            self.waveOffset = Angle(degrees: 360)
             }
         }
     }
@@ -43,6 +86,6 @@ struct BiorhythmsLegendView: View {
 
 struct BiorhythmsLegendView_Previews: PreviewProvider {
     static var previews: some View {
-        BiorhythmsLegendView(biorhythms: [Biorhythm(type: .intellectual)])
+        BiorhythmsLegendView(physicalRhythm: Biorhythm(type: .physical, name: "Physical"), emotionalRhythm: Biorhythm(type: .emotional, name: "Emotional"), intellectualRhythm: Biorhythm(type: .intellectual, name: "Intellectual"), overallRhythm: Biorhythm(type: .overall, name: "Overall"), showOverallRhythm: true)
     }
 }

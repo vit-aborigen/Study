@@ -8,40 +8,38 @@
 import SwiftUI
 
 struct ContentView: View {
-    let physicalRhythm = Biorhythm(type: .physical)
-    let emotionalRhythm = Biorhythm(type: .emotional)
-    let intellectualRhythm = Biorhythm(type: .intellectual)
-    let overallRhythm = Biorhythm(type: .overall)
+    let physicalRhythm = Biorhythm(type: .physical, name: "Physical")
+    let emotionalRhythm = Biorhythm(type: .emotional, name: "Emotional")
+    let intellectualRhythm = Biorhythm(type: .intellectual, name: "Intellectual")
+    let overallRhythm = Biorhythm(type: .overall, name: "Overall")
     
-    @State private var showOverallRhytm = false
+    @State private var showOverallRhytm = true
     
     var body: some View {
         VStack {
-            VStack {
-                ZStack {
-                    AxisView()
-                    
-                    Rhythm(biorhytm: physicalRhythm)
-                        .stroke(.red, lineWidth: 2)
-                    
-                    Rhythm(biorhytm: emotionalRhythm)
-                        .stroke(.green, lineWidth: 2)
-                    
-                    Rhythm(biorhytm: intellectualRhythm)
-                        .stroke(.blue, lineWidth: 2)
-                    
-                    if showOverallRhytm {
-                        Rhythm(biorhytm: overallRhythm)
-                            .stroke(.purple, lineWidth: 4)
-                    }
+            ZStack {
+                AxisView()
+                
+                Rhythm(biorhytm: physicalRhythm)
+                    .stroke(.green, lineWidth: 2)
+                
+                Rhythm(biorhytm: emotionalRhythm)
+                    .stroke(.pink, lineWidth: 2)
+                
+                Rhythm(biorhytm: intellectualRhythm)
+                    .stroke(.blue, lineWidth: 2)
+                
+                if showOverallRhytm {
+                    Rhythm(biorhytm: overallRhythm)
+                        .stroke(.purple, lineWidth: 3)
                 }
-                .padding(10)
-                
-                Toggle("Show Overall", isOn: $showOverallRhytm)
-                    .padding(.horizontal, 10)
-                
-                Text(physicalRhythm.returnPercent())
             }
+            .padding(10)
+            
+            Toggle("Show Overall", isOn: $showOverallRhytm)
+                .padding(.horizontal, 10)
+            
+            BiorhythmsLegendView(physicalRhythm: physicalRhythm, emotionalRhythm: emotionalRhythm, intellectualRhythm: intellectualRhythm, overallRhythm: overallRhythm, showOverallRhythm: showOverallRhytm)
         }
     }
 }

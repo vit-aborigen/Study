@@ -9,11 +9,12 @@ import Foundation
 
 struct Biorhythm {
     var type: BiorhythmType
-    var currentState = -1.0
+    var currentState = 0.0
+    let name: String
     
-    
-    init(type: BiorhythmType) {
+    init(type: BiorhythmType, name: String) {
         self.type = type
+        self.name = name
         let daysFromBirthDate = DateHelper().daysFromBirthDay
         currentState = getStateForDay(dayFromBirth: Double(daysFromBirthDate))
     }
@@ -26,8 +27,10 @@ struct Biorhythm {
         : sin(2 * Double.pi * Double((dayFromBirth)) / type.rawValue)
     }
     
-    func returnPercent() -> String {
-        String(format: "%.2f", self.currentState * 100)
+    func getStateInPercent() -> Int {
+        type == .overall
+        ? Int(currentState / 3 * 100)
+        : Int(currentState * 100)
     }
 }
 
