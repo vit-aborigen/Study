@@ -7,12 +7,23 @@
 
 import Foundation
 
-class Biorhythm: ObservableObject {
+struct Biorhythm {
     var type: BiorhythmType
-    @Published var currentState: Double = -1.0
+    var currentState = -1.0
+    
     
     init(type: BiorhythmType) {
         self.type = type
+        let daysFromBirthDate = DateHelper().daysFromBirthDay
+        currentState = getStateForDay(dayFromBirth: Double(daysFromBirthDate))
+    }
+    
+    func getStateForDay(dayFromBirth: Double) -> Double {
+        type == .overall
+        ? sin(2 * Double.pi * Double(dayFromBirth) / BiorhythmType.intellectual.rawValue) +
+        sin(2 * Double.pi * Double(dayFromBirth) / BiorhythmType.physical.rawValue) +
+        sin(2 * Double.pi * Double(dayFromBirth) / BiorhythmType.emotional.rawValue)
+        : sin(2 * Double.pi * Double((dayFromBirth)) / type.rawValue)
     }
     
     func returnPercent() -> String {

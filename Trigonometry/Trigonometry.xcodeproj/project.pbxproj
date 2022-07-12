@@ -15,7 +15,7 @@
 		9FDEF7F62879C76A008B9C19 /* AxisView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDEF7F52879C76A008B9C19 /* AxisView.swift */; };
 		9FDEF7FA2879CDC2008B9C19 /* AxisModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDEF7F92879CDC2008B9C19 /* AxisModel.swift */; };
 		9FDEF7FC287ADE6A008B9C19 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDEF7FB287ADE6A008B9C19 /* DateHelper.swift */; };
-		9FDEF803287C33D9008B9C19 /* GraphBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDEF802287C33D9008B9C19 /* GraphBuilder.swift */; };
+		9FDEF803287C33D9008B9C19 /* RhythmShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDEF802287C33D9008B9C19 /* RhythmShape.swift */; };
 		9FDEF805287C4186008B9C19 /* BiorythmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDEF804287C4186008B9C19 /* BiorythmModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -29,7 +29,7 @@
 		9FDEF7F52879C76A008B9C19 /* AxisView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AxisView.swift; sourceTree = "<group>"; };
 		9FDEF7F92879CDC2008B9C19 /* AxisModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AxisModel.swift; sourceTree = "<group>"; };
 		9FDEF7FB287ADE6A008B9C19 /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
-		9FDEF802287C33D9008B9C19 /* GraphBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphBuilder.swift; sourceTree = "<group>"; };
+		9FDEF802287C33D9008B9C19 /* RhythmShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RhythmShape.swift; sourceTree = "<group>"; };
 		9FDEF804287C4186008B9C19 /* BiorythmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiorythmModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -87,7 +87,7 @@
 			children = (
 				9FDEF7F92879CDC2008B9C19 /* AxisModel.swift */,
 				9FDEF7FB287ADE6A008B9C19 /* DateHelper.swift */,
-				9FDEF802287C33D9008B9C19 /* GraphBuilder.swift */,
+				9FDEF802287C33D9008B9C19 /* RhythmShape.swift */,
 				9FDEF804287C4186008B9C19 /* BiorythmModel.swift */,
 			);
 			path = Data;
@@ -170,7 +170,7 @@
 				9FDEF7E82878811A008B9C19 /* ContentView.swift in Sources */,
 				9FDEF805287C4186008B9C19 /* BiorythmModel.swift in Sources */,
 				9FDEF7E62878811A008B9C19 /* TrigonometryApp.swift in Sources */,
-				9FDEF803287C33D9008B9C19 /* GraphBuilder.swift in Sources */,
+				9FDEF803287C33D9008B9C19 /* RhythmShape.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

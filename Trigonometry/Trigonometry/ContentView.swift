@@ -8,7 +8,11 @@
 import SwiftUI
 
 struct ContentView: View {
-    @ObservedObject var rhythmBuilder = GraphBuilder()
+    let physicalRhythm = Biorhythm(type: .physical)
+    let emotionalRhythm = Biorhythm(type: .emotional)
+    let intellectualRhythm = Biorhythm(type: .intellectual)
+    let overallRhythm = Biorhythm(type: .overall)
+    
     @State private var showOverallRhytm = false
     
     var body: some View {
@@ -17,16 +21,18 @@ struct ContentView: View {
                 ZStack {
                     AxisView()
                     
-                    ForEach(rhythmBuilder.biorhytms, id: \.type) { biorhythm in
-                        if biorhythm.type != .overall {
-                            rhythmBuilder.drawRhythm(type: biorhythm)
-                                .stroke()
-                        }
-                    }
+                    Rhythm(biorhytm: physicalRhythm)
+                        .stroke(.red, lineWidth: 2)
+                    
+                    Rhythm(biorhytm: emotionalRhythm)
+                        .stroke(.green, lineWidth: 2)
+                    
+                    Rhythm(biorhytm: intellectualRhythm)
+                        .stroke(.blue, lineWidth: 2)
                     
                     if showOverallRhytm {
-                        rhythmBuilder.drawRhythm(type: Biorhythm.init(type: .overall))
-                            .stroke(.red, lineWidth: 3)
+                        Rhythm(biorhytm: overallRhythm)
+                            .stroke(.purple, lineWidth: 4)
                     }
                 }
                 .padding(10)
@@ -34,15 +40,12 @@ struct ContentView: View {
                 Toggle("Show Overall", isOn: $showOverallRhytm)
                     .padding(.horizontal, 10)
                 
-                BiorhythmsLegendView(biorhythms: rhythmBuilder.biorhytms)
-                
-                ForEach(rhythmBuilder.biorhytms, id: \.type) { biorhythm in
-                    Text("\(biorhythm.returnPercent())")
-                }
+                Text(physicalRhythm.returnPercent())
             }
         }
     }
 }
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
