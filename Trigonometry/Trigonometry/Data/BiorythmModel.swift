@@ -6,18 +6,24 @@
 //
 
 import Foundation
+import SwiftUI
 
 struct Biorhythm {
-    var type: BiorhythmType
-    var distance: Int = 33 // According to the HoR-24 33 days is a fixed value
+    let type: BiorhythmType
+    let distance: Int = 33 // According to the HoR-24 33 days is a fixed value
+    var firstDay: Int {
+        didSet {
+            currentState = getStateForDay(dayFromBirth: Double(firstDay + 3))
+        }
+    }
     var currentState = 0.0
     let name: String
     
-    init(type: BiorhythmType, name: String) {
+    init(type: BiorhythmType, name: String, firstDay: Int = DateHelper().daysFromBirthDay - 3) {
         self.type = type
         self.name = name
-        let daysFromBirthDate = DateHelper().daysFromBirthDay
-        currentState = getStateForDay(dayFromBirth: Double(daysFromBirthDate))
+        self.firstDay = firstDay
+        currentState = getStateForDay(dayFromBirth: Double(firstDay + 3))
     }
     
     func getStateForDay(dayFromBirth: Double) -> Double {

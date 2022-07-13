@@ -8,12 +8,14 @@
 import SwiftUI
 
 struct ContentView: View {
-    let physicalRhythm = Biorhythm(type: .physical, name: "Physical")
-    let emotionalRhythm = Biorhythm(type: .emotional, name: "Emotional")
-    let intellectualRhythm = Biorhythm(type: .intellectual, name: "Intellectual")
-    let overallRhythm = Biorhythm(type: .overall, name: "General")
+    @State private var firstDate = 123
+    @State private var physicalRhythm = Biorhythm(type: .physical, name: "Physical")
+    @State private var emotionalRhythm = Biorhythm(type: .emotional, name: "Emotional")
+    @State private var intellectualRhythm = Biorhythm(type: .intellectual, name: "Intellectual")
+    @State private var overallRhythm = Biorhythm(type: .overall, name: "General")
     
     @State private var showOverallRhytm = true
+    @State private var dragAmount = CGSize.zero
     
     var body: some View {
         VStack {
@@ -34,11 +36,16 @@ struct ContentView: View {
                         .stroke(.purple, lineWidth: 3)
                 }
             }
-
+            .onTapGesture {
+                physicalRhythm.firstDay += 1
+                emotionalRhythm.firstDay += 1
+                intellectualRhythm.firstDay += 1
+                overallRhythm.firstDay += 1
+            }
             
             Toggle("Show General", isOn: $showOverallRhytm)
             
-            BiorhythmsLegendView(physicalRhythm: physicalRhythm, emotionalRhythm: emotionalRhythm, intellectualRhythm: intellectualRhythm, overallRhythm: overallRhythm, showOverallRhythm: showOverallRhytm)
+            BiorhythmsLegendView(physicalRhythm: $physicalRhythm, emotionalRhythm: $emotionalRhythm, intellectualRhythm: $intellectualRhythm, overallRhythm: $overallRhythm, showOverallRhythm: showOverallRhytm)
         } // end of external VStack
         .padding(10)
     }

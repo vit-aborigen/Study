@@ -11,10 +11,6 @@ import SwiftUI
 struct Rhythm: Shape {
     var biorhytm: Biorhythm
     
-    let daysFromBirthDate = DateHelper().daysFromBirthDay
-    var startDate: Int { daysFromBirthDate - 3 } // Sergei's requirement. Retrospective must include 3 days only
-    var endDate: Int { daysFromBirthDate + biorhytm.distance - 3 }
-    
     func path(in rect: CGRect) -> Path {
         let canvasWidth = rect.width
         let canvasHeight = rect.height
@@ -28,16 +24,16 @@ struct Rhythm: Shape {
         }
         
         let normalizedX = { (mathX: Double) -> (Double) in
-            (mathX - Double(startDate)) / Double(biorhytm.distance) * canvasWidth
+            (mathX - Double(biorhytm.firstDay)) / Double(biorhytm.distance) * canvasWidth
         }
         
         let path = UIBezierPath()
-        let startPointY = biorhytm.getStateForDay(dayFromBirth: Double(startDate))
+        let startPointY = biorhytm.getStateForDay(dayFromBirth: Double(biorhytm.firstDay))
         let normalizedStartY = biorhytm.type == .overall ? normalizedOverallY(startPointY) : normalizedY(startPointY)
         
         path.move(to: CGPoint(x: 0, y: normalizedStartY))
         
-        for day in stride(from: Double(startDate), to: Double(endDate), by: 0.1) {
+        for day in stride(from: Double(biorhytm.firstDay), to: Double(biorhytm.firstDay + biorhytm.distance), by: 0.1) {
             let mathY = biorhytm.getStateForDay(dayFromBirth: day)
             let x = normalizedX(day)
             let y = biorhytm.type == .overall ? normalizedOverallY(mathY) : normalizedY(mathY)

@@ -10,10 +10,10 @@ import SwiftUI
 struct BiorhythmsLegendView: View {
     // took from https://stackoverflow.com/questions/63397067/fill-circle-with-wave-animation-in-swiftui
     
-    let physicalRhythm: Biorhythm
-    let emotionalRhythm: Biorhythm
-    let intellectualRhythm: Biorhythm
-    let overallRhythm: Biorhythm
+    @Binding var physicalRhythm: Biorhythm
+    @Binding var emotionalRhythm: Biorhythm
+    @Binding var intellectualRhythm: Biorhythm
+    @Binding var overallRhythm: Biorhythm
     
     var showOverallRhythm: Bool
     
@@ -54,6 +54,6 @@ struct BiorhythmsLegendView: View {
 
 struct BiorhythmsLegendView_Previews: PreviewProvider {
     static var previews: some View {
-        BiorhythmsLegendView(physicalRhythm: Biorhythm(type: .physical, name: "Physical"), emotionalRhythm: Biorhythm(type: .emotional, name: "Emotional"), intellectualRhythm: Biorhythm(type: .intellectual, name: "Intellectual"), overallRhythm: Biorhythm(type: .overall, name: "Overall"), showOverallRhythm: true)
+        BiorhythmsLegendView(physicalRhythm: .constant(Biorhythm(type: .physical, name: "Physical", firstDay: 123)), emotionalRhythm: .constant(Biorhythm(type: .emotional, name: "Emotional", firstDay: 123)), intellectualRhythm: .constant(Biorhythm(type: .intellectual, name: "Intellectual", firstDay: 123)), overallRhythm: .constant(Biorhythm(type: .overall, name: "Overall", firstDay: 123)), showOverallRhythm: true)
     }
 }

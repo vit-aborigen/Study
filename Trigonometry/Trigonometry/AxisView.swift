@@ -33,6 +33,6 @@ struct AxisView: View {
 
 struct AxisView_Previews: PreviewProvider {
     static var previews: some View {
-        AxisView(biorhythm: Biorhythm(type: .physical, name: "Test"))
+        AxisView(biorhythm: Biorhythm(type: .physical, name: "Test", firstDay: 1234))
     }
 }
