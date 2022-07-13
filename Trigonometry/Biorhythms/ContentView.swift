@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var firstDate = 123
     @State private var physicalRhythm = Biorhythm(type: .physical, name: "Physical")
     @State private var emotionalRhythm = Biorhythm(type: .emotional, name: "Emotional")
     @State private var intellectualRhythm = Biorhythm(type: .intellectual, name: "Intellectual")
@@ -40,7 +39,7 @@ struct ContentView: View {
                 DragGesture()
                     .onChanged { dragAmount = $0.translation }
                     .onEnded { value in
-                        withAnimation (.easeInOut(duration: 1)) {
+                        withAnimation(.easeInOut(duration: 1)) {
                             if dragAmount.width > 0 {
                                 physicalRhythm.firstDay -= 10
                                 emotionalRhythm.firstDay -= 10

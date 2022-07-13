@@ -27,7 +27,7 @@
 		9F7BA0E0287B021D00B57281 /* WaveShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveShape.swift; sourceTree = "<group>"; };
 		9F9EDC0B287EE13A00391314 /* XAxisLegendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XAxisLegendView.swift; sourceTree = "<group>"; };
 		9F9EDC0D287EE4CC00391314 /* CircleWaveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleWaveView.swift; sourceTree = "<group>"; };
-		9FDEF7E22878811A008B9C19 /* Trigonometry.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Trigonometry.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9FDEF7E22878811A008B9C19 /* Biorhytms.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Biorhytms.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FDEF7E52878811A008B9C19 /* TrigonometryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrigonometryApp.swift; sourceTree = "<group>"; };
 		9FDEF7E72878811A008B9C19 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		9FDEF7E92878811B008B9C19 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -53,7 +53,7 @@
 		9FDEF7D92878811A008B9C19 = {
 			isa = PBXGroup;
 			children = (
-				9FDEF7E42878811A008B9C19 /* Trigonometry */,
+				9FDEF7E42878811A008B9C19 /* Biorhythms */,
 				9FDEF7E32878811A008B9C19 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -61,12 +61,12 @@
 		9FDEF7E32878811A008B9C19 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9FDEF7E22878811A008B9C19 /* Trigonometry.app */,
+				9FDEF7E22878811A008B9C19 /* Biorhytms.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		9FDEF7E42878811A008B9C19 /* Trigonometry */ = {
+		9FDEF7E42878811A008B9C19 /* Biorhythms */ = {
 			isa = PBXGroup;
 			children = (
 				9FDEF801287C33B6008B9C19 /* Data */,
@@ -79,7 +79,7 @@
 				9FDEF7E92878811B008B9C19 /* Assets.xcassets */,
 				9FDEF7EB2878811B008B9C19 /* Preview Content */,
 			);
-			path = Trigonometry;
+			path = Biorhythms;
 			sourceTree = "<group>";
 		};
 		9FDEF7EB2878811B008B9C19 /* Preview Content */ = {
@@ -105,9 +105,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		9FDEF7E12878811A008B9C19 /* Trigonometry */ = {
+		9FDEF7E12878811A008B9C19 /* Biorhytms */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9FDEF7F02878811B008B9C19 /* Build configuration list for PBXNativeTarget "Trigonometry" */;
+			buildConfigurationList = 9FDEF7F02878811B008B9C19 /* Build configuration list for PBXNativeTarget "Biorhytms" */;
 			buildPhases = (
 				9FDEF7DE2878811A008B9C19 /* Sources */,
 				9FDEF7DF2878811A008B9C19 /* Frameworks */,
@@ -117,9 +117,9 @@
 			);
 			dependencies = (
 			);
-			name = Trigonometry;
+			name = Biorhytms;
 			productName = Trigonometry;
-			productReference = 9FDEF7E22878811A008B9C19 /* Trigonometry.app */;
+			productReference = 9FDEF7E22878811A008B9C19 /* Biorhytms.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -137,7 +137,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 9FDEF7DD2878811A008B9C19 /* Build configuration list for PBXProject "Trigonometry" */;
+			buildConfigurationList = 9FDEF7DD2878811A008B9C19 /* Build configuration list for PBXProject "Biorhytms" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -150,7 +150,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				9FDEF7E12878811A008B9C19 /* Trigonometry */,
+				9FDEF7E12878811A008B9C19 /* Biorhytms */,
 			);
 		};
 /* End PBXProject section */
@@ -310,7 +310,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Trigonometry/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Biorhythms/Preview Content\"";
 				DEVELOPMENT_TEAM = Z8X43A4TG9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -339,7 +339,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Trigonometry/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Biorhythms/Preview Content\"";
 				DEVELOPMENT_TEAM = Z8X43A4TG9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -364,7 +364,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		9FDEF7DD2878811A008B9C19 /* Build configuration list for PBXProject "Trigonometry" */ = {
+		9FDEF7DD2878811A008B9C19 /* Build configuration list for PBXProject "Biorhytms" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9FDEF7EE2878811B008B9C19 /* Debug */,
@@ -373,7 +373,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9FDEF7F02878811B008B9C19 /* Build configuration list for PBXNativeTarget "Trigonometry" */ = {
+		9FDEF7F02878811B008B9C19 /* Build configuration list for PBXNativeTarget "Biorhytms" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9FDEF7F12878811B008B9C19 /* Debug */,
