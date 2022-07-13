@@ -12,9 +12,12 @@ struct Wave: Shape {
     var offset: Angle
     var percent: Double
     
-    var animatableData: Double {
-        get { offset.degrees }
-        set { offset = Angle(degrees: newValue) }
+    var animatableData: AnimatablePair<Double, Double> {
+        get { AnimatablePair(offset.degrees, percent) }
+        set {
+            offset = Angle(degrees: newValue.first)
+            percent = newValue.second
+        }
     }
     
     func path(in rect: CGRect) -> Path {

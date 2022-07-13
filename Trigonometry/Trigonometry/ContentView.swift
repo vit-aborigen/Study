@@ -15,7 +15,7 @@ struct ContentView: View {
     @State private var overallRhythm = Biorhythm(type: .overall, name: "General")
     
     @State private var showOverallRhytm = true
-    @State private var dragAmount: Double = 0
+    @State private var dragAmount = CGSize.zero
     
     var body: some View {
         VStack {
@@ -38,19 +38,19 @@ struct ContentView: View {
             }
             .gesture(
                 DragGesture()
-                    .onChanged { dragAmount = $0.translation.width }
+                    .onChanged { dragAmount = $0.translation }
                     .onEnded { value in
                         withAnimation (.easeInOut(duration: 1)) {
-                            if dragAmount > 0 {
-                                physicalRhythm.firstDay += 10
-                                emotionalRhythm.firstDay += 10
-                                intellectualRhythm.firstDay += 10
-                                overallRhythm.firstDay += 10
-                            } else {
+                            if dragAmount.width > 0 {
                                 physicalRhythm.firstDay -= 10
                                 emotionalRhythm.firstDay -= 10
                                 intellectualRhythm.firstDay -= 10
                                 overallRhythm.firstDay -= 10
+                            } else {
+                                physicalRhythm.firstDay += 10
+                                emotionalRhythm.firstDay += 10
+                                intellectualRhythm.firstDay += 10
+                                overallRhythm.firstDay += 10
                             }
                         }
                     }
