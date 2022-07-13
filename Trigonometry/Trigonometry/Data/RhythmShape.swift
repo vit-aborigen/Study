@@ -9,12 +9,11 @@ import Foundation
 import SwiftUI
 
 struct Rhythm: Shape {
-    let distanceInDays = 33 // According to the HoR-24 33 days is a fixed value
     var biorhytm: Biorhythm
     
     let daysFromBirthDate = DateHelper().daysFromBirthDay
     var startDate: Int { daysFromBirthDate - 3 } // Sergei's requirement. Retrospective must include 3 days only
-    var endDate: Int { daysFromBirthDate + distanceInDays - 3 }
+    var endDate: Int { daysFromBirthDate + biorhytm.distance - 3 }
     
     func path(in rect: CGRect) -> Path {
         let canvasWidth = rect.width
@@ -29,7 +28,7 @@ struct Rhythm: Shape {
         }
         
         let normalizedX = { (mathX: Double) -> (Double) in
-            (mathX - Double(startDate)) / Double(distanceInDays) * canvasWidth
+            (mathX - Double(startDate)) / Double(biorhytm.distance) * canvasWidth
         }
         
         let path = UIBezierPath()

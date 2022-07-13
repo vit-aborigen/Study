@@ -11,14 +11,14 @@ struct ContentView: View {
     let physicalRhythm = Biorhythm(type: .physical, name: "Physical")
     let emotionalRhythm = Biorhythm(type: .emotional, name: "Emotional")
     let intellectualRhythm = Biorhythm(type: .intellectual, name: "Intellectual")
-    let overallRhythm = Biorhythm(type: .overall, name: "Overall")
+    let overallRhythm = Biorhythm(type: .overall, name: "General")
     
     @State private var showOverallRhytm = true
     
     var body: some View {
         VStack {
             ZStack {
-                AxisView()
+                AxisView(biorhythm: physicalRhythm)
                 
                 Rhythm(biorhytm: physicalRhythm)
                     .stroke(.green, lineWidth: 2)
@@ -34,13 +34,13 @@ struct ContentView: View {
                         .stroke(.purple, lineWidth: 3)
                 }
             }
-            .padding(10)
+
             
-            Toggle("Show Overall", isOn: $showOverallRhytm)
-                .padding(.horizontal, 10)
+            Toggle("Show General", isOn: $showOverallRhytm)
             
             BiorhythmsLegendView(physicalRhythm: physicalRhythm, emotionalRhythm: emotionalRhythm, intellectualRhythm: intellectualRhythm, overallRhythm: overallRhythm, showOverallRhythm: showOverallRhytm)
-        }
+        } // end of external VStack
+        .padding(10)
     }
 }
 

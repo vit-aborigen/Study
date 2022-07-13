@@ -9,6 +9,7 @@ import Foundation
 
 struct Biorhythm {
     var type: BiorhythmType
+    var distance: Int = 33 // According to the HoR-24 33 days is a fixed value
     var currentState = 0.0
     let name: String
     

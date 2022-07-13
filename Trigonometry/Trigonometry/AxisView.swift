@@ -8,10 +8,12 @@
 import SwiftUI
 
 struct AxisView: View {
+    let biorhythm: Biorhythm
+    
     var body: some View {
         VStack {
             ZStack {
-                Axis()
+                Axis(buildFor: biorhythm)
                     .stroke(lineWidth: 1)
                     .opacity(0.5)
                 
@@ -31,6 +33,6 @@ struct AxisView: View {
 
 struct AxisView_Previews: PreviewProvider {
     static var previews: some View {
-        AxisView()
+        AxisView(biorhythm: Biorhythm(type: .physical, name: "Test"))
     }
 }

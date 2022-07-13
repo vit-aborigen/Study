@@ -18,7 +18,7 @@ struct BiorhythmsLegendView: View {
     var showOverallRhythm: Bool
     
     var body: some View {
-        HStack(spacing: 20) {
+        HStack(spacing: 20) { // Replace with GridView + UIDevice.current.orientation
             VStack {
                 VStack(spacing: 5) {
                     CircleWaveView(rhythmPercent: physicalRhythm.getStateInPercent(), color: .green)
@@ -49,38 +49,6 @@ struct BiorhythmsLegendView: View {
             }
         }
         .padding(10)
-    }
-}
-
-struct CircleWaveView: View {
-    @State private var waveOffset = Angle(degrees: 0)
-    let rhythmPercent: Int
-    var color: Color = .black
-    
-    var fudgePercent: Int {
-        (rhythmPercent + 100) / 2
-    }
-    
-    var body: some View {
-        GeometryReader { geo in
-            ZStack {
-                Text("\(self.rhythmPercent)%")
-                    .font(Font.system(size: 0.25 * min(geo.size.width, geo.size.height) ))
-                Circle()
-                    .stroke(color, lineWidth: 0.025 * min(geo.size.width, geo.size.height))
-                    .overlay(
-                        Wave(offset: Angle(degrees: self.waveOffset.degrees), percent: Double(fudgePercent)/100)
-                            .fill(color.opacity(0.5))
-                            .clipShape(Circle().scale(0.92))
-                    )
-            }
-        }
-        .aspectRatio(1, contentMode: .fit)
-        .onAppear {
-            withAnimation(Animation.linear(duration: 2).repeatForever(autoreverses: false)) {
-            self.waveOffset = Angle(degrees: 360)
-            }
-        }
     }
 }
 

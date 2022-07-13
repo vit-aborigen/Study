@@ -9,15 +9,19 @@ import Foundation
 import SwiftUI
 
 struct Axis: Shape {
-    let delimetersAmount = 33
+    let biorhytm: Biorhythm
     let today = 3.0 // 3-days retrospective
+    
+    init(buildFor biorhythm: Biorhythm) {
+        self.biorhytm = biorhythm
+    }
     
     func path(in rect: CGRect) -> Path {
         let path = UIBezierPath()
         let width = rect.width
         let height = rect.height
         let delimeterHeight = height / 42   // everything looks better when 42
-        let xValuesOffset = width / Double(delimetersAmount)
+        let xValuesOffset = width / Double(biorhytm.distance)
         
         // Draw x-axis
         path.move(to: CGPoint(x: 0, y: height / 2))
