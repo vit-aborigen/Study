@@ -44,6 +44,7 @@ struct Rhythm: Shape {
             let y = biorhytm.type == .overall ? normalizedOverallY(mathY) : normalizedY(mathY)
             path.addLine(to: CGPoint(x: x, y: y))
         }
+        
         return Path(path.cgPath)
     }
 }

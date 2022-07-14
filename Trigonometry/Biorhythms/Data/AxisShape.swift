@@ -43,7 +43,6 @@ struct Axis: Shape {
         // Draw Today's line
         path.move(to: CGPoint(x: today * xValuesOffset, y: 0))
         path.addLine(to: CGPoint(x: today * xValuesOffset, y: height))
-
         
         return Path(path.cgPath)
     }

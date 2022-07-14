@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import SwiftUI
 
 struct Biorhythm {
     let type: BiorhythmType

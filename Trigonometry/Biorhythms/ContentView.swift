@@ -14,13 +14,15 @@ struct ContentView: View {
     @State private var overallRhythm = Biorhythm(type: .overall, name: "General")
     
     @State private var showOverallRhytm = true
+    @State private var rhythmCanvasSize = CGSize.zero
     @State private var dragAmount = CGSize.zero
     
     var body: some View {
+        GeometryReader { geo in
         VStack {
             ZStack {
-                AxisView(biorhythm: physicalRhythm)
-                
+                    AxisView(biorhythm: physicalRhythm)
+                    
                 Rhythm(biorhytm: physicalRhythm)
                     .stroke(.green, lineWidth: 2)
                 
@@ -37,20 +39,21 @@ struct ContentView: View {
             }
             .gesture(
                 DragGesture()
-                    .onChanged { dragAmount = $0.translation }
-                    .onEnded { value in
-                        withAnimation(.easeInOut(duration: 1)) {
-                            if dragAmount.width > 0 {
-                                physicalRhythm.firstDay -= 10
-                                emotionalRhythm.firstDay -= 10
-                                intellectualRhythm.firstDay -= 10
-                                overallRhythm.firstDay -= 10
-                            } else {
-                                physicalRhythm.firstDay += 10
-                                emotionalRhythm.firstDay += 10
-                                intellectualRhythm.firstDay += 10
-                                overallRhythm.firstDay += 10
-                            }
+                    .onChanged { value in
+                        withAnimation(.easeOut) {
+                            dragAmount = value.translation
+                            
+                            let transitionConvertedToDays = round(dragAmount.width / geo.size.width * Double(physicalRhythm.distance))
+                            print("before", dragAmount.width, transitionConvertedToDays, physicalRhythm.firstDay)
+                            
+                            physicalRhythm.firstDay -= transitionConvertedToDays
+                            emotionalRhythm.firstDay -= transitionConvertedToDays
+                            intellectualRhythm.firstDay -= transitionConvertedToDays
+                            overallRhythm.firstDay -= transitionConvertedToDays
+                            
+                            dragAmount = CGSize.zero
+                            print("after", dragAmount.width, transitionConvertedToDays, physicalRhythm.firstDay)
+                            
                         }
                     }
             )
@@ -61,6 +64,7 @@ struct ContentView: View {
             BiorhythmsLegendView(physicalRhythm: $physicalRhythm, emotionalRhythm: $emotionalRhythm, intellectualRhythm: $intellectualRhythm, overallRhythm: $overallRhythm, showOverallRhythm: showOverallRhytm)
                 .padding(10)
         } // end of external VStack
+        }
     }
 }
 
