@@ -13,15 +13,17 @@ struct ContentView: View {
     @State private var intellectualRhythm = Biorhythm(type: .intellectual, name: "Intellectual")
     @State private var overallRhythm = Biorhythm(type: .overall, name: "General")
     
-    @State private var showOverallRhytm = true
+    @State private var someGraph = Biorhythm(type: .overall, name: "General")
+
     @State private var rhythmCanvasSize = CGSize.zero
     @State private var dragAmount = CGSize.zero
+    @State private var scrolledAmountInDays = 0.0
     
     var body: some View {
         GeometryReader { geo in
         VStack {
             ZStack {
-                    AxisView(biorhythm: physicalRhythm)
+                AxisView(biorhythm: physicalRhythm)
                     
                 Rhythm(biorhytm: physicalRhythm)
                     .stroke(.green, lineWidth: 2)
@@ -32,36 +34,31 @@ struct ContentView: View {
                 Rhythm(biorhytm: intellectualRhythm)
                     .stroke(.blue, lineWidth: 2)
                 
-                if showOverallRhytm {
-                    Rhythm(biorhytm: overallRhythm)
-                        .stroke(.purple, lineWidth: 3)
-                }
+                Rhythm(biorhytm: overallRhythm)
+                    .stroke(.purple, lineWidth: 3)
             }
             .gesture(
                 DragGesture()
                     .onChanged { value in
                         withAnimation(.easeOut) {
                             dragAmount = value.translation
-                            
                             let transitionConvertedToDays = round(dragAmount.width / geo.size.width * Double(physicalRhythm.distance))
-                            print("before", dragAmount.width, transitionConvertedToDays, physicalRhythm.firstDay)
                             
-                            physicalRhythm.firstDay -= transitionConvertedToDays
-                            emotionalRhythm.firstDay -= transitionConvertedToDays
-                            intellectualRhythm.firstDay -= transitionConvertedToDays
-                            overallRhythm.firstDay -= transitionConvertedToDays
-                            
-                            dragAmount = CGSize.zero
-                            print("after", dragAmount.width, transitionConvertedToDays, physicalRhythm.firstDay)
-                            
+                            if transitionConvertedToDays != scrolledAmountInDays {
+                                physicalRhythm.firstDay -= transitionConvertedToDays - scrolledAmountInDays
+                                emotionalRhythm.firstDay -= transitionConvertedToDays - scrolledAmountInDays
+                                intellectualRhythm.firstDay -= transitionConvertedToDays - scrolledAmountInDays
+                                overallRhythm.firstDay -= transitionConvertedToDays - scrolledAmountInDays
+                                scrolledAmountInDays = transitionConvertedToDays
+                            }
                         }
+                    }
+                    .onEnded { _ in
+                        scrolledAmountInDays = 0.0
                     }
             )
             
-            Toggle("Show General", isOn: $showOverallRhytm)
-                .padding(10)
-            
-            BiorhythmsLegendView(physicalRhythm: $physicalRhythm, emotionalRhythm: $emotionalRhythm, intellectualRhythm: $intellectualRhythm, overallRhythm: $overallRhythm, showOverallRhythm: showOverallRhytm)
+            BiorhythmsLegendView(physicalRhythm: $physicalRhythm, emotionalRhythm: $emotionalRhythm, intellectualRhythm: $intellectualRhythm, overallRhythm: $overallRhythm)
                 .padding(10)
         } // end of external VStack
         }

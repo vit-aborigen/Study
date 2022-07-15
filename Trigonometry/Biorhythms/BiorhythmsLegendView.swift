@@ -14,8 +14,6 @@ struct BiorhythmsLegendView: View {
     @Binding var intellectualRhythm: Biorhythm
     @Binding var overallRhythm: Biorhythm
     
-    var showOverallRhythm: Bool
-    
     var body: some View {
         HStack(spacing: 20) { // Replace with GridView + UIDevice.current.orientation
             VStack {
@@ -44,7 +42,6 @@ struct BiorhythmsLegendView: View {
                     Text(overallRhythm.name)
                         .font(.headline.bold())
                 }
-                .opacity(showOverallRhythm ? 1.0 : 0.0)
             }
         }
         .padding(10)
@@ -53,6 +50,6 @@ struct BiorhythmsLegendView: View {
 
 struct BiorhythmsLegendView_Previews: PreviewProvider {
     static var previews: some View {
-        BiorhythmsLegendView(physicalRhythm: .constant(Biorhythm(type: .physical, name: "Physical")), emotionalRhythm: .constant(Biorhythm(type: .emotional, name: "Emotional")), intellectualRhythm: .constant(Biorhythm(type: .intellectual, name: "Intellectual")), overallRhythm: .constant(Biorhythm(type: .overall, name: "Overall")), showOverallRhythm: true)
+        BiorhythmsLegendView(physicalRhythm: .constant(Biorhythm(type: .physical, name: "Physical")), emotionalRhythm: .constant(Biorhythm(type: .emotional, name: "Emotional")), intellectualRhythm: .constant(Biorhythm(type: .intellectual, name: "Intellectual")), overallRhythm: .constant(Biorhythm(type: .overall, name: "Overall")))
     }
 }
