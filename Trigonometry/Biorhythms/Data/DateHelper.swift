@@ -15,22 +15,16 @@ extension Date {
 
 final class DateHelper: ObservableObject {
     let today = Date()
-    let bday = Calendar.current.date(from: DateComponents(year: 2017, month: 9, day: 17))! // 2DO: replace with Environment's date
+    let bday = Calendar.current.date(from: DateComponents(year: 1985, month: 9, day: 1))! // 2DO: replace with Environment's date
     var daysFromBirthDay: Double { today.distanceFromTodayInDays(dayBefore: bday) }
     
-    static func populateLegend(basedOn biorhythm: Biorhythm) -> [String] {
-        var labels = Array<String> ()
-        for day in Int(biorhythm.firstDay)...Int(biorhythm.firstDay) + biorhythm.distance {
-            labels.append(String(day))
-        }
-        return labels
-    }
-    
-    static func getAxisNamesForDay(for day: Date) -> String {
+    static func getAxisNamesForDay(for day: Double) -> String {
+        let secondsFromBirthday = day * 24 * 60 * 60
+        let date = Date(timeInterval: TimeInterval(secondsFromBirthday), since: DateHelper().bday) // replace with Environment
         let formatter = DateFormatter()
         formatter.timeStyle = .none
-        formatter.dateFormat = "MMM dd"
+        formatter.dateFormat = "MMM-dd"
         formatter.timeZone = .current
-        return formatter.string(from: day)
+        return formatter.string(from: date)
     }
 }
