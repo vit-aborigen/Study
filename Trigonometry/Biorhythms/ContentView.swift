@@ -13,9 +13,6 @@ struct ContentView: View {
     @State private var intellectualRhythm = Biorhythm(type: .intellectual, name: "Intellectual")
     @State private var overallRhythm = Biorhythm(type: .overall, name: "General")
     
-    @State private var someGraph = Biorhythm(type: .overall, name: "General")
-    
-    @State private var rhythmCanvasSize = CGSize.zero
     @State private var dragAmount = CGSize.zero
     @State private var scrolledAmountInDays = 0.0
     
@@ -49,6 +46,7 @@ struct ContentView: View {
                                     emotionalRhythm.firstDay -= transitionConvertedToDays - scrolledAmountInDays
                                     intellectualRhythm.firstDay -= transitionConvertedToDays - scrolledAmountInDays
                                     overallRhythm.firstDay -= transitionConvertedToDays - scrolledAmountInDays
+                                    
                                     scrolledAmountInDays = transitionConvertedToDays
                                 }
                             }
@@ -66,8 +64,8 @@ struct ContentView: View {
                 Spacer()
                 
                 BiorhythmsLegendView(physicalRhythm: $physicalRhythm, emotionalRhythm: $emotionalRhythm, intellectualRhythm: $intellectualRhythm, overallRhythm: $overallRhythm)
-            } // end of external VStack
-        }
+            }
+        } // geo visibility zone
     }
 }
 

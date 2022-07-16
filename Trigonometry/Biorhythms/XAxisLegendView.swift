@@ -14,10 +14,12 @@ struct XAxisLegendView: View {
     
     init(biorhythm: Binding<Biorhythm>) {
         self._biorhythm = biorhythm
+        let distance = Double(self.biorhythm.distance)
         let startDay = self.biorhythm.firstDay
-        let endDay = self.biorhythm.firstDay + Double(self.biorhythm.distance)
+        let endDay = self.biorhythm.firstDay + distance
+        let frequency = 7.0 // 1 week
         
-        for day in stride(from: startDay, to: endDay, by: 7.0) {
+        for day in stride(from: startDay, to: endDay, by: frequency >= distance ? distance - 1 : frequency)  {
             self.values.append(DateHelper.getAxisNamesForDay(for: day))
         }
     }

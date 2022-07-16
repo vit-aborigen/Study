@@ -15,6 +15,7 @@ struct Biorhythm {
             currentState = getStateForDay(dayFromBirth: firstDay + 3)
         }
     }
+    
     var currentState = 0.0
     let name: String
     
