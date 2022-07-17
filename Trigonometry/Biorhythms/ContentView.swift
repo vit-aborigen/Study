@@ -59,7 +59,9 @@ struct ContentView: View {
                 XAxisLegendView(biorhythm: $physicalRhythm)
                     .frame(maxWidth: geo.size.width)
                 
-                Text("Data is shown for " + DateHelper.getAxisNamesForDay(for: physicalRhythm.firstDay + 3.0))
+                Text("Your state on " + DateHelper.getAxisNamesForDay(for: physicalRhythm.firstDay + 3.0))
+                    .font(.title)
+                    .padding(.top, 10)
                 
                 Spacer()
                 
