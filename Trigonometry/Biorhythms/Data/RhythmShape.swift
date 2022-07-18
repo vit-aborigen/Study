@@ -42,7 +42,7 @@ struct Rhythm: Shape {
             let mathY = biorhytm.getStateForDay(dayFromBirth: day)
             let x = normalizedX(day)
             let y = biorhytm.type == .overall ? normalizedOverallY(mathY) : normalizedY(mathY)
-            if floor(day) == day {
+            if day == biorhytm.firstDay + 3 {                                                      // Add dot for TODAY
                 path.addArc(withCenter: CGPoint(x: x, y: y), radius: 2, startAngle: 0, endAngle: 360, clockwise: true)
             }
             path.addLine(to: CGPoint(x: x, y: y))
