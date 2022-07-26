@@ -13,7 +13,7 @@ extension Date {
     }
 }
 
-final class DateHelper: ObservableObject {
+final class DateHelper {
     let today = Date()
     let bday = Calendar.current.date(from: DateComponents(year: 1985, month: 9, day: 1))! // 2DO: replace with Environment's date
     var daysFromBirthDay: Double { today.distanceFromTodayInDays(dayBefore: bday) }

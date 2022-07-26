@@ -28,10 +28,10 @@ struct Biorhythm {
     
     func getStateForDay(dayFromBirth: Double) -> Double {
         type == .overall
-        ? sin(2 * Double.pi * dayFromBirth / BiorhythmType.intellectual.rawValue) +
-        sin(2 * Double.pi * dayFromBirth / BiorhythmType.physical.rawValue) +
-        sin(2 * Double.pi * dayFromBirth / BiorhythmType.emotional.rawValue)
-        : sin(2 * Double.pi * dayFromBirth / type.rawValue)
+        ? sin(2 * Double.pi * dayFromBirth / BiorhythmType.getPeriod(bio: .intellectual)) +
+        sin(2 * Double.pi * dayFromBirth / BiorhythmType.getPeriod(bio: .physical)) +
+        sin(2 * Double.pi * dayFromBirth / BiorhythmType.getPeriod(bio: .emotional))
+        : sin(2 * Double.pi * dayFromBirth / BiorhythmType.getPeriod(bio: type))
     }
     
     func getStateInPercent() -> Int {
@@ -41,9 +41,21 @@ struct Biorhythm {
     }
 }
 
-enum BiorhythmType: Double, CaseIterable {
-    case physical = 23.68
-    case emotional = 28.43
-    case intellectual = 33.16
-    case overall = 0
+enum BiorhythmType: Double {
+    case physical, emotional, intellectual, overall
+}
+
+extension BiorhythmType {
+    static func getPeriod(bio: BiorhythmType) -> Double {
+        switch bio {
+        case .physical:
+            return 23.68
+        case .emotional:
+            return 28.43
+        case .intellectual:
+            return 33.16
+        default:
+            return 0
+        }
+    }
 }
