@@ -1,21 +1,28 @@
-//
-//  ContentView.swift
-//  ShareSheet
-//
-//  Created by VITALI KAZLOU on 26.07.22.
-//
-
+import UIKit
 import SwiftUI
 
-struct ContentView: View {
-    var body: some View {
-        Text("Hello, world!")
-            .padding()
+struct ActivityView: UIViewControllerRepresentable {
+    let text: String
+
+    func makeUIViewController(context: UIViewControllerRepresentableContext<ActivityView>) -> UIActivityViewController {
+        return UIActivityViewController(activityItems: [text], applicationActivities: nil)
     }
+
+    func updateUIViewController(_ uiViewController: UIActivityViewController, context: UIViewControllerRepresentableContext<ActivityView>) {}
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
+struct ContentView: View {
+    @State private var textToShare: String = "Use HoroApp!"
+    @State private var showShareSheet = false
+    
+    var body: some View {
+        VStack {
+            Button("Show Activity View") {
+                showShareSheet = true
+            }
+        }
+        .sheet(isPresented: $showShareSheet) {
+            ActivityView(text: textToShare)
+        }
     }
 }
