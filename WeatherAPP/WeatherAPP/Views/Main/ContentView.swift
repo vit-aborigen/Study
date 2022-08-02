@@ -10,14 +10,7 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Text("Hello, world!")
-                .font(.custom("SF Pro", size: 70))
-
-            Text("Hello, world!")
-                .font(<#T##font: Font?##Font?#>)
-                .fontWeight(.thin)
-        }
+        MainView()
     }
 }
 
