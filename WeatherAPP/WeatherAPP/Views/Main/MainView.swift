@@ -9,32 +9,38 @@ import SwiftUI
 
 struct MainView: View {
     var body: some View {
-        ZStack {
-            Color.background
-                .ignoresSafeArea()
-            
-            Image("Background")
-                .resizable()
-                .ignoresSafeArea()
-            
-            Image("House")
-                .frame(maxHeight: .infinity, alignment: .top)
-                .padding(.vertical, 257)
-            
-            VStack {
-                Text("Default city")
-                    .font(.largeTitle)
+        NavigationView {
+            ZStack {
+                Color.background
+                    .ignoresSafeArea()
+                
+                Image("Background")
+                    .resizable()
+                    .ignoresSafeArea()
+                
+                Image("House")
+                    .frame(maxHeight: .infinity, alignment: .top)
+                    .padding(.vertical, 257)
                 
                 VStack {
-                    Text(attributedString)
+                    Text("Default city")
+                        .font(.largeTitle)
                     
-                    Text("H:30°\tL:20°")
-                        .font(.title3).fontWeight(.semibold)
+                    VStack {
+                        Text(attributedString)
+                        
+                        Text("H:30°\tL:20°")
+                            .font(.title3).fontWeight(.semibold)
+                    }
+                    
+                    Spacer()
                 }
+                .padding(.top, 51)
                 
-                Spacer()
+                TabBarView(action: { } )
+                
             }
-            .padding(.top, 51)
+            .navigationBarHidden(true)
         }
     }
     
