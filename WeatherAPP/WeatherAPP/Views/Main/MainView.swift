@@ -5,9 +5,12 @@
 //  Created by VITALI KAZLOU on 2.08.22.
 //
 
+import BottomSheet
 import SwiftUI
 
 struct MainView: View {
+    @State private var bottomSheetPosition: BottomSheetPositions = .middle
+    
     var body: some View {
         NavigationView {
             ZStack {
@@ -37,7 +40,16 @@ struct MainView: View {
                 }
                 .padding(.top, 51)
                 
-                TabBarView(action: { } )
+                BottomSheetView(position: $bottomSheetPosition) {
+                    ForecastView()
+                } content: {
+                    
+                }
+
+                
+                TabBarView {
+                    bottomSheetPosition = .top
+                }
                 
             }
             .navigationBarHidden(true)
