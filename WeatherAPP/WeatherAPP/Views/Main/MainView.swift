@@ -41,16 +41,14 @@ struct MainView: View {
                 .padding(.top, 51)
                 
                 BottomSheetView(position: $bottomSheetPosition) {
-                    ForecastView()
+                    // 2do
                 } content: {
-                    
+                    ForecastView()
                 }
 
-                
-                TabBarView {
+                TabBarView(action: {
                     bottomSheetPosition = .top
-                }
-                
+                })
             }
             .navigationBarHidden(true)
         }

@@ -18,6 +18,8 @@
 		9FFA116E289C5C4F00604D14 /* BottomSheet in Frameworks */ = {isa = PBXBuildFile; productRef = 9FFA116D289C5C4F00604D14 /* BottomSheet */; };
 		9FFA1171289C5CEE00604D14 /* BottomSheetValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFA1170289C5CEE00604D14 /* BottomSheetValues.swift */; };
 		9FFA1173289C5E8300604D14 /* ForecastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFA1172289C5E8300604D14 /* ForecastView.swift */; };
+		9FFA1178289D938C00604D14 /* CustomBlur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFA1177289D938C00604D14 /* CustomBlur.swift */; };
+		9FFA117A289DAE8500604D14 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFA1179289DAE8500604D14 /* ViewExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		9FC9DA27289B151E00945849 /* ArcShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcShape.swift; sourceTree = "<group>"; };
 		9FFA1170289C5CEE00604D14 /* BottomSheetValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetValues.swift; sourceTree = "<group>"; };
 		9FFA1172289C5E8300604D14 /* ForecastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastView.swift; sourceTree = "<group>"; };
+		9FFA1177289D938C00604D14 /* CustomBlur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBlur.swift; sourceTree = "<group>"; };
+		9FFA1179289DAE8500604D14 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,8 +109,9 @@
 		9FC9DA1328995D4300945849 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				9FC9DA1828995E1D00945849 /* ColorExtensions.swift */,
 				9FC9DA27289B151E00945849 /* ArcShape.swift */,
+				9FC9DA1828995E1D00945849 /* ColorExtensions.swift */,
+				9FFA1179289DAE8500604D14 /* ViewExtension.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -139,6 +144,7 @@
 		9FC9DA1728995D8700945849 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				9FFA1177289D938C00604D14 /* CustomBlur.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -230,6 +236,8 @@
 				9FC9DA062899478100945849 /* ContentView.swift in Sources */,
 				9FC9DA1B28995F7500945849 /* MainView.swift in Sources */,
 				9FC9DA042899478100945849 /* WeatherApp.swift in Sources */,
+				9FFA1178289D938C00604D14 /* CustomBlur.swift in Sources */,
+				9FFA117A289DAE8500604D14 /* ViewExtension.swift in Sources */,
 				9FC9DA26289AFFAF00945849 /* TabBarView.swift in Sources */,
 				9FC9DA28289B151E00945849 /* ArcShape.swift in Sources */,
 				9FFA1171289C5CEE00604D14 /* BottomSheetValues.swift in Sources */,
