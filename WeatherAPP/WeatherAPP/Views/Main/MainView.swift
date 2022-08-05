@@ -23,9 +23,9 @@ struct MainView: View {
                 
                 Image("House")
                     .frame(maxHeight: .infinity, alignment: .top)
-                    .padding(.vertical, 257)
+                    .padding(.top, 257)
                 
-                VStack {
+                VStack(spacing: -10) {
                     Text("Default city")
                         .font(.largeTitle)
                     

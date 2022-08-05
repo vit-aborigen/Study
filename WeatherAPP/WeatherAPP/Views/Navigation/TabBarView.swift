@@ -15,10 +15,10 @@ struct TabBarView: View {
             Arc()
                 .fill(Color.tabBarBackground)
                 .frame(height: 88)
-                .overlay(
+                .overlay {
                     Arc()
                         .stroke(Color.tabBarBorder, lineWidth: 0.5)
-                )
+                }
             
             HStack {
                 Button {
@@ -39,7 +39,7 @@ struct TabBarView: View {
             }
             .font(.title2)
             .foregroundColor(.white)
-            .padding(EdgeInsets(top: 20, leading: 32, bottom: 24, trailing: 22))
+            .padding(EdgeInsets(top: 20, leading: 32, bottom: 24, trailing: 32))
         }
         .frame(maxHeight: .infinity, alignment: .bottom)
         .ignoresSafeArea()
