@@ -80,12 +80,20 @@ struct MainView: View {
         let stringFromInternet = "23°" + "\(isBottomSheetRolledOut ? " | " : "\n ")" + "Mostly Clear"
         var fullString = AttributedString(stringFromInternet)
         
-        let separator: Character = "\n"
-        guard stringFromInternet.firstIndex(of: separator) != nil else {
+        let separators: [Character] = ["|", "\n"]
+        var currentSeparator: Character?
+        
+        for separator in separators {
+            if stringFromInternet.firstIndex(of: separator) != nil {
+                currentSeparator = separator
+            }
+        }
+        
+        if currentSeparator == nil {
             return AttributedString("Failed to get data")
         }
         
-        let weatherState = stringFromInternet.split(separator: separator)
+        let weatherState = stringFromInternet.split(separator: currentSeparator ?? Character(""))
         
         if let temperatureRange = fullString.range(of: weatherState[0]) {
             fullString[temperatureRange].font = .system(size: (96 - (bottomSheetTranslationNormalized * (96 - 20))), weight: isBottomSheetRolledOut ? .semibold : .thin)
@@ -94,7 +102,7 @@ struct MainView: View {
         
         if let weatherRange = fullString.range(of: weatherState[1]) {
             fullString[weatherRange].font = .title3.weight(.semibold)
-            fullString[weatherRange].foregroundColor = .secondary.opacity(bottomSheetTranslationNormalized)
+            fullString[weatherRange].foregroundColor = .secondary
         }
         
         return fullString
