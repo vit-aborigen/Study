@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9F9B226728AACEE5008A0E3E /* SegmentedControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9B226628AACEE5008A0E3E /* SegmentedControlView.swift */; };
 		9FC9DA042899478100945849 /* WeatherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC9DA032899478100945849 /* WeatherApp.swift */; };
 		9FC9DA062899478100945849 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC9DA052899478100945849 /* ContentView.swift */; };
 		9FC9DA082899478200945849 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9FC9DA072899478200945849 /* Assets.xcassets */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9F9B226628AACEE5008A0E3E /* SegmentedControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedControlView.swift; sourceTree = "<group>"; };
 		9FC9DA002899478100945849 /* WeatherAPP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherAPP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FC9DA032899478100945849 /* WeatherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherApp.swift; sourceTree = "<group>"; };
 		9FC9DA052899478100945849 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 				9FC9DA27289B151E00945849 /* ArcShape.swift */,
 				9FC9DA1828995E1D00945849 /* ColorExtensions.swift */,
 				9FFA1179289DAE8500604D14 /* ViewExtension.swift */,
+				9F9B226628AACEE5008A0E3E /* SegmentedControlView.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -240,6 +243,7 @@
 				9FFA117A289DAE8500604D14 /* ViewExtension.swift in Sources */,
 				9FC9DA26289AFFAF00945849 /* TabBarView.swift in Sources */,
 				9FC9DA28289B151E00945849 /* ArcShape.swift in Sources */,
+				9F9B226728AACEE5008A0E3E /* SegmentedControlView.swift in Sources */,
 				9FFA1171289C5CEE00604D14 /* BottomSheetValues.swift in Sources */,
 				9FC9DA1928995E1D00945849 /* ColorExtensions.swift in Sources */,
 				9FFA1173289C5E8300604D14 /* ForecastView.swift in Sources */,
