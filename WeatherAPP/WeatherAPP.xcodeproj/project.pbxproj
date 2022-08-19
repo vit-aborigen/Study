@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9F32852428B0254D00D0FED7 /* ForecastModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F32852328B0254D00D0FED7 /* ForecastModel.swift */; };
 		9F9B226728AACEE5008A0E3E /* SegmentedControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9B226628AACEE5008A0E3E /* SegmentedControlView.swift */; };
 		9FC9DA042899478100945849 /* WeatherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC9DA032899478100945849 /* WeatherApp.swift */; };
 		9FC9DA062899478100945849 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC9DA052899478100945849 /* ContentView.swift */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9F32852328B0254D00D0FED7 /* ForecastModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastModel.swift; sourceTree = "<group>"; };
 		9F9B226628AACEE5008A0E3E /* SegmentedControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedControlView.swift; sourceTree = "<group>"; };
 		9FC9DA002899478100945849 /* WeatherAPP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherAPP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FC9DA032899478100945849 /* WeatherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherApp.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 		9FC9DA1228995D3400945849 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				9F32852328B0254D00D0FED7 /* ForecastModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -246,6 +249,7 @@
 				9F9B226728AACEE5008A0E3E /* SegmentedControlView.swift in Sources */,
 				9FFA1171289C5CEE00604D14 /* BottomSheetValues.swift in Sources */,
 				9FC9DA1928995E1D00945849 /* ColorExtensions.swift in Sources */,
+				9F32852428B0254D00D0FED7 /* ForecastModel.swift in Sources */,
 				9FFA1173289C5E8300604D14 /* ForecastView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
