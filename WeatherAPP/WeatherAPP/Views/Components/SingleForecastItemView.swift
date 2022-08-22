@@ -11,9 +11,13 @@ struct SingleForecastItemView: View {
     var forecast: Forecast
     var forecastPeriod: ForecastPeriod
     var isShown: Bool {
+        var isRightNow = false
         if forecastPeriod == .hourly {
-            let isThisHour = Calendar.current.isDate(.now, )
+            isRightNow = Calendar.current.isDate(.now, equalTo: forecast.date, toGranularity: .hour)
+        } else {
+            isRightNow = Calendar.current.isDate(.now, equalTo: forecast.date, toGranularity: .day)
         }
+        return isRightNow
     }
 
     var body: some View {
@@ -55,6 +59,6 @@ struct SingleForecastItemView: View {
 
 struct SingleForecastItemView_Previews: PreviewProvider {
     static var previews: some View {
-        SingleForecastItemView(forecast: .hourly[0], forecastPeriod: .hourly)
+        SingleForecastItemView(forecast: .hourly[1], forecastPeriod: .hourly)
     }
 }
