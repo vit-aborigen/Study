@@ -13,9 +13,31 @@ struct ForecastView: View {
 
     var body: some View {
         ScrollView {
-            VStack(spacing: 20) {
+            VStack(spacing: 0) {
                 // TAB control
                 SegmentedControlView(tabSelection: $tabSelection)
+                
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 12) {
+                        if tabSelection == 0 {
+                            ForEach(Forecast.hourly) { forecast in
+                                SingleForecastItemView(forecast: forecast, forecastPeriod: .hourly)
+                            }
+                            .transition(.offset(x: -UIScreen.main.bounds.width - 5))
+                        } else {
+                            ForEach(Forecast.daily) { forecast in
+                                SingleForecastItemView(forecast: forecast, forecastPeriod: .daily)
+                            }
+                            .transition(.offset(x: UIScreen.main.bounds.width + 5))
+                        }
+                    }
+                    .padding(.vertical, 20)
+                }
+                .padding(.horizontal, 20)
+                
+                Image("Forecast Widgets")
+                    .opacity(bottomSheetTranslationNormalized)
+                
             }
         }
         .backgroundBlur(radius: 25, opaque: true)
