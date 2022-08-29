@@ -31,7 +31,7 @@ struct TabBarView: View {
                 Spacer()
                 
                 NavigationLink {
-                    
+                    WeatherView()
                 } label: {
                     Image(systemName: "list.star")
                         .frame(width: 44, height: 44)

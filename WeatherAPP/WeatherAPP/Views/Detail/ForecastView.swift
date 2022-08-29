@@ -36,7 +36,8 @@ struct ForecastView: View {
                 .padding(.horizontal, 20)
                 
                 Image("Forecast Widgets")
-                    .opacity(bottomSheetTranslationNormalized)
+                    .opacity(bottomSheetTranslationNormalized
+                    )
                 
             }
         }
