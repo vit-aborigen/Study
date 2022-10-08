@@ -24,7 +24,7 @@ struct Backdrop: UIViewRepresentable {
 struct CustomBlur: View {
     var radius: CGFloat = 3
     var opaque = false
-    
+
     var body: some View {
         Backdrop()
             .blur(radius: radius, opaque: opaque)

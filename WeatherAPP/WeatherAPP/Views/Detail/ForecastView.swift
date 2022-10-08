@@ -16,7 +16,7 @@ struct ForecastView: View {
             VStack(spacing: 0) {
                 // TAB control
                 SegmentedControlView(tabSelection: $tabSelection)
-                
+
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 12) {
                         if tabSelection == 0 {
@@ -34,11 +34,10 @@ struct ForecastView: View {
                     .padding(.vertical, 20)
                 }
                 .padding(.horizontal, 20)
-                
+
                 Image("Forecast Widgets")
                     .opacity(bottomSheetTranslationNormalized
                     )
-                
             }
         }
         .backgroundBlur(radius: 25, opaque: true)

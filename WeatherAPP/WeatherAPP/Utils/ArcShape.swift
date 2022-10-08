@@ -21,6 +21,4 @@ struct Arc: Shape {
         
         return path
     }
-    
-    
 }

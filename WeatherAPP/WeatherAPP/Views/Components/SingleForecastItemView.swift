@@ -46,7 +46,7 @@ struct SingleForecastItemView: View {
                         .opacity(forecast.probability > 0 ? 1.0 : 0.0)
                 }
                 .frame(height: 42)
-                
+
                 Text("\(forecast.temperature)°")
                     .font(.title3)
             }

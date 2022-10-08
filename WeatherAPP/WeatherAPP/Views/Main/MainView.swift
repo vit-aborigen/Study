@@ -96,7 +96,7 @@ struct MainView: View {
         let weatherState = stringFromInternet.split(separator: currentSeparator ?? Character(""))
         
         if let temperatureRange = fullString.range(of: weatherState[0]) {
-            fullString[temperatureRange].font = .system(size: (96 - (bottomSheetTranslationNormalized * (96 - 20))), weight: isBottomSheetRolledOut ? .semibold : .thin)
+            fullString[temperatureRange].font = .system(size: 96 - (bottomSheetTranslationNormalized * (96 - 20)), weight: isBottomSheetRolledOut ? .semibold : .thin)
             fullString[temperatureRange].foregroundColor = isBottomSheetRolledOut ? .secondary : .primary
         }
         

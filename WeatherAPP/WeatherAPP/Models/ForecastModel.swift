@@ -31,7 +31,7 @@ struct Forecast: Identifiable {
     var high: Int
     var low: Int
     var location: String
-    
+
     var icon: String {
         switch weather {
         case .clear:
@@ -55,7 +55,7 @@ struct Forecast: Identifiable {
 extension Forecast {
     static let hour: TimeInterval = 60 * 60
     static let day: TimeInterval = 60 * 60 * 24
-    
+
     static let hourly: [Forecast] = [
         Forecast(date: .init(timeIntervalSinceNow: hour * -1), weather: .rainy, probability: 30, temperature: 19, high: 24, low: 18, location: "Montreal, Canada"),
         Forecast(date: .now, weather: .rainy, probability: 0, temperature: 19, high: 24, low: 18, location: "Montreal, Canada"),
@@ -64,7 +64,7 @@ extension Forecast {
         Forecast(date: .init(timeIntervalSinceNow: hour * 3), weather: .rainy, probability: 0, temperature: 19, high: 24, low: 18, location: "Montreal, Canada"),
         Forecast(date: .init(timeIntervalSinceNow: hour * 4), weather: .rainy, probability: 0, temperature: 19, high: 24, low: 18, location: "Montreal, Canada")
     ]
-    
+
     static let daily: [Forecast] = [
         Forecast(date: .init(timeIntervalSinceNow: 0), weather: .rainy, probability: 30, temperature: 19, high: 24, low: 18, location: "Montreal, Canada"),
         Forecast(date: .init(timeIntervalSinceNow: day * 1), weather: .rainy, probability: 0, temperature: 19, high: 24, low: 18, location: "Montreal, Canada"),
@@ -73,7 +73,7 @@ extension Forecast {
         Forecast(date: .init(timeIntervalSinceNow: day * 4), weather: .rainy, probability: 0, temperature: 19, high: 24, low: 18, location: "Montreal, Canada"),
         Forecast(date: .init(timeIntervalSinceNow: day * 5), weather: .rainy, probability: 0, temperature: 19, high: 24, low: 18, location: "Montreal, Canada")
     ]
-    
+
     static let cities: [Forecast] = [
         Forecast(date: .now, weather: .rainy, probability: 0, temperature: 19, high: 24, low: 18, location: "Montreal, Canada"),
         Forecast(date: .now, weather: .windy, probability: 0, temperature: 20, high: 21, low: 19, location: "Toronto, Canada"),

@@ -8,6 +8,15 @@
 import SwiftUI
 
 struct WeatherView: View {
+    @State private var searchableText = ""
+    
+    var filteredCities: [Forecast] {
+        if searchableText.isEmpty {
+            return Forecast.cities
+        }
+        return Forecast.cities.filter { $0.location.contains(searchableText) }
+    }
+    
     var body: some View {
         ZStack {
             Color.background
@@ -15,7 +24,7 @@ struct WeatherView: View {
             
             ScrollView(showsIndicators: false) {
                 VStack(spacing: 20) {
-                    ForEach(Forecast.cities) { forecast in
+                    ForEach(filteredCities) { forecast in
                         WeatherWidget(forecast: forecast)
                     }
                 }
@@ -26,15 +35,18 @@ struct WeatherView: View {
             }
         }
         .overlay {
-            NavigationBarView()
+            NavigationBarView(searchableText: $searchableText)
         }
         .navigationBarHidden(true)
+//        .searchable(text: $searchableText, placement: .navigationBarDrawer(displayMode: .always), prompt: "Please specify city")
     }
 }
 
 struct WeatherView_Previews: PreviewProvider {
     static var previews: some View {
-        WeatherView()
-            .preferredColorScheme(.dark)
+        NavigationView {
+            WeatherView()
+                .preferredColorScheme(.dark)
+        }
     }
 }
