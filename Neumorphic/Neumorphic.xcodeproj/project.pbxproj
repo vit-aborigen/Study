@@ -8,17 +8,25 @@
 
 /* Begin PBXBuildFile section */
 		9F9EDC1C28805B2800391314 /* NeumorphicApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9EDC1B28805B2800391314 /* NeumorphicApp.swift */; };
-		9F9EDC1E28805B2800391314 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9EDC1D28805B2800391314 /* ContentView.swift */; };
+		9F9EDC1E28805B2800391314 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9EDC1D28805B2800391314 /* MainView.swift */; };
 		9F9EDC2028805B2A00391314 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F9EDC1F28805B2A00391314 /* Assets.xcassets */; };
 		9F9EDC2328805B2A00391314 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F9EDC2228805B2A00391314 /* Preview Assets.xcassets */; };
+		9FFCA3C828F338420006E72E /* NeumorphicButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFCA3C728F338420006E72E /* NeumorphicButtonStyle.swift */; };
+		9FFCA3CA28F339600006E72E /* NeuButtonBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFCA3C928F339600006E72E /* NeuButtonBackgroundView.swift */; };
+		9FFCA3CD28F33A300006E72E /* ColorsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFCA3CC28F33A300006E72E /* ColorsExtension.swift */; };
+		9FFCA3CF28F33C850006E72E /* ShadowModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFCA3CE28F33C850006E72E /* ShadowModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		9F9EDC1828805B2800391314 /* Neumorphic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Neumorphic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F9EDC1B28805B2800391314 /* NeumorphicApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeumorphicApp.swift; sourceTree = "<group>"; };
-		9F9EDC1D28805B2800391314 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		9F9EDC1D28805B2800391314 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		9F9EDC1F28805B2A00391314 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9F9EDC2228805B2A00391314 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		9FFCA3C728F338420006E72E /* NeumorphicButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeumorphicButtonStyle.swift; sourceTree = "<group>"; };
+		9FFCA3C928F339600006E72E /* NeuButtonBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeuButtonBackgroundView.swift; sourceTree = "<group>"; };
+		9FFCA3CC28F33A300006E72E /* ColorsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorsExtension.swift; sourceTree = "<group>"; };
+		9FFCA3CE28F33C850006E72E /* ShadowModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,9 +59,10 @@
 		9F9EDC1A28805B2800391314 /* Neumorphic */ = {
 			isa = PBXGroup;
 			children = (
-				9F9EDC1B28805B2800391314 /* NeumorphicApp.swift */,
-				9F9EDC1D28805B2800391314 /* ContentView.swift */,
-				9F9EDC1F28805B2A00391314 /* Assets.xcassets */,
+				9F9EDC1D28805B2800391314 /* MainView.swift */,
+				9FFCA3C428F337150006E72E /* Controls */,
+				9FFCA3CB28F33A0F0006E72E /* Common */,
+				9FFCA3C528F337230006E72E /* App */,
 				9F9EDC2128805B2A00391314 /* Preview Content */,
 			);
 			path = Neumorphic;
@@ -65,6 +74,41 @@
 				9F9EDC2228805B2A00391314 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		9FFCA3C428F337150006E72E /* Controls */ = {
+			isa = PBXGroup;
+			children = (
+				9FFCA3C628F3375E0006E72E /* TextButton */,
+			);
+			path = Controls;
+			sourceTree = "<group>";
+		};
+		9FFCA3C528F337230006E72E /* App */ = {
+			isa = PBXGroup;
+			children = (
+				9F9EDC1B28805B2800391314 /* NeumorphicApp.swift */,
+				9F9EDC1F28805B2A00391314 /* Assets.xcassets */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		9FFCA3C628F3375E0006E72E /* TextButton */ = {
+			isa = PBXGroup;
+			children = (
+				9FFCA3C728F338420006E72E /* NeumorphicButtonStyle.swift */,
+				9FFCA3C928F339600006E72E /* NeuButtonBackgroundView.swift */,
+			);
+			path = TextButton;
+			sourceTree = "<group>";
+		};
+		9FFCA3CB28F33A0F0006E72E /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				9FFCA3CC28F33A300006E72E /* ColorsExtension.swift */,
+				9FFCA3CE28F33C850006E72E /* ShadowModel.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +181,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9F9EDC1E28805B2800391314 /* ContentView.swift in Sources */,
+				9FFCA3CD28F33A300006E72E /* ColorsExtension.swift in Sources */,
+				9FFCA3CF28F33C850006E72E /* ShadowModel.swift in Sources */,
+				9F9EDC1E28805B2800391314 /* MainView.swift in Sources */,
+				9FFCA3C828F338420006E72E /* NeumorphicButtonStyle.swift in Sources */,
 				9F9EDC1C28805B2800391314 /* NeumorphicApp.swift in Sources */,
+				9FFCA3CA28F339600006E72E /* NeuButtonBackgroundView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
