@@ -8,8 +8,21 @@
 import SwiftUI
 
 struct CellView: View {
+    var cell: Cell
+    var bombsAround: Int?
+    
+    var image: Image {
+        if cell.isFlagged {
+            return Image("flag")
+        }
+        if !cell.isOpened {
+            return Image("normal")
+        }
+        return Image("normal")
+    }
+    
     var body: some View {
-        Image("1")
+        image
             .resizable()
             .scaledToFill()
     }
@@ -17,6 +30,6 @@ struct CellView: View {
 
 struct CellView_Previews: PreviewProvider {
     static var previews: some View {
-        CellView()
+        CellView(cell: Cell(hasBomb: true))
     }
 }

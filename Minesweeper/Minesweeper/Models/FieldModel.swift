@@ -13,6 +13,7 @@ class Field: ObservableObject {
     private(set) var bombsCount: Int
     
     @Published private(set) var field: [[Cell]]
+    private(set) var cellDict: [Cell: Int] = [:]
     
     init(rows: Int = 16, columns: Int = 30, bombs: Int = 99) {
         self.rows = rows
@@ -41,6 +42,14 @@ class Field: ObservableObject {
         for bomb in bombs {
             field[bomb.0][bomb.1].putBomb()
         }
+
+        for x in 0 ..< rows {
+            for y in 0 ..< columns {
+                if !field[x][y].hasBomb {
+                    cellDict[field[x][y]] = checkNeighbours(cell: (x, y))
+                }
+            }
+        }
     }
     
     private func checkNeighbours(cell: (Int, Int)) -> Int {
@@ -53,7 +62,7 @@ class Field: ObservableObject {
         
         for x in startX...endX {
             for y in startY...endY {
-                if x != cell.0 && y != cell.1 && field[x][y].hasBomb {
+                if x != cell.0, y != cell.1, field[x][y].hasBomb {
                     counter += 1
                 }
             }

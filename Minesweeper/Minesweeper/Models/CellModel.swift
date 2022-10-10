@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-class Cell: Identifiable, ObservableObject {
+class Cell: Equatable, Hashable, ObservableObject {
     let id = UUID()
     @Published private(set) var isOpened: Bool
     private(set) var hasBomb: Bool
@@ -35,5 +35,13 @@ class Cell: Identifiable, ObservableObject {
     
     func putBomb() {
         hasBomb = true
+    }
+    
+    static func == (lhs: Cell, rhs: Cell) -> Bool {
+        lhs.id == rhs.id
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
     }
 }
