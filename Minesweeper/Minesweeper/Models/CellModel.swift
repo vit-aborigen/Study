@@ -7,9 +7,10 @@
 
 import SwiftUI
 
-class Cell: ObservableObject {
+class Cell: Identifiable, ObservableObject {
+    let id = UUID()
     @Published private(set) var isOpened: Bool
-    @Published private(set) var hasBomb: Bool
+    private(set) var hasBomb: Bool
     @Published private(set) var isFlagged: Bool
     
     init(hasBomb: Bool) {
@@ -30,5 +31,9 @@ class Cell: ObservableObject {
         if !isOpened {
             isFlagged.toggle()
         }
+    }
+    
+    func putBomb() {
+        hasBomb = true
     }
 }

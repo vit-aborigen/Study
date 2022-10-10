@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct MainView: View {
+    @ObservedObject var field = Field(rows: 10, columns: 5, bombs: 10)
+    
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+            // Status bar
+            
+            FieldView(board: field)
         }
-        .padding()
     }
 }
 
