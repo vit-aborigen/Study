@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MainView: View {
-    @ObservedObject var field = Field(rows: 10, columns: 5, bombs: 10)
+    @ObservedObject var field = Field(rows: 2, columns: 2, bombs: 2)
     
     var body: some View {
         VStack {

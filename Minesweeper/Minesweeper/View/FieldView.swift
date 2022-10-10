@@ -11,7 +11,7 @@ struct FieldView: View {
     @StateObject var board: Field
     
     var body: some View {
-        var gridItem = Array(repeating: GridItem.init(spacing: 0), count: board.columns)
+        let gridItem = Array(repeating: GridItem.init(spacing: 0), count: board.columns)
         
         LazyVGrid(columns: gridItem, spacing: 0) {
             ForEach(0..<board.rows) { row in
@@ -19,8 +19,7 @@ struct FieldView: View {
                     var cell = board.field[row][column]
                     CellView(cell: board.field[row][column], bombsAround: board.cellDict[cell])
                         .onTapGesture {
-                            cell.toggleFlag()
-                            print(cell.isFlagged, board.field[row][column].isFlagged)
+                            cell.open()
                         }
                 }
             }

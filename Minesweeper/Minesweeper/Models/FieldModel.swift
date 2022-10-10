@@ -19,8 +19,8 @@ class Field: ObservableObject {
         self.rows = rows
         self.columns = columns
         self.bombsCount = bombs
-        
-        self.field = [[Cell(hasBomb: false)]]
+        self.field = []
+
         generateField()
     }
     
@@ -29,14 +29,16 @@ class Field: ObservableObject {
         let allPossibleCells = (0...rows * columns - 1).shuffled()
         for i in allPossibleCells[0...bombsCount - 1] {
             let x = i / columns
-            bombCoords.append((x, i / (x + 1)))
+            bombCoords.append((x, i % columns))
         }
         
         return bombCoords
     }
     
     private func generateField() {
-        field = Array(repeating: Array(repeating: Cell(hasBomb: false), count: columns), count: rows)
+        self.field = (0..<rows).map{ _ in (0..<columns).map { _ in Cell(hasBomb: false) }}
+        print(field)
+        
         let bombs = generateBombs()
         
         for bomb in bombs {
@@ -56,13 +58,13 @@ class Field: ObservableObject {
         var counter = 0
         
         let startX = cell.0 - 1 >= 0 ? cell.0 - 1 : 0
-        let endX = cell.0 + 1 <= rows ? cell.0 + 1 : rows - 1
+        let endX = cell.0 + 1 < rows ? cell.0 + 1 : rows - 1
         let startY = cell.1 - 1 >= 0 ? cell.1 - 1 : 0
-        let endY = cell.1 + 1 <= columns ? cell.1 + 1 : columns - 1
+        let endY = cell.1 + 1 < columns ? cell.1 + 1 : columns - 1
         
         for x in startX...endX {
             for y in startY...endY {
-                if x != cell.0, y != cell.1, field[x][y].hasBomb {
+                if x != cell.0 && y != cell.1 && field[x][y].hasBomb {
                     counter += 1
                 }
             }

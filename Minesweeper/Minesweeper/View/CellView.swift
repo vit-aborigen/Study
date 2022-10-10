@@ -8,19 +8,28 @@
 import SwiftUI
 
 struct CellView: View {
-    var cell: Cell
+    @StateObject var cell: Cell
     var bombsAround: Int?
-    
+
     var image: Image {
         if cell.isFlagged {
             return Image("flag")
         }
-        if !cell.isOpened {
-            return Image("normal")
+
+        if cell.isOpened {
+            if cell.hasBomb {
+                return Image("bomb")
+            }
+            if bombsAround == nil || bombsAround == 0 {
+                return Image("empty")
+            }
+
+            return Image("\(bombsAround!)")
         }
+
         return Image("normal")
     }
-    
+
     var body: some View {
         image
             .resizable()
