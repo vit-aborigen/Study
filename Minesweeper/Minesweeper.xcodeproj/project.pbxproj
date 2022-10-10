@@ -3,32 +3,26 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9F9EDC1C28805B2800391314 /* NeumorphicApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9EDC1B28805B2800391314 /* NeumorphicApp.swift */; };
-		9F9EDC1E28805B2800391314 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9EDC1D28805B2800391314 /* MainView.swift */; };
-		9F9EDC2028805B2A00391314 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F9EDC1F28805B2A00391314 /* Assets.xcassets */; };
-		9F9EDC2328805B2A00391314 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F9EDC2228805B2A00391314 /* Preview Assets.xcassets */; };
-		9FFCA3C828F338420006E72E /* NeumorphicButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFCA3C728F338420006E72E /* NeumorphicButtonStyle.swift */; };
-		9FFCA3CD28F33A300006E72E /* ColorsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFCA3CC28F33A300006E72E /* ColorsExtension.swift */; };
-		9FFCA3CF28F33C850006E72E /* ShadowModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFCA3CE28F33C850006E72E /* ShadowModel.swift */; };
+		9FFCA3DD28F432F50006E72E /* MinesweeperApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFCA3DC28F432F50006E72E /* MinesweeperApp.swift */; };
+		9FFCA3DF28F432F50006E72E /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFCA3DE28F432F50006E72E /* MainView.swift */; };
+		9FFCA3E128F432F70006E72E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9FFCA3E028F432F70006E72E /* Assets.xcassets */; };
+		9FFCA3E428F432F70006E72E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9FFCA3E328F432F70006E72E /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		9F9EDC1828805B2800391314 /* Neumorphic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Neumorphic.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		9F9EDC1B28805B2800391314 /* NeumorphicApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeumorphicApp.swift; sourceTree = "<group>"; };
-		9F9EDC1D28805B2800391314 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
-		9F9EDC1F28805B2A00391314 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		9F9EDC2228805B2A00391314 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		9FFCA3C728F338420006E72E /* NeumorphicButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeumorphicButtonStyle.swift; sourceTree = "<group>"; };
-		9FFCA3CC28F33A300006E72E /* ColorsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorsExtension.swift; sourceTree = "<group>"; };
-		9FFCA3CE28F33C850006E72E /* ShadowModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowModel.swift; sourceTree = "<group>"; };
+		9FFCA3D928F432F50006E72E /* Minesweeper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Minesweeper.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9FFCA3DC28F432F50006E72E /* MinesweeperApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinesweeperApp.swift; sourceTree = "<group>"; };
+		9FFCA3DE28F432F50006E72E /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		9FFCA3E028F432F70006E72E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9FFCA3E328F432F70006E72E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		9F9EDC1528805B2800391314 /* Frameworks */ = {
+		9FFCA3D628F432F50006E72E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -38,164 +32,158 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		9F9EDC0F28805B2800391314 = {
+		9FFCA3D028F432F50006E72E = {
 			isa = PBXGroup;
 			children = (
-				9F9EDC1A28805B2800391314 /* Neumorphic */,
-				9F9EDC1928805B2800391314 /* Products */,
+				9FFCA3DB28F432F50006E72E /* Minesweeper */,
+				9FFCA3DA28F432F50006E72E /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		9F9EDC1928805B2800391314 /* Products */ = {
+		9FFCA3DA28F432F50006E72E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9F9EDC1828805B2800391314 /* Neumorphic.app */,
+				9FFCA3D928F432F50006E72E /* Minesweeper.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		9F9EDC1A28805B2800391314 /* Neumorphic */ = {
+		9FFCA3DB28F432F50006E72E /* Minesweeper */ = {
 			isa = PBXGroup;
 			children = (
-				9F9EDC1D28805B2800391314 /* MainView.swift */,
-				9FFCA3C428F337150006E72E /* Controls */,
-				9FFCA3CB28F33A0F0006E72E /* Common */,
-				9FFCA3C528F337230006E72E /* App */,
-				9F9EDC2128805B2A00391314 /* Preview Content */,
+				9FFCA3DE28F432F50006E72E /* MainView.swift */,
+				9FFCA3EC28F434C00006E72E /* View */,
+				9FFCA3EB28F434B70006E72E /* ViewModels */,
+				9FFCA3EA28F434AB0006E72E /* Models */,
+				9FFCA3ED28F434C60006E72E /* App */,
 			);
-			path = Neumorphic;
+			path = Minesweeper;
 			sourceTree = "<group>";
 		};
-		9F9EDC2128805B2A00391314 /* Preview Content */ = {
+		9FFCA3E228F432F70006E72E /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				9F9EDC2228805B2A00391314 /* Preview Assets.xcassets */,
+				9FFCA3E328F432F70006E72E /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		9FFCA3C428F337150006E72E /* Controls */ = {
+		9FFCA3EA28F434AB0006E72E /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				9FFCA3C628F3375E0006E72E /* TextButton */,
 			);
-			path = Controls;
+			path = Models;
 			sourceTree = "<group>";
 		};
-		9FFCA3C528F337230006E72E /* App */ = {
+		9FFCA3EB28F434B70006E72E /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				9F9EDC1B28805B2800391314 /* NeumorphicApp.swift */,
-				9F9EDC1F28805B2A00391314 /* Assets.xcassets */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		9FFCA3EC28F434C00006E72E /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9FFCA3ED28F434C60006E72E /* App */ = {
+			isa = PBXGroup;
+			children = (
+				9FFCA3DC28F432F50006E72E /* MinesweeperApp.swift */,
+				9FFCA3E028F432F70006E72E /* Assets.xcassets */,
+				9FFCA3E228F432F70006E72E /* Preview Content */,
 			);
 			path = App;
-			sourceTree = "<group>";
-		};
-		9FFCA3C628F3375E0006E72E /* TextButton */ = {
-			isa = PBXGroup;
-			children = (
-				9FFCA3C728F338420006E72E /* NeumorphicButtonStyle.swift */,
-			);
-			path = TextButton;
-			sourceTree = "<group>";
-		};
-		9FFCA3CB28F33A0F0006E72E /* Common */ = {
-			isa = PBXGroup;
-			children = (
-				9FFCA3CC28F33A300006E72E /* ColorsExtension.swift */,
-				9FFCA3CE28F33C850006E72E /* ShadowModel.swift */,
-			);
-			path = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		9F9EDC1728805B2800391314 /* Neumorphic */ = {
+		9FFCA3D828F432F50006E72E /* Minesweeper */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9F9EDC2628805B2A00391314 /* Build configuration list for PBXNativeTarget "Neumorphic" */;
+			buildConfigurationList = 9FFCA3E728F432F70006E72E /* Build configuration list for PBXNativeTarget "Minesweeper" */;
 			buildPhases = (
-				9F9EDC1428805B2800391314 /* Sources */,
-				9F9EDC1528805B2800391314 /* Frameworks */,
-				9F9EDC1628805B2800391314 /* Resources */,
+				9FFCA3D528F432F50006E72E /* Sources */,
+				9FFCA3D628F432F50006E72E /* Frameworks */,
+				9FFCA3D728F432F50006E72E /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = Neumorphic;
-			productName = Neumorphic;
-			productReference = 9F9EDC1828805B2800391314 /* Neumorphic.app */;
+			name = Minesweeper;
+			productName = Minesweeper;
+			productReference = 9FFCA3D928F432F50006E72E /* Minesweeper.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		9F9EDC1028805B2800391314 /* Project object */ = {
+		9FFCA3D128F432F50006E72E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1340;
-				LastUpgradeCheck = 1340;
+				LastSwiftUpdateCheck = 1400;
+				LastUpgradeCheck = 1400;
 				TargetAttributes = {
-					9F9EDC1728805B2800391314 = {
-						CreatedOnToolsVersion = 13.4.1;
+					9FFCA3D828F432F50006E72E = {
+						CreatedOnToolsVersion = 14.0.1;
 					};
 				};
 			};
-			buildConfigurationList = 9F9EDC1328805B2800391314 /* Build configuration list for PBXProject "Neumorphic" */;
-			compatibilityVersion = "Xcode 13.0";
+			buildConfigurationList = 9FFCA3D428F432F50006E72E /* Build configuration list for PBXProject "Minesweeper" */;
+			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = 9F9EDC0F28805B2800391314;
-			productRefGroup = 9F9EDC1928805B2800391314 /* Products */;
+			mainGroup = 9FFCA3D028F432F50006E72E;
+			productRefGroup = 9FFCA3DA28F432F50006E72E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				9F9EDC1728805B2800391314 /* Neumorphic */,
+				9FFCA3D828F432F50006E72E /* Minesweeper */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		9F9EDC1628805B2800391314 /* Resources */ = {
+		9FFCA3D728F432F50006E72E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9F9EDC2328805B2A00391314 /* Preview Assets.xcassets in Resources */,
-				9F9EDC2028805B2A00391314 /* Assets.xcassets in Resources */,
+				9FFCA3E428F432F70006E72E /* Preview Assets.xcassets in Resources */,
+				9FFCA3E128F432F70006E72E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		9F9EDC1428805B2800391314 /* Sources */ = {
+		9FFCA3D528F432F50006E72E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9FFCA3CD28F33A300006E72E /* ColorsExtension.swift in Sources */,
-				9FFCA3CF28F33C850006E72E /* ShadowModel.swift in Sources */,
-				9F9EDC1E28805B2800391314 /* MainView.swift in Sources */,
-				9FFCA3C828F338420006E72E /* NeumorphicButtonStyle.swift in Sources */,
-				9F9EDC1C28805B2800391314 /* NeumorphicApp.swift in Sources */,
+				9FFCA3DF28F432F50006E72E /* MainView.swift in Sources */,
+				9FFCA3DD28F432F50006E72E /* MinesweeperApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		9F9EDC2428805B2A00391314 /* Debug */ = {
+		9FFCA3E528F432F70006E72E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -239,7 +227,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -249,13 +237,13 @@
 			};
 			name = Debug;
 		};
-		9F9EDC2528805B2A00391314 /* Release */ = {
+		9FFCA3E628F432F70006E72E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -293,7 +281,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -303,14 +291,14 @@
 			};
 			name = Release;
 		};
-		9F9EDC2728805B2A00391314 /* Debug */ = {
+		9FFCA3E828F432F70006E72E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Neumorphic/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Minesweeper/Preview Content\"";
 				DEVELOPMENT_TEAM = Z8X43A4TG9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -319,13 +307,12 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = abo.Neumorphic;
+				PRODUCT_BUNDLE_IDENTIFIER = abo.Minesweeper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -333,14 +320,14 @@
 			};
 			name = Debug;
 		};
-		9F9EDC2828805B2A00391314 /* Release */ = {
+		9FFCA3E928F432F70006E72E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Neumorphic/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Minesweeper/Preview Content\"";
 				DEVELOPMENT_TEAM = Z8X43A4TG9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -349,13 +336,12 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = abo.Neumorphic;
+				PRODUCT_BUNDLE_IDENTIFIER = abo.Minesweeper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -366,25 +352,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		9F9EDC1328805B2800391314 /* Build configuration list for PBXProject "Neumorphic" */ = {
+		9FFCA3D428F432F50006E72E /* Build configuration list for PBXProject "Minesweeper" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				9F9EDC2428805B2A00391314 /* Debug */,
-				9F9EDC2528805B2A00391314 /* Release */,
+				9FFCA3E528F432F70006E72E /* Debug */,
+				9FFCA3E628F432F70006E72E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9F9EDC2628805B2A00391314 /* Build configuration list for PBXNativeTarget "Neumorphic" */ = {
+		9FFCA3E728F432F70006E72E /* Build configuration list for PBXNativeTarget "Minesweeper" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				9F9EDC2728805B2A00391314 /* Debug */,
-				9F9EDC2828805B2A00391314 /* Release */,
+				9FFCA3E828F432F70006E72E /* Debug */,
+				9FFCA3E928F432F70006E72E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 9F9EDC1028805B2800391314 /* Project object */;
+	rootObject = 9FFCA3D128F432F50006E72E /* Project object */;
 }

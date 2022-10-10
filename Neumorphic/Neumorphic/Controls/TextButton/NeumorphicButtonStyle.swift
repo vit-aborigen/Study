@@ -7,12 +7,8 @@
 
 import SwiftUI
 
-struct NeumorphicButtonStyle: ButtonStyle {
-    let shape: AnyShape
-
-    init(shape: AnyShape) {
-        self.shape = shape
-    }
+struct NeumorphicButtonStyle<T: Shape>: ButtonStyle {
+    let shape: T
 
     func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
