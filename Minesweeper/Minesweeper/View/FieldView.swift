@@ -16,10 +16,13 @@ struct FieldView: View {
         LazyVGrid(columns: gridItem, spacing: 0) {
             ForEach(0..<board.rows) { row in
                 ForEach(0..<board.columns) { column in
-                    var cell = board.field[row][column]
+                    let cell = board.field[row][column]
                     CellView(cell: board.field[row][column], bombsAround: board.cellDict[cell])
                         .onTapGesture {
                             cell.open()
+                        }
+                        .onLongPressGesture{
+                            cell.toggleFlag()
                         }
                 }
             }

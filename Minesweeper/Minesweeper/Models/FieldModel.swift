@@ -8,9 +8,9 @@
 import SwiftUI
 
 class Field: ObservableObject {
-    private(set) var rows: Int
-    private(set) var columns: Int
-    private(set) var bombsCount: Int
+    let rows: Int
+    let columns: Int
+    let bombsCount: Int
     
     @Published private(set) var field: [[Cell]]
     private(set) var cellDict: [Cell: Int] = [:]
@@ -37,10 +37,8 @@ class Field: ObservableObject {
     
     private func generateField() {
         self.field = (0..<rows).map{ _ in (0..<columns).map { _ in Cell(hasBomb: false) }}
-        print(field)
         
         let bombs = generateBombs()
-        
         for bomb in bombs {
             field[bomb.0][bomb.1].putBomb()
         }
@@ -54,8 +52,8 @@ class Field: ObservableObject {
         }
     }
     
-    private func checkNeighbours(cell: (Int, Int)) -> Int {
-        var counter = 0
+    func getNeighbours(cell: (Int, Int)) -> [Cell] {
+        var neighbours: [Cell] = []
         
         let startX = cell.0 - 1 >= 0 ? cell.0 - 1 : 0
         let endX = cell.0 + 1 < rows ? cell.0 + 1 : rows - 1
@@ -64,12 +62,34 @@ class Field: ObservableObject {
         
         for x in startX...endX {
             for y in startY...endY {
-                if x != cell.0 && y != cell.1 && field[x][y].hasBomb {
-                    counter += 1
-                }
+                neighbours.append(field[x][y])
+            }
+        }
+        
+        return neighbours
+    }
+    
+    private func checkNeighbours(cell: (Int, Int)) -> Int {
+        var counter = 0
+        let neighbours = getNeighbours(cell: cell)
+        for neighbour in neighbours {
+            if neighbour.hasBomb {
+                counter += 1
             }
         }
         
         return counter
+    }
+    
+    func openEmptyBlock(cell: (Int, Int)) {
+        var cellsToCheck = [field[cell.0][cell.1]]
+        var checkedCells: [Cell] = []
+        
+        while !cellsToCheck.isEmpty {
+            var currentCell = cellsToCheck.popLast()
+            checkedCells.append(currentCell!)
+            
+        }
+        
     }
 }
