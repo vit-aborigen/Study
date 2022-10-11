@@ -19,7 +19,7 @@ struct FieldView: View {
                     let cell = board.field[row][column]
                     CellView(cell: board.field[row][column], bombsAround: board.cellDict[cell])
                         .onTapGesture {
-                            cell.open()
+                            board.openCell(cellCoords: (row, column))
                         }
                         .onLongPressGesture{
                             cell.toggleFlag()

@@ -8,11 +8,27 @@
 import SwiftUI
 
 struct MainView: View {
-    @ObservedObject var field = Field(rows: 5, columns: 5, bombs: 10)
+    @ObservedObject var field = Field(rows: 5, columns: 5, bombs: 3)
     
     var body: some View {
         VStack {
-            // Status bar
+            
+            HStack {
+                Text("Bombs left: \(field.bombsCount)")
+                
+                Spacer()
+                
+                Button {
+                    field.restart()
+                } label: {
+                    Text("Restart")
+                        .font(.title)
+                }
+                
+                Spacer()
+                
+                Text("I'm timer")
+            }
             
             FieldView(board: field)
         }

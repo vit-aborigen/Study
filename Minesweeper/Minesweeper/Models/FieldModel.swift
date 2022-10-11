@@ -36,7 +36,9 @@ class Field: ObservableObject {
     }
     
     private func generateField() {
-        self.field = (0..<rows).map{ _ in (0..<columns).map { _ in Cell(hasBomb: false) }}
+        print(field)
+        field = (0 ..< rows).map { _ in (0 ..< columns).map { _ in Cell(hasBomb: false) }}
+        print(field)
         
         let bombs = generateBombs()
         for bomb in bombs {
@@ -52,8 +54,8 @@ class Field: ObservableObject {
         }
     }
     
-    func getNeighbours(cell: (Int, Int)) -> [Cell] {
-        var neighbours: [Cell] = []
+    func getNeighbours(cell: (Int, Int)) -> [(Int, Int)] {
+        var neighbours: [(Int, Int)] = []
         
         let startX = cell.0 - 1 >= 0 ? cell.0 - 1 : 0
         let endX = cell.0 + 1 < rows ? cell.0 + 1 : rows - 1
@@ -62,7 +64,7 @@ class Field: ObservableObject {
         
         for x in startX...endX {
             for y in startY...endY {
-                neighbours.append(field[x][y])
+                neighbours.append((x, y))
             }
         }
         
@@ -73,7 +75,7 @@ class Field: ObservableObject {
         var counter = 0
         let neighbours = getNeighbours(cell: cell)
         for neighbour in neighbours {
-            if neighbour.hasBomb {
+            if field[neighbour.0][neighbour.1].hasBomb {
                 counter += 1
             }
         }
@@ -82,14 +84,41 @@ class Field: ObservableObject {
     }
     
     func openEmptyBlock(cell: (Int, Int)) {
-        var cellsToCheck = [field[cell.0][cell.1]]
-        var checkedCells: [Cell] = []
+        var cellsToCheck = [cell]
         
         while !cellsToCheck.isEmpty {
-            var currentCell = cellsToCheck.popLast()
-            checkedCells.append(currentCell!)
-            
+            var currentPosition = cellsToCheck.popLast()!
+            var currentCell = field[currentPosition.0][currentPosition.1]
+            if !currentCell.isOpened, !currentCell.isFlagged {
+                currentCell.open()
+                if cellDict[currentCell] == 0 {
+                    cellsToCheck.append(contentsOf: getNeighbours(cell: currentPosition))
+                }
+            }
+        }
+    }
+    
+    func openCell(cellCoords: (Int, Int)) {
+        let cell = field[cellCoords.0][cellCoords.1]
+        
+        if cell.hasBomb {
+            #warning ("implement game over")
         }
         
+        let bombCounter = cellDict[cell]
+        if bombCounter == 0 {
+            openEmptyBlock(cell: cellCoords)
+        } else {
+            cell.open()
+        }
+    }
+    
+    func gameOver() {
+        
+    }
+    
+    func restart() {
+        cellDict = [:]
+        generateField()
     }
 }

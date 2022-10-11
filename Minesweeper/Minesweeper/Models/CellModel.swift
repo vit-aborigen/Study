@@ -19,12 +19,10 @@ class Cell: Equatable, Hashable, ObservableObject {
         self.isFlagged = false
     }
     
-    func open() -> Bool {
+    func open() {
         if !isFlagged && !isOpened {
             isOpened = true
         }
-        
-        return hasBomb
     }
     
     func toggleFlag() {
