@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CellView: View {
-    @StateObject var cell: Cell
+    @ObservedObject var cell: Cell
     var bombsAround: Int?
 
     var image: Image {

@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct MainView: View {
-    @ObservedObject var field = Field(rows: 5, columns: 5, bombs: 3)
+    @StateObject var field = Field(rows: 5, columns: 5, bombs: 3)
     
     var body: some View {
         VStack {
             
             HStack {
-                Text("Bombs left: \(field.bombsCount)")
+                Text("Bombs left: \(field.flagsLeft)")
                 
                 Spacer()
                 

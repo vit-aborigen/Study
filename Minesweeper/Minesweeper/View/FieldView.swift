@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct FieldView: View {
-    @StateObject var board: Field
+    @ObservedObject var board: Field
     
     var body: some View {
         let gridItem = Array(repeating: GridItem.init(spacing: 0), count: board.columns)
@@ -22,7 +22,7 @@ struct FieldView: View {
                             board.openCell(cellCoords: (row, column))
                         }
                         .onLongPressGesture{
-                            cell.toggleFlag()
+                            board.toggleFlag(cell: (row, column))
                         }
                 }
             }

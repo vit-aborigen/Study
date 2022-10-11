@@ -11,6 +11,7 @@ class Field: ObservableObject {
     let rows: Int
     let columns: Int
     let bombsCount: Int
+    @Published var flagsLeft: Int
     
     @Published private(set) var field: [[Cell]]
     private(set) var cellDict: [Cell: Int] = [:]
@@ -20,6 +21,7 @@ class Field: ObservableObject {
         self.columns = columns
         self.bombsCount = bombs
         self.field = []
+        self.flagsLeft = bombsCount
 
         generateField()
     }
@@ -36,10 +38,8 @@ class Field: ObservableObject {
     }
     
     private func generateField() {
-        print(field)
         field = (0 ..< rows).map { _ in (0 ..< columns).map { _ in Cell(hasBomb: false) }}
-        print(field)
-        
+
         let bombs = generateBombs()
         for bomb in bombs {
             field[bomb.0][bomb.1].putBomb()
@@ -102,7 +102,7 @@ class Field: ObservableObject {
         let cell = field[cellCoords.0][cellCoords.1]
         
         if cell.hasBomb {
-            #warning ("implement game over")
+            #warning("implement game over")
         }
         
         let bombCounter = cellDict[cell]
@@ -113,12 +113,17 @@ class Field: ObservableObject {
         }
     }
     
-    func gameOver() {
-        
+    func toggleFlag(cell: (Int, Int)) {
+        var cell = field[cell.0][cell.1]
+        flagsLeft += cell.isFlagged ?  1 : -1
+        cell.toggleFlag()
     }
+    
+    func gameOver() {}
     
     func restart() {
         cellDict = [:]
+        flagsLeft = bombsCount
         generateField()
     }
 }
