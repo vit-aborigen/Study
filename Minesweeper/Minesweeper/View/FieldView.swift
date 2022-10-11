@@ -24,6 +24,7 @@ struct FieldView: View {
                         .onLongPressGesture{
                             board.toggleFlag(cell: (row, column))
                         }
+                        .disabled(board.gameIsOver)
                 }
             }
         }

@@ -12,6 +12,7 @@ class Field: ObservableObject {
     let columns: Int
     let bombsCount: Int
     @Published var flagsLeft: Int
+    @Published var gameIsOver = false
     
     @Published private(set) var field: [[Cell]]
     private(set) var cellDict: [Cell: Int] = [:]
@@ -87,8 +88,9 @@ class Field: ObservableObject {
         var cellsToCheck = [cell]
         
         while !cellsToCheck.isEmpty {
-            var currentPosition = cellsToCheck.popLast()!
-            var currentCell = field[currentPosition.0][currentPosition.1]
+            let currentPosition = cellsToCheck.popLast()!
+            let currentCell = field[currentPosition.0][currentPosition.1]
+            
             if !currentCell.isOpened, !currentCell.isFlagged {
                 currentCell.open()
                 if cellDict[currentCell] == 0 {
@@ -102,7 +104,7 @@ class Field: ObservableObject {
         let cell = field[cellCoords.0][cellCoords.1]
         
         if cell.hasBomb {
-            #warning("implement game over")
+            gameOver()
         }
         
         let bombCounter = cellDict[cell]
@@ -114,16 +116,19 @@ class Field: ObservableObject {
     }
     
     func toggleFlag(cell: (Int, Int)) {
-        var cell = field[cell.0][cell.1]
-        flagsLeft += cell.isFlagged ?  1 : -1
+        let cell = field[cell.0][cell.1]
+        flagsLeft += cell.isFlagged ? 1 : -1
         cell.toggleFlag()
     }
     
-    func gameOver() {}
+    func gameOver() {
+        gameIsOver = true
+    }
     
     func restart() {
         cellDict = [:]
         flagsLeft = bombsCount
+        gameIsOver = false
         generateField()
     }
 }
