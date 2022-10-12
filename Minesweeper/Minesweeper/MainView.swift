@@ -9,10 +9,11 @@ import SwiftUI
 
 struct MainView: View {
     @StateObject var field = Field(rows: 5, columns: 5, bombs: 3)
+    @State private var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    @State private var timerText = 0
     
     var body: some View {
         VStack {
-            
             HStack {
                 Text("Bombs left: \(field.flagsLeft)")
                 
@@ -20,6 +21,8 @@ struct MainView: View {
                 
                 Button {
                     field.restart()
+                    timerText = 0
+                    timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
                 } label: {
                     Text("Restart")
                         .font(.title)
@@ -27,7 +30,17 @@ struct MainView: View {
                 
                 Spacer()
                 
-                Text("I'm timer")
+                Text("\(timerText)")
+                    .onReceive(timer) { _ in
+                        timerText += 1
+                    }
+                    .onChange(of: field.gameIsOver, perform: { _ in
+                        if field.gameIsOver {
+                            timer.upstream.connect().cancel()
+                        }
+                    })
+                    .font(.title)
+                    .frame(minWidth: UIScreen.main.bounds.size.width / 5)
             }
             
             FieldView(board: field)
