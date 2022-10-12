@@ -8,9 +8,17 @@
 import SwiftUI
 
 struct MainView: View {
-    @StateObject var field = Field(rows: 16, columns: 30, bombs: 99)
+    @StateObject var field = Field(rows: 5, columns: 5, bombs: 3)
     @State private var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     @State private var timerText = 0
+    
+    var newGameButtonText: String {
+        switch field.gameStatus {
+        case .win: return "😎"
+        case .inProgress: return "🤡"
+        case .lose: return "☠️"
+        }
+    }
     
     var body: some View {
         VStack {
@@ -24,7 +32,7 @@ struct MainView: View {
                     timerText = 0
                     timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
                 } label: {
-                    Text("Restart")
+                    Text(newGameButtonText)
                         .font(.title)
                 }
                 
@@ -34,8 +42,8 @@ struct MainView: View {
                     .onReceive(timer) { _ in
                         timerText += 1
                     }
-                    .onChange(of: field.gameIsOver, perform: { _ in
-                        if field.gameIsOver {
+                    .onChange(of: field.gameStatus, perform: { value in
+                        if field.gameStatus.isGameEnded {
                             timer.upstream.connect().cancel()
                         }
                     })

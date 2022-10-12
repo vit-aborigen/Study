@@ -12,11 +12,13 @@ class Cell: Equatable, Hashable, ObservableObject {
     @Published private(set) var isOpened: Bool
     private(set) var hasBomb: Bool
     @Published private(set) var isFlagged: Bool
+    @Published private(set) var wrongUserChoise: Bool
     
     init(hasBomb: Bool) {
         self.isOpened = false
         self.hasBomb = hasBomb
         self.isFlagged = false
+        self.wrongUserChoise = false
     }
     
     func open() {

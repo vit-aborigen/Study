@@ -23,7 +23,12 @@ struct FieldView: View {
                             .onLongPressGesture {
                                 board.toggleFlag(cell: (row, column))
                             }
-                            .disabled(board.gameIsOver)
+                            .disabled(board.gameStatus.isGameEnded)
+                            .background {
+                                if cell.wrongUserChoise && board.gameStatus == .lose {
+                                    Color.red.opacity(0.3)
+                                }
+                            }
                     }
                 }
             }

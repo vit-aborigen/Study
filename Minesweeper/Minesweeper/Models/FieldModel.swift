@@ -7,12 +7,21 @@
 
 import SwiftUI
 
+enum GameStatus {
+    case win, lose, inProgress
+    
+    var isGameEnded: Bool {
+        return self != .inProgress
+    }
+}
+
 class Field: ObservableObject {
     let rows: Int
     let columns: Int
     let bombsCount: Int
     @Published var flagsLeft: Int
-    @Published var gameIsOver = false
+    @Published var gameStatus: GameStatus = .inProgress
+    private var amountOfOpenedCells = 0
     
     @Published private(set) var field: [[Cell]]
     private(set) var cellDict: [Cell: Int] = [:]
@@ -93,6 +102,8 @@ class Field: ObservableObject {
             
             if !currentCell.isOpened, !currentCell.isFlagged {
                 currentCell.open()
+                amountOfOpenedCells += 1
+                
                 if cellDict[currentCell] == 0 {
                     cellsToCheck.append(contentsOf: getNeighbours(cell: currentPosition))
                 }
@@ -104,7 +115,7 @@ class Field: ObservableObject {
         let cell = field[cellCoords.0][cellCoords.1]
         
         if cell.hasBomb {
-            gameOver()
+            gameStatus = .lose
         }
         
         let bombCounter = cellDict[cell]
@@ -112,6 +123,15 @@ class Field: ObservableObject {
             openEmptyBlock(cell: cellCoords)
         } else {
             cell.open()
+            amountOfOpenedCells += 1
+            
+            if amountOfOpenedCells == cellDict.count {
+                gameStatus = .win
+            }
+        }
+        
+        if amountOfOpenedCells == cellDict.count {
+            gameStatus = .win
         }
     }
     
@@ -121,14 +141,11 @@ class Field: ObservableObject {
         cell.toggleFlag()
     }
     
-    func gameOver() {
-        gameIsOver = true
-    }
-    
     func restart() {
         cellDict = [:]
         flagsLeft = bombsCount
-        gameIsOver = false
+        gameStatus = .inProgress
+        amountOfOpenedCells = 0
         generateField()
     }
 }
