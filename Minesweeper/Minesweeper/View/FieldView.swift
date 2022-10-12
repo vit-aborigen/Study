@@ -24,7 +24,7 @@ struct FieldView: View {
                                 board.toggleFlag(cell: (row, column))
                             }
                             .disabled(board.gameStatus.isGameEnded)
-                            .background {
+                            .overlay {
                                 if cell.wrongUserChoise && board.gameStatus == .lose {
                                     Color.red.opacity(0.3)
                                 }

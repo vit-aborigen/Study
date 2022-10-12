@@ -12,7 +12,7 @@ class Cell: Equatable, Hashable, ObservableObject {
     @Published private(set) var isOpened: Bool
     private(set) var hasBomb: Bool
     @Published private(set) var isFlagged: Bool
-    @Published private(set) var wrongUserChoise: Bool
+    @Published var wrongUserChoise: Bool
     
     init(hasBomb: Bool) {
         self.isOpened = false
@@ -30,6 +30,8 @@ class Cell: Equatable, Hashable, ObservableObject {
     func toggleFlag() {
         if !isOpened {
             isFlagged.toggle()
+            
+            wrongUserChoise = isFlagged && !hasBomb
         }
     }
     

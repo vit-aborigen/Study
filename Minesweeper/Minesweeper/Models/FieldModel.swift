@@ -116,6 +116,10 @@ class Field: ObservableObject {
         
         if cell.hasBomb {
             gameStatus = .lose
+            cell.wrongUserChoise = true
+            for cell in field.flatMap({ $0 }).filter({ $0.hasBomb }) {
+                cell.open()
+            }
         }
         
         let bombCounter = cellDict[cell]

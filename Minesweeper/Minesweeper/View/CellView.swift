@@ -33,7 +33,7 @@ struct CellView: View {
     var body: some View {
         image
             .resizable()
-            .scaledToFit()
+            .aspectRatio(contentMode: .fit)
     }
 }
 
