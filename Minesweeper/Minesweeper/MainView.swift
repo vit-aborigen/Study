@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MainView: View {
-    @StateObject var field = Field(rows: 5, columns: 5, bombs: 3)
+    @StateObject var field = Field(rows: 16, columns: 30, bombs: 99)
     @State private var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     @State private var timerText = 0
     

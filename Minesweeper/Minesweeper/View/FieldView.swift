@@ -9,22 +9,22 @@ import SwiftUI
 
 struct FieldView: View {
     @ObservedObject var board: Field
-    
+
     var body: some View {
-        let gridItem = Array(repeating: GridItem.init(spacing: 0), count: board.columns)
-        
-        LazyVGrid(columns: gridItem, spacing: 0) {
+        VStack(spacing: 0) {
             ForEach(0..<board.rows) { row in
-                ForEach(0..<board.columns) { column in
-                    let cell = board.field[row][column]
-                    CellView(cell: board.field[row][column], bombsAround: board.cellDict[cell])
-                        .onTapGesture {
-                            board.openCell(cellCoords: (row, column))
-                        }
-                        .onLongPressGesture{
-                            board.toggleFlag(cell: (row, column))
-                        }
-                        .disabled(board.gameIsOver)
+                HStack(spacing: 0) {
+                    ForEach(0..<board.columns) { column in
+                        let cell = board.field[row][column]
+                        CellView(cell: board.field[row][column], bombsAround: board.cellDict[cell])
+                            .onTapGesture {
+                                board.openCell(cellCoords: (row, column))
+                            }
+                            .onLongPressGesture {
+                                board.toggleFlag(cell: (row, column))
+                            }
+                            .disabled(board.gameIsOver)
+                    }
                 }
             }
         }
