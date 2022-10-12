@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct FieldView: View {
-    @ObservedObject var board: Field
+struct BoardView: View {
+    @ObservedObject var board: Board
 
     var body: some View {
         VStack(spacing: 0) {
@@ -36,8 +36,8 @@ struct FieldView: View {
     }
 }
 
-struct FieldView_Previews: PreviewProvider {
+struct BoardView_Previews: PreviewProvider {
     static var previews: some View {
-        FieldView(board: Field())
+        BoardView(board: Board())
     }
 }

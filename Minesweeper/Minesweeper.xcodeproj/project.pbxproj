@@ -12,8 +12,8 @@
 		9FFCA3E128F432F70006E72E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9FFCA3E028F432F70006E72E /* Assets.xcassets */; };
 		9FFCA3E428F432F70006E72E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9FFCA3E328F432F70006E72E /* Preview Assets.xcassets */; };
 		9FFCA3EF28F435A10006E72E /* CellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFCA3EE28F435A10006E72E /* CellModel.swift */; };
-		9FFCA3F128F439000006E72E /* FieldModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFCA3F028F439000006E72E /* FieldModel.swift */; };
-		9FFCA3F328F44CCD0006E72E /* FieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFCA3F228F44CCD0006E72E /* FieldView.swift */; };
+		9FFCA3F128F439000006E72E /* BoardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFCA3F028F439000006E72E /* BoardModel.swift */; };
+		9FFCA3F328F44CCD0006E72E /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFCA3F228F44CCD0006E72E /* BoardView.swift */; };
 		9FFCA3F528F44EC90006E72E /* CellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFCA3F428F44EC90006E72E /* CellView.swift */; };
 /* End PBXBuildFile section */
 
@@ -24,8 +24,8 @@
 		9FFCA3E028F432F70006E72E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9FFCA3E328F432F70006E72E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		9FFCA3EE28F435A10006E72E /* CellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellModel.swift; sourceTree = "<group>"; };
-		9FFCA3F028F439000006E72E /* FieldModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldModel.swift; sourceTree = "<group>"; };
-		9FFCA3F228F44CCD0006E72E /* FieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldView.swift; sourceTree = "<group>"; };
+		9FFCA3F028F439000006E72E /* BoardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardModel.swift; sourceTree = "<group>"; };
+		9FFCA3F228F44CCD0006E72E /* BoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
 		9FFCA3F428F44EC90006E72E /* CellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -82,7 +82,7 @@
 			isa = PBXGroup;
 			children = (
 				9FFCA3EE28F435A10006E72E /* CellModel.swift */,
-				9FFCA3F028F439000006E72E /* FieldModel.swift */,
+				9FFCA3F028F439000006E72E /* BoardModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -97,7 +97,7 @@
 		9FFCA3EC28F434C00006E72E /* View */ = {
 			isa = PBXGroup;
 			children = (
-				9FFCA3F228F44CCD0006E72E /* FieldView.swift */,
+				9FFCA3F228F44CCD0006E72E /* BoardView.swift */,
 				9FFCA3F428F44EC90006E72E /* CellView.swift */,
 			);
 			path = View;
@@ -181,12 +181,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9FFCA3F128F439000006E72E /* FieldModel.swift in Sources */,
+				9FFCA3F128F439000006E72E /* BoardModel.swift in Sources */,
 				9FFCA3DF28F432F50006E72E /* MainView.swift in Sources */,
 				9FFCA3F528F44EC90006E72E /* CellView.swift in Sources */,
 				9FFCA3DD28F432F50006E72E /* MinesweeperApp.swift in Sources */,
 				9FFCA3EF28F435A10006E72E /* CellModel.swift in Sources */,
-				9FFCA3F328F44CCD0006E72E /* FieldView.swift in Sources */,
+				9FFCA3F328F44CCD0006E72E /* BoardView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
