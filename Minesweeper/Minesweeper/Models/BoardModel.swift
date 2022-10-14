@@ -64,10 +64,6 @@ class Board: ObservableObject {
         } else {
             cell.open()
             amountOfOpenedCells += 1
-            
-            if amountOfOpenedCells == cellDict.count {
-                gameStatus = .win
-            }
         }
         
         if amountOfOpenedCells == cellDict.count {
