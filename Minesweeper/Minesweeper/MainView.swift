@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MainView: View {
-    @StateObject var board = Board(rows: 5, columns: 5, bombs: 2)
+    @StateObject var board = Board(rows: 30, columns: 16, bombs: 99)
     @State private var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     @State private var timerText = 0
     @State private var cellSize: CGFloat = 30.0
@@ -72,18 +72,15 @@ struct MainView: View {
                                 DragGesture()
                                     .onChanged { transition in
                                         flagOffset = transition.translation
-                                        var cellX = 0
-                                        var cellY = 0
+                                    }
+                                    .onEnded { transition in
+                                        flagOffset = .zero
                                         
                                         let normalizedOffsetX = transition.translation.height / cellSize
                                         let normalizedOffsetY = transition.translation.width / cellSize
-                                        if board.columns % 2 != 0 {
-                                            cellX = Int(normalizedOffsetX.rounded()) - 1
-                                            let offsetY = Int(normalizedOffsetY.rounded())
-                                            cellY = Int(board.columns / 2) + offsetY
-                                        } else {
-                                            #warning("2DO: odd / even field size")
-                                        }
+                                        
+                                        var cellX = Int(normalizedOffsetX.rounded()) - 1
+                                        var cellY = Int(Double(board.columns) / 2 + normalizedOffsetY)
                                         
                                         cellX = max(0, cellX)
                                         cellX = min(cellX, board.rows - 1)
@@ -91,11 +88,6 @@ struct MainView: View {
                                         cellY = min(cellY, board.columns - 1)
                                         
                                         board.field[cellX][cellY].toggleFlag()
-                                        print(cellX, cellY)
-                                        
-                                    }
-                                    .onEnded { transition in
-                                        flagOffset = .zero
                                     }
                             )
                     }
