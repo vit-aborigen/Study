@@ -11,6 +11,10 @@ struct MainView: View {
     @StateObject var board = Board(rows: 30, columns: 16, bombs: 99)
     @State private var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     @State private var timerText = 0
+    @State private var cellSize: CGFloat = 30.0
+    
+    @State private var flagOffset = CGSize.zero
+    @State private var boardAreaSize: CGFloat? = nil
     
     var newGameButtonText: String {
         switch board.gameStatus {
@@ -27,13 +31,15 @@ struct MainView: View {
                 
                 Spacer()
                 
-                Button {
-                    board.restart()
-                    timerText = 0
-                    timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-                } label: {
-                    Text(newGameButtonText)
-                        .font(.title)
+                VStack {
+                    Button {
+                        board.restart()
+                        timerText = 0
+                        timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+                    } label: {
+                        Text(newGameButtonText)
+                            .font(.title)
+                    }
                 }
                 
                 Spacer()
@@ -51,7 +57,44 @@ struct MainView: View {
                     .frame(minWidth: UIScreen.main.bounds.size.width / 5)
             }
             
-            BoardView(board: board)
+            GeometryReader { geo in
+                ZStack(alignment: .top) {
+                    Group {
+                        Image("normal")
+                            .resizable()
+                            .scaledToFit()
+                        
+                        Image("flag")
+                            .resizable()
+                            .scaledToFit()
+                            .offset(flagOffset)
+                            .gesture(
+                                DragGesture()
+                                    .onChanged { transition in
+                                        flagOffset = transition.translation
+                                    }
+                                    .onEnded { transition in
+                                        flagOffset = .zero
+                                    }
+                            )
+                    }
+                    .zIndex(1)
+                    .frame(height: cellSize)
+                
+                    BoardView(board: board)
+                        .frame(height: geo.size.height - cellSize)
+                        .offset(y: geo.size.height * 0.05)
+                        .background(
+                            GeometryReader { geo in
+                                Color.clear
+                                    .onAppear {
+                                        cellSize = min(geo.size.width / Double(board.columns + 1), geo.size.height / Double(board.rows + 1))
+                                    }
+                            }
+                            
+                        )
+                }
+            }
         }
     }
 }
