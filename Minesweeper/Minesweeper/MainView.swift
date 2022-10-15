@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MainView: View {
-    @StateObject var board = Board(rows: 30, columns: 16, bombs: 99)
+    @StateObject var board = Board(rows: 5, columns: 5, bombs: 2)
     @State private var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     @State private var timerText = 0
     @State private var cellSize: CGFloat = 30.0
@@ -72,6 +72,27 @@ struct MainView: View {
                                 DragGesture()
                                     .onChanged { transition in
                                         flagOffset = transition.translation
+                                        var cellX = 0
+                                        var cellY = 0
+                                        
+                                        let normalizedOffsetX = transition.translation.height / cellSize
+                                        let normalizedOffsetY = transition.translation.width / cellSize
+                                        if board.columns % 2 != 0 {
+                                            cellX = Int(normalizedOffsetX.rounded()) - 1
+                                            let offsetY = Int(normalizedOffsetY.rounded())
+                                            cellY = Int(board.columns / 2) + offsetY
+                                        } else {
+                                            #warning("2DO: odd / even field size")
+                                        }
+                                        
+                                        cellX = max(0, cellX)
+                                        cellX = min(cellX, board.rows - 1)
+                                        cellY = max(0, cellY)
+                                        cellY = min(cellY, board.columns - 1)
+                                        
+                                        board.field[cellX][cellY].toggleFlag()
+                                        print(cellX, cellY)
+                                        
                                     }
                                     .onEnded { transition in
                                         flagOffset = .zero
@@ -82,16 +103,15 @@ struct MainView: View {
                     .frame(height: cellSize)
                 
                     BoardView(board: board)
-                        .frame(height: geo.size.height - cellSize)
-                        .offset(y: geo.size.height * 0.05)
+                        .frame(height: geo.size.height - cellSize, alignment: .top)
+                        .offset(y: cellSize)
                         .background(
                             GeometryReader { geo in
                                 Color.clear
                                     .onAppear {
-                                        cellSize = min(geo.size.width / Double(board.columns + 1), geo.size.height / Double(board.rows + 1))
+                                        cellSize = min(geo.size.width / Double(board.columns), geo.size.height / Double(board.rows))
                                     }
                             }
-                            
                         )
                 }
             }
