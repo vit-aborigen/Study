@@ -11,12 +11,13 @@ import SwiftUI
 struct MainView: View {
     var body: some View {
         ZStack {
-            Color.yellow
+            Color.neumorph
             
             Button {
                 
             } label: {
                 Image(systemName: "globe")
+                    .foregroundColor(.gray)
             }
             .buttonStyle(NeumorphicButtonStyle(shape: RoundedRectangle(cornerRadius: 10)))
         }
