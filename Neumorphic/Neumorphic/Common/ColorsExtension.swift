@@ -12,3 +12,9 @@ extension Color {
     static let lightShadow = Color.black.opacity(0.2)
     static let neumorph = Color(red: 1, green: 1, blue: 0.9)
 }
+
+extension LinearGradient {
+    init(_ colors: Color...) {
+        self.init(gradient: Gradient(colors: colors), startPoint: .topLeading, endPoint: .bottomTrailing)
+    }
+}
