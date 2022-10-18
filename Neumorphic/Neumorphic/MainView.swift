@@ -10,16 +10,43 @@ import SwiftUI
 
 struct MainView: View {
     var body: some View {
-        ZStack {
-            Color.neumorph
-            
-            Button {
-                
-            } label: {
-                Image(systemName: "globe")
-                    .foregroundColor(.gray)
+        VStack {
+            ZStack {
+                Color.neumorph
+
+                VStack {
+                    Text("Light theme")
+                        .font(.caption2.bold())
+                        .foregroundColor(.gray)
+                    
+                    Spacer()
+
+                    Button {} label: {
+                        Image(systemName: "heart.fill")
+                            .foregroundColor(.gray)
+                    }
+                    .buttonStyle(NeumorphicLightButtonStyle(shape: RoundedRectangle(cornerRadius: 10)))
+                    
+                    Spacer()
+                }
             }
-            .buttonStyle(NeumorphicButtonStyle(shape: RoundedRectangle(cornerRadius: 10)))
+
+            ZStack {
+                LinearGradient(.darkStart, .darkEnd)
+
+                VStack {
+                    Text("Dark theme")
+                        .font(.caption2.bold())
+                        .foregroundColor(.secondary)
+                    
+                    Button {} label: {
+                        Image(systemName: "heart.fill")
+                            .foregroundColor(.gray)
+                    }
+                    .buttonStyle(NeumorphicDarkButtonStyle(shape: RoundedRectangle(cornerRadius: 10)))
+                    
+                }
+            }
         }
     }
 }

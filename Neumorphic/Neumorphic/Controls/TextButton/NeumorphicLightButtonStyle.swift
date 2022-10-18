@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct NeumorphicButtonStyle<T: Shape>: ButtonStyle {
+struct NeumorphicLightButtonStyle<T: Shape>: ButtonStyle {
     let shape: T
 
     func makeBody(configuration: Self.Configuration) -> some View {

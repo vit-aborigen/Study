@@ -11,9 +11,11 @@
 		9F9EDC1E28805B2800391314 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9EDC1D28805B2800391314 /* MainView.swift */; };
 		9F9EDC2028805B2A00391314 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F9EDC1F28805B2A00391314 /* Assets.xcassets */; };
 		9F9EDC2328805B2A00391314 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F9EDC2228805B2A00391314 /* Preview Assets.xcassets */; };
-		9FFCA3C828F338420006E72E /* NeumorphicButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFCA3C728F338420006E72E /* NeumorphicButtonStyle.swift */; };
+		9FFCA3C828F338420006E72E /* NeumorphicLightButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFCA3C728F338420006E72E /* NeumorphicLightButtonStyle.swift */; };
 		9FFCA3CD28F33A300006E72E /* ColorsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFCA3CC28F33A300006E72E /* ColorsExtension.swift */; };
 		9FFCA3CF28F33C850006E72E /* ShadowModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFCA3CE28F33C850006E72E /* ShadowModel.swift */; };
+		9FFCA3F928FF3F100006E72E /* NeumorphicDarkButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFCA3F828FF3F100006E72E /* NeumorphicDarkButtonStyle.swift */; };
+		9FFCA3FB28FF40FD0006E72E /* DarkBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFCA3FA28FF40FD0006E72E /* DarkBackgroundView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,9 +24,11 @@
 		9F9EDC1D28805B2800391314 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		9F9EDC1F28805B2A00391314 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9F9EDC2228805B2A00391314 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		9FFCA3C728F338420006E72E /* NeumorphicButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeumorphicButtonStyle.swift; sourceTree = "<group>"; };
+		9FFCA3C728F338420006E72E /* NeumorphicLightButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeumorphicLightButtonStyle.swift; sourceTree = "<group>"; };
 		9FFCA3CC28F33A300006E72E /* ColorsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorsExtension.swift; sourceTree = "<group>"; };
 		9FFCA3CE28F33C850006E72E /* ShadowModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowModel.swift; sourceTree = "<group>"; };
+		9FFCA3F828FF3F100006E72E /* NeumorphicDarkButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeumorphicDarkButtonStyle.swift; sourceTree = "<group>"; };
+		9FFCA3FA28FF40FD0006E72E /* DarkBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkBackgroundView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,7 +98,9 @@
 		9FFCA3C628F3375E0006E72E /* TextButton */ = {
 			isa = PBXGroup;
 			children = (
-				9FFCA3C728F338420006E72E /* NeumorphicButtonStyle.swift */,
+				9FFCA3C728F338420006E72E /* NeumorphicLightButtonStyle.swift */,
+				9FFCA3F828FF3F100006E72E /* NeumorphicDarkButtonStyle.swift */,
+				9FFCA3FA28FF40FD0006E72E /* DarkBackgroundView.swift */,
 			);
 			path = TextButton;
 			sourceTree = "<group>";
@@ -179,9 +185,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				9FFCA3CD28F33A300006E72E /* ColorsExtension.swift in Sources */,
+				9FFCA3FB28FF40FD0006E72E /* DarkBackgroundView.swift in Sources */,
+				9FFCA3F928FF3F100006E72E /* NeumorphicDarkButtonStyle.swift in Sources */,
 				9FFCA3CF28F33C850006E72E /* ShadowModel.swift in Sources */,
 				9F9EDC1E28805B2800391314 /* MainView.swift in Sources */,
-				9FFCA3C828F338420006E72E /* NeumorphicButtonStyle.swift in Sources */,
+				9FFCA3C828F338420006E72E /* NeumorphicLightButtonStyle.swift in Sources */,
 				9F9EDC1C28805B2800391314 /* NeumorphicApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
